@@ -1,6 +1,6 @@
 {
  "aoi": "kazipur",
- "generated_utc": "2026-11-12T14:38:02+00:00",
+ "generated_utc": "2026-11-13T07:07:40+00:00",
  "min_patch_ha": 1.0,
  "grid": {
   "crs": "EPSG:32645",
@@ -473,6 +473,50 @@
    },
    "overlay": {
     "url": "radar_rule/new_water_069A_20261016.png",
+    "bounds": [
+     89.461504,
+     24.205168,
+     89.917721,
+     24.799402
+    ]
+   }
+  },
+  {
+   "track": "069A",
+   "date": "20261109",
+   "acquired_utc": "2026-11-09T23:21:32Z",
+   "published_utc": "2026-11-12T02:59:10Z",
+   "publication_source": "NASA CMR (granule record insert time)",
+   "granule_id": "NISAR_L2_PR_GCOV_035_069_A_014_4005_DHDH_A_20261109T232132_20261109T232207_P05036_N_F_J_001",
+   "cmr_id": "G4409019929-ASF",
+   "processing_level": "L2 GCOV VALIDATED (CRID P05036)",
+   "unknown_pct": 0.4,
+   "is_baseline": false,
+   "threshold_db": -15.62,
+   "threshold_method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+   "tested_at_db": [
+    -16.62,
+    -15.62,
+    -14.62
+   ],
+   "baseline": {
+    "date": "20260618",
+    "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+    "acquired_utc": "2026-06-18T23:21:35Z"
+   },
+   "new_water_km2": {
+    "strict": 20.09,
+    "mid": 24.19,
+    "loose": 49.88
+   },
+   "range_within_25pct": false,
+   "files": {
+    "strict": "dist_069A_20261109_strict.tif",
+    "mid": "dist_069A_20261109_mid.tif",
+    "loose": "dist_069A_20261109_loose.tif"
+   },
+   "overlay": {
+    "url": "radar_rule/new_water_069A_20261109.png",
     "bounds": [
      89.461504,
      24.205168,

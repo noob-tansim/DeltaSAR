@@ -7,7 +7,7 @@
 .ph-top .name { font-family: var(--font-display); font-weight: 700; font-size: calc(1.35em); color: var(--river); line-height: 1; }
 .ph-top .sp { flex: 1; }
 .ph-pill { min-height: 40px; min-width: 40px; padding: 0 12px; border-radius: 999px; border: 0; background: var(--mist); font-weight: 600; font-size: 0.85em; display: inline-flex; align-items: center; justify-content: center; gap: 6px; color: var(--ink); }
-.ph-body { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 14px 16px 20px; display: grid; gap: 12px; align-content: start; overscroll-behavior: contain; }
+.ph-body { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 14px 16px 20px; display: grid; grid-auto-rows: max-content; gap: 12px; align-content: start; overscroll-behavior: contain; }
 .ph-bottom { flex: none; display: grid; grid-template-columns: 1.6fr 1fr; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: var(--paper); border-top: 1px solid var(--line); }
 .ph-listen { min-height: calc(62px * var(--s)); border-radius: 18px; border: 0; background: var(--river); color: #fff; font-family: var(--font-display); font-size: 1.35em; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; }
 .ph-listen.on { background: #084e5a; }
@@ -73,7 +73,8 @@
 .ph-mode b { display: block; font-size: 1.02em; }
 .ph-mode span { font-size: 0.8em; color: var(--ink-2); }
 .ph-input { width: 100%; min-height: 52px; border-radius: 14px; border: 2px solid var(--line); padding: 0 14px; font-size: 1em; background: var(--paper); }
-.ph-list { display: grid; gap: 6px; max-height: 260px; overflow: auto; }
+.ph-list { display: grid; gap: 6px; max-height: 320px; overflow: auto; overscroll-behavior: contain; }
+.ph-notice { margin: 0; padding: 10px 14px; border-radius: 14px; background: #fff4dc; border: 1px solid #f0d49a; color: #5c4307; font-size: 0.92em; line-height: 1.5; }
 .ph-opt { text-align: left; min-height: 52px; padding: 8px 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--paper); font-size: 0.95em; }
 .ph-opt[aria-pressed='true'] { border-color: var(--river); background: var(--river-lt); }
 .ph-months { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }

@@ -14,8 +14,8 @@ type Msg = { role: 'user' | 'assistant'; text: string; kind?: 'faq' | 'ai' | 'no
 
 const FAQ: { q: [string, string]; a: [string, string] }[] = [
   { q: ['What is NISAR?', 'NISAR কী?'], a: [
-    'NISAR is the NASA–ISRO radar satellite. Its L-band radar (about 24 cm waves) sees through cloud and rain, day and night, so it sees the Jamuna even in the monsoon. We use its L2 GCOV product from NASA\'s ASF archive: 12 passes from 18 Jun to 16 Oct 2026 on tracks 069A and 019D.',
-    'NISAR হলো নাসা ও ইসরোর রাডার উপগ্রহ। এর এল-ব্যান্ড রাডার (প্রায় ২৪ সেমি তরঙ্গ) মেঘ ও বৃষ্টি ভেদ করে দিনে-রাতে দেখতে পারে, তাই বর্ষাতেও যমুনা দেখা যায়। আমরা নাসার ASF সংরক্ষণাগার থেকে এর L2 GCOV তথ্য ব্যবহার করি: ১৮ জুন থেকে ১৬ অক্টোবর ২০২৬, ০৬৯এ ও ০১৯ডি ট্র্যাকের ১২টি ছবি।'] },
+    'NISAR is the NASA–ISRO radar satellite. Its L-band radar (about 24 cm waves) sees through cloud and rain, day and night, so it sees the Jamuna even in the monsoon. We use its L2 GCOV product from NASA\'s ASF archive: 13 passes from 18 Jun to 9 Nov 2026 on tracks 069A and 019D; the newest (9 Nov) is a VALIDATED file.',
+    'NISAR হলো নাসা ও ইসরোর রাডার উপগ্রহ। এর এল-ব্যান্ড রাডার (প্রায় ২৪ সেমি তরঙ্গ) মেঘ ও বৃষ্টি ভেদ করে দিনে-রাতে দেখতে পারে, তাই বর্ষাতেও যমুনা দেখা যায়। আমরা নাসার ASF সংরক্ষণাগার থেকে এর L2 GCOV তথ্য ব্যবহার করি: ১৮ জুন থেকে ৯ নভেম্বর ২০২৬, ০৬৯এ ও ০১৯ডি ট্র্যাকের ১৩টি ছবি; সর্বশেষটি (৯ নভেম্বর) যাচাইকৃত ফাইল।'] },
   { q: ['How much riverbank was lost?', 'কতটা নদীভাঙন হয়েছে?'], a: [
     'Between 18 Jun and 4 Oct 2026, 187 to 232 hectares of mainland riverbank became river, in 38 places, confirmed by the 16 Oct pass (NISAR track 069A). The largest site, in Char Girish union (Kazipur), is 38.8 ha. 712 buildings stand within 100 m of a bank that retreated.',
     '১৮ জুন থেকে ৪ অক্টোবর ২০২৬-এর মধ্যে মূল ভূখণ্ডের ১৮৭ থেকে ২৩২ হেক্টর পাড় নদী হয়ে গেছে, ৩৮টি জায়গায়; ১৬ অক্টোবরের ছবিতে তা নিশ্চিত (NISAR ট্র্যাক ০৬৯এ)। সবচেয়ে বড় জায়গা কাজীপুরের চরগিরিশ ইউনিয়নে, ৩৮.৮ হেক্টর। সরে যাওয়া পাড়ের ১০০ মিটারের মধ্যে ৭১২টি ঘরবাড়ি আছে।'] },
@@ -105,7 +105,7 @@ export function AskWidget() {
                 <p>{m.text}</p>
                 {m.role === 'assistant' && m.kind !== 'note' && (
                   <div className="meta">
-                    <span className={`tag ${m.kind}`}>{m.kind === 'faq' ? L('From our FAQ', 'আমাদের প্রশ্নোত্তর থেকে') : L('AI (Gemini), from our facts', 'এআই (Gemini), আমাদের তথ্য থেকে')}</span>
+                    {m.kind === 'faq' && <span className="tag faq">{L('From our FAQ', 'আমাদের প্রশ্নোত্তর থেকে')}</span>}
                     <button onClick={() => void speak({ bn: m.text, en: m.text, lang: /[ঀ-৿]/.test(m.text) ? 'bn' : 'en' })}><Icon name="speaker" size={14} /> {L('Listen', 'শুনুন')}</button>
                   </div>
                 )}

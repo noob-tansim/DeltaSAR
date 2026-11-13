@@ -279,7 +279,8 @@ def _unions(path: str, mtime: float, names_path: str, names_mtime: float) -> tup
             continue
         out.append({"union_id": u["union_id"], "name_en": u.get("union_name_en") or "?",
                     "name_bn": names.get(u["union_id"]) or names.get(u.get("union_name_en") or ""),
-                    "upazila_en": u.get("upazila_name_en"), "lat": c["lat"], "lon": c["lon"]})
+                    "upazila_en": u.get("upazila_name_en"), "upazila_bn": names.get(f"upazila:{u.get('upazila_name_en')}"),
+                    "lat": c["lat"], "lon": c["lon"]})
     out.sort(key=lambda x: (x["upazila_en"] or "", x["name_en"]))
     return tuple(out)
 

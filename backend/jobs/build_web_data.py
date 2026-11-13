@@ -131,6 +131,7 @@ def main() -> None:
     ap.add_argument("--science", required=True, type=Path)
     ap.add_argument("--radar-rule", required=True, type=Path)
     ap.add_argument("--unions", type=Path)
+    ap.add_argument("--extra", type=Path, help="jobs.j2 output: passes newer than the kit run (extra_passes.json + pictures)")
     a = ap.parse_args()
     sci, rr_dir = a.science, a.radar_rule
     if OUT.exists():
@@ -156,6 +157,15 @@ def main() -> None:
             if key not in pics["sar"]:
                 webp(sci / o["url"], OUT / "ov" / f"sar_{date}_{track}.webp", 70)
                 pics["sar"][key] = f"ov/sar_{date}_{track}.webp"
+    extra = json.loads((a.extra / "extra_passes.json").read_text(encoding="utf-8"))["passes"] if a.extra else []
+    for e in extra:
+        key = f"{e['track']}_{e['date']}"
+        if key not in pics["water"]:
+            mask_png(a.extra / f"water_{e['date']}_{e['track']}.png", OUT / "ov" / f"water_{e['date']}_{e['track']}.png", 4)
+            pics["water"][key] = f"ov/water_{e['date']}_{e['track']}.png"
+        if key not in pics["sar"]:
+            webp(a.extra / f"sar_{e['date']}_{e['track']}.png", OUT / "ov" / f"sar_{e['date']}_{e['track']}.webp", 70)
+            pics["sar"][key] = f"ov/sar_{e['date']}_{e['track']}.webp"
     for p in rr["passes"]:
         if p.get("overlay"):
             name = f"newwater_{p['track']}_{p['date']}.png"
@@ -196,6 +206,9 @@ def main() -> None:
     granules = cmr.get("granules") or cmr.get("passes") or []
     rr_by = {f"{p['track']}_{p['date']}": p for p in rr["passes"]}
     water_by = {r["date"]: r for r in insights["river"]["passes"]}
+    for e in extra:
+        if e["track"] == "069A":
+            water_by.setdefault(e["date"], e)
     processed = []
     for key, p in sorted(rr_by.items(), key=lambda kv: kv[1]["acquired_utc"]):
         w = water_by.get(p["date"]) if p["track"] == "069A" else None
@@ -240,7 +253,9 @@ def main() -> None:
                   for k, v in pairs.items()},
         "insights": {k: insights.get(k) for k in ("frequency", "bankloss_time", "where", "near_bank", "retreat", "learned")},
         "river_fit": insights["river"].get("fit"),
-        "latest_processed": summary.get("latest_pass"),
+        "latest_processed": ({"date": extra[-1]["date"], "track": extra[-1]["track"],
+                              "water_beyond_channel_km2": extra[-1]["water_outside_channel_km2"],
+                              "processing_level": extra[-1]["processing_level"]} if extra else summary.get("latest_pass")),
         "file": {"pairs": f"pairs/{head}.json", "insights": "insights/insights.json"},
     }
     (OUT / "story.json").write_text(json.dumps(story, separators=(",", ":")), encoding="utf-8")

@@ -158,7 +158,7 @@ export default function Methods() {
           <div className="narrow">
             <h2>{L('Limits, said plainly', 'সীমাবদ্ধতা, সোজা কথায়')}</h2>
             <ul className="ticks no">
-              <li><span>NISAR data before 25 Oct 2026 is PROVISIONAL (CRID P05023). Validated files (P05036) exist from 25 Oct; the 9 Nov pass is the next to ingest. Every screen shows the label of the pass it uses.</span></li>
+              <li><span>NISAR data before 25 Oct 2026 is PROVISIONAL (CRID P05023). Validated files (P05036) exist from 25 Oct; we added the 9 Nov validated pass after checking that its river and land values sit inside the range of the earlier passes (river −18.24 dB, land −7.94 dB). Every screen shows the label of the pass it uses.</span></li>
               <li><span>River level differs between dates: land-to-water change near the bank includes some water-level effect. River flow here is modelled (GloFAS), not a gauge.</span></li>
               <li><span>Buildings are model-detected footprints from older imagery: what stood there, not a damage count.</span></li>
               <li><span>Height above river (MERIT Hydro, about 90 m) has errors of a metre or more: we never show water depth.</span></li>
@@ -173,7 +173,8 @@ export default function Methods() {
         <section className="section tight" id="ai">
           <div className="narrow">
             <h2>{L('How AI was used', 'এআই কীভাবে ব্যবহার হয়েছে')}</h2>
-            <p>AI coding assistants helped write code, documents and draft text. A person on the team reviewed and tested each part. AI computes no number on any screen and is not in the alert path: rules, thresholds and approvals are fixed code and human decisions. The full log of tools, prompts and checks is in <code>docs/AI_USE.md</code> in the repository.</p>
+            <p>{L('AI coding assistants helped write code, documents and draft text. A person on the team reviewed and tested each part. AI computes no number on any screen and is not in the alert path: rules, thresholds and approvals are fixed code and human decisions.', 'এআই কোডিং সহকারী কোড, নথি ও খসড়া লেখায় সাহায্য করেছে। দলের একজন প্রতিটি অংশ পড়ে ও পরীক্ষা করে দেখেছেন। কোনো পাতার কোনো সংখ্যা এআই হিসাব করে না, আর সতর্কবার্তার পথে এআই নেই: নিয়ম, সীমা ও অনুমোদন নির্দিষ্ট কোড ও মানুষের সিদ্ধান্ত।')}</p>
+            <p>{L('The "Ask DeltaSAR" chat uses Google Gemini and answers only from our published facts; the server checks that every number in an answer appears in those facts. When a device has no Bangla voice, Gemini text-to-speech reads the approved Bangla alert text aloud.', '“প্রশ্ন করুন” চ্যাট Google Gemini ব্যবহার করে এবং শুধু আমাদের প্রকাশিত তথ্য থেকে উত্তর দেয়; উত্তরের প্রতিটি সংখ্যা সেই তথ্যে আছে কিনা সার্ভার যাচাই করে। যে ফোনে বাংলা কণ্ঠ নেই, সেখানে Gemini টেক্সট-টু-স্পিচ অনুমোদিত বাংলা সতর্কবার্তা পড়ে শোনায়।')} {L('Full log of tools, prompts and checks:', 'সব টুল, প্রম্পট ও যাচাইয়ের পূর্ণ তালিকা:')} <code>docs/AI_USE.md</code>.</p>
             <h3 style={{ marginTop: 24 }}>Reproduce it</h3>
             <pre className="m-pre">{`# backend (Python 3.11+)
 cd backend && pip install -r requirements.txt

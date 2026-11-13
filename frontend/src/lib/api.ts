@@ -120,7 +120,7 @@ export type AlertOut = {
 };
 export type StatusOut = {
   as_of_utc: string; replay: boolean; status: Status; reasons: string[]; covered: boolean; in_radar_gap: boolean;
-  union: { union_id: string; name_en: string; name_bn: string | null; upazila_en: string | null; lat: number; lon: number } | null;
+  union: UnionOut | null;
   radar: { track: string; pass_utc: string; pass_local: string; published_utc: string | null; age_days: number; stale: boolean; processing_level: string; new_water_distance_m: number | null; walk_minutes: number | null; confidence: Confidence; grew_since_previous_pass: boolean | null; next_expected_local_date: string | null; overlay_url: string | null; overlay_bounds: number[] | null } | null;
   river: { station: string; level_m: number | null; danger_level_m: number; line_m: number; kind: string | null; valid_local: string | null; age_hours: number | null; stale: boolean; source_url: string | null } | null;
   rain: { date: string | null; last_24h_mm: number | null; limit_mm: number; source: string | null; stale: boolean } | null;
@@ -137,7 +137,7 @@ export type PersonOut = {
   rain_on: boolean; rain_mm: number; river_on: boolean; radar_on: boolean; radar_km: number; channels: string[]; email: string | null;
   phone: string | null; mode: Record<string, boolean>; is_demo: boolean; has_push: boolean;
 };
-export type UnionOut = { union_id: string; name_en: string; name_bn: string | null; upazila_en: string | null; lat: number; lon: number };
+export type UnionOut = { union_id: string; name_en: string; name_bn: string | null; upazila_en: string | null; upazila_bn?: string | null; lat: number; lon: number };
 export type PointReport = {
   covered: boolean; lat: number; lon: number; message?: string; in_permanent_river?: boolean; height_above_river_m?: number | null;
   distance_to_river_m?: number | null; nearest_union?: UnionOut | null; notes?: string[];

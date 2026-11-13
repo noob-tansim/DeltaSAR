@@ -65,14 +65,14 @@ checks = [
     ("Persistence wins 6 of 9", f"{sk['persistence_wins']} of {sk['n']}", "same"),
     ("NASA delay 45–71 h, 122 h after the gap", f"{int(min(lat069))}–{max(lat069):.0f} h, after the gap {after_gap['latency_hours']:.0f} h", "data/passes.json (CMR)"),
     ("Wettest day 75.2 mm on 5 Aug", f"{float(rain_max[1])} mm on {rain_max[0]}", "data/rain_daily.csv (IMERG)"),
-    ("12 passes processed", f"{len(season['processed'])} passes", "season.json"),
+    ("13 passes processed", f"{len(season['processed'])} passes", "season.json"),
     ("Danger levels Kazipur 14.80 m, Sirajganj 12.90 m", f"{dl.get('Kazipur')} / {dl.get('Sirajganj')} m", "data/stations.json (FFWC)"),
 ]
 
 expected = {
     0: "187–232 ha", 2: "38 sites", 4: "47 buildings", 5: "712 buildings", 6: "305", 7: "38.76", 8: "41.3 ha in 4 sites",
     9: "228 m", 10: "39,425 ha", 11: "775.6 / 596", 12: "16180 vs 27605", 13: "5.78 km², R² 0.21", 14: "-15.62 / -14.06",
-    15: "9.0–11.6", 16: "6.8–8.2", 17: "0.17 / 0.48 / 0.50", 18: "6 of 9", 19: "45–71 h, after the gap 122 h", 20: "75.2 mm on 2026-08-05", 21: "12 passes", 22: "14.8 / 12.9",
+    15: "9.0–11.6", 16: "6.8–8.2", 17: "0.17 / 0.48 / 0.50", 18: "6 of 9", 19: "45–71 h, after the gap 122 h", 20: "75.2 mm on 2026-08-05", 21: "13 passes", 22: "14.8 / 12.9",
 }
 bad = 0
 w = max(len(c[0]) for c in checks)

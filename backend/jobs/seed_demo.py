@@ -15,7 +15,7 @@ from sqlalchemy import select
 from src.alerts import engine, inputs
 from src.alerts.db import Person, init_engine, session_scope, utcnow
 
-DEMO_UNIONS = ["Char Girish", "Khas Rajbari", "Kazipur", "Natuarpara", "Mansur Nagar", "Nishchintapur"]
+DEMO_UNIONS = ["Char Girish", "Khas Rajbari", "Kazipur", "Natuar Para", "Mansur Nagar", "Nishchintapur"]
 
 
 def seed() -> int:

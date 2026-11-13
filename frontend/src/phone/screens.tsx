@@ -19,7 +19,7 @@ export function HomeScreen() {
   }
   const s = status.status;
   const u = status.union;
-  const area = u ? (lang === 'bn' ? `${u.name_bn ?? u.name_en}${u.upazila_en ? `, ${STATION_BN[u.upazila_en] ?? u.upazila_en}` : ''}` : `${u.name_en}${u.upazila_en ? `, ${u.upazila_en}` : ''}`) : '—';
+  const area = u ? (lang === 'bn' ? `${u.name_bn ?? u.name_en}${u.upazila_en ? `, ${u.upazila_bn ?? STATION_BN[u.upazila_en] ?? u.upazila_en}` : ''}` : `${u.name_en}${u.upazila_en ? `, ${u.upazila_en}` : ''}`) : '—';
   const r = status.radar;
   let fact = '';
   let factEn = '';

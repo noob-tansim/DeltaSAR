@@ -14,6 +14,16 @@ import './phone.css';
 
 const BBOX = [89.46, 24.205, 89.918, 24.8];
 
+/** Search key: case, spaces and common Bangla spelling variants (ী/ি, ূ/ু, শ/ষ/স, ণ/ন, ঁ) folded. */
+const fold = (s: string | null | undefined) => (s ?? '').normalize('NFC').toLowerCase()
+  .replace(/[\s\-.'’()]/g, '').replace(/ী/g, 'ি').replace(/ূ/g, 'ু').replace(/[শষ]/g, 'স').replace(/ণ/g, 'ন').replace(/ঁ/g, '');
+const bnNum = (n: number, lang: Lang) => (lang === 'bn' ? String(n).replace(/\d/g, (d) => '০১২৩৪৫৬৭৮৯'[+d]!) : String(n));
+function km(a: [number, number], b: [number, number]): number {
+  const p = Math.PI / 180;
+  const h = Math.sin(((b[0] - a[0]) * p) / 2) ** 2 + Math.cos(a[0] * p) * Math.cos(b[0] * p) * Math.sin(((b[1] - a[1]) * p) / 2) ** 2;
+  return 12742 * Math.asin(Math.sqrt(h));
+}
+
 export default function AppPage() {
   const [id, setId] = useState<string | null>(device.id());
   const [state, setState] = useState<'checking' | 'join' | 'ready'>('checking');
@@ -118,8 +128,24 @@ function Onboarding({ onDone }: { onDone: (deviceId: string) => void }) {
   const [consent, setConsent] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
-  useEffect(() => { phoneApi.unions().then(setUnions).catch(() => setMsg('The server is waking up; the list will appear in a moment.')); }, []);
-  const list = unions.filter((u) => !q || u.name_en.toLowerCase().includes(q.toLowerCase()) || (u.name_bn ?? '').includes(q)).slice(0, 60);
+  const [load, setLoad] = useState<'loading' | 'waking' | 'ok' | 'failed'>('loading');
+  const [tries, setTries] = useState(0);
+  useEffect(() => {     // the free server sleeps: keep asking every 5 s for up to a minute
+    let stop = false;
+    let n = 0;
+    const get = () => phoneApi.unions().then((u) => { if (!stop) { setUnions(u); setLoad('ok'); } }).catch(() => {
+      if (stop) return;
+      n += 1;
+      if (n < 12) { setLoad('waking'); setTimeout(get, 5000); } else setLoad('failed');
+    });
+    void get();
+    return () => { stop = true; };
+  }, [tries]);
+  const fq = fold(q);
+  const matches = fq ? unions.filter((u) => [u.name_en, u.name_bn, u.upazila_en, u.upazila_bn].some((s) => fold(s).includes(fq))) : unions;
+  const noMatch = !!fq && load === 'ok' && matches.length === 0;
+  const list = noMatch ? unions : matches;
+  const upa = (u: UnionOut) => (lang === 'bn' ? (u.upazila_bn ?? u.upazila_en) : u.upazila_en);
   const sayIt = (bn: string, en: string) => { if (mode.listen) void speak({ bn, en, lang }); };
 
   const locate = () => {
@@ -129,6 +155,19 @@ function Onboarding({ onDone }: { onDone: (deviceId: string) => void }) {
         setHome([la, lo]);
         setMsg(null);
       } else setMsg(tr('locationOutside', lang));
+    }, () => setMsg(tr('locationFailed', lang)), { enableHighAccuracy: true, timeout: 10000 });
+  };
+
+  const findNearest = () => {
+    navigator.geolocation?.getCurrentPosition((p) => {
+      const here: [number, number] = [p.coords.latitude, p.coords.longitude];
+      const best = unions.map((u) => ({ u, d: km(here, [u.lat, u.lon]) })).sort((a, b) => a.d - b.d)[0];
+      if (!best || best.d > 8) { setMsg(tr('nearestOutside', lang)); return; }
+      setUnion(best.u);
+      setHome(here);
+      setQ('');
+      setMsg(null);
+      sayIt(best.u.name_bn ?? best.u.name_en, best.u.name_en);
     }, () => setMsg(tr('locationFailed', lang)), { enableHighAccuracy: true, timeout: 10000 });
   };
 
@@ -170,14 +209,27 @@ function Onboarding({ onDone }: { onDone: (deviceId: string) => void }) {
             <button className="ph-back" onClick={() => setStep(0)}><Icon name="back" size={18} /> {tr('back', lang)}</button>
             <h2>{tr('chooseUnion', lang)}</h2>
             <p className="ph-note" style={{ margin: 0 }}>{tr('areaWhy', lang)}</p>
+            {load === 'ok' && <p className="ph-note" style={{ margin: 0 }}>{tr('coverage', lang).replace('{n}', bnNum(unions.length, lang))}</p>}
             <input className="ph-input" placeholder={tr('searchUnion', lang)} value={q} onChange={(e) => setQ(e.target.value)} aria-label={tr('searchUnion', lang)} />
-            <div className="ph-list" role="listbox" aria-label={tr('chooseUnion', lang)}>
-              {list.map((u) => (
-                <button key={u.union_id} className="ph-opt" aria-pressed={union?.union_id === u.union_id} onClick={() => { setUnion(u); sayIt(u.name_bn ?? u.name_en, u.name_en); }}>
-                  <b>{lang === 'bn' ? (u.name_bn ?? u.name_en) : u.name_en}</b> <span className="ph-note">· {u.upazila_en}</span>
-                </button>
-              ))}
-            </div>
+            {'geolocation' in navigator && load === 'ok' && (
+              <button className="ph-big ghost" style={{ width: '100%' }} onClick={findNearest}><Icon name="crosshair" size={18} /> {tr('findNearest', lang)}</button>
+            )}
+            {load !== 'ok' && (
+              <p className="ph-note" role="status" style={{ margin: 0 }}>
+                {tr(load === 'loading' ? 'unionsLoading' : load === 'waking' ? 'unionsWaking' : 'unionsFailed', lang)}
+                {load === 'failed' && <> <button className="ph-pill" onClick={() => { setLoad('loading'); setTries((n) => n + 1); }}>{tr('tryAgain', lang)}</button></>}
+              </p>
+            )}
+            {noMatch && <p className="ph-notice" role="status">{tr('notCovered', lang).replace('{q}', q.trim())}</p>}
+            {load === 'ok' && (
+              <div className="ph-list" aria-label={tr('chooseUnion', lang)}>
+                {list.map((u) => (
+                  <button key={u.union_id} className="ph-opt" aria-pressed={union?.union_id === u.union_id} onClick={() => { setUnion(u); sayIt(u.name_bn ?? u.name_en, u.name_en); }}>
+                    <b>{lang === 'bn' ? (u.name_bn ?? u.name_en) : u.name_en}</b> <span className="ph-note">· {upa(u)}</span>
+                  </button>
+                ))}
+              </div>
+            )}
             {union && (
               <div className="ph-card">
                 <b>{tr('homePlace', lang)}</b>

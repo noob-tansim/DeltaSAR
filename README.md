@@ -10,7 +10,7 @@ NASA-ISRO **NISAR** radar sees the Jamuna through monsoon cloud. **DeltaSAR** tu
 
 | Page | What it is |
 |---|---|
-| `/` **Story** | The 2026 season on the Jamuna: cloud vs radar, 12 NISAR passes, 187–232 ha of riverbank lost (confirmed), drivers, polarisation, honest skill test |
+| `/` **Story** | The 2026 season on the Jamuna: cloud vs radar, 13 NISAR passes (newest 9 Nov, VALIDATED), 187–232 ha of riverbank lost (confirmed), drivers, polarisation, honest skill test |
 | `/explore` **Explorer** | Every pass and layer, swipe-compare, NASA GIBS live layers, union ranking, a report for any clicked point |
 | `/demo` **Live demo** | The whole alert loop on the real 24 Jul 2026 pass, in a private sandbox; scan a QR code to use your own phone |
 | `/app` **বন্যা সাথী** | The resident app: Bangla first, voice on every screen, hold-to-reply, works offline. Full-screen on a phone; on a laptop the app sits beside an expanded view of the same area |

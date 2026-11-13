@@ -10,7 +10,7 @@ import { Nav } from '../components/Chrome';
 import { Icon, type IconName } from '../components/Icon';
 import { useLiveNasa } from '../components/LiveNasa';
 import { phoneApi, sandboxApi, type Snapshot } from '../lib/api';
-import { ago, dTime, n0, pDay } from '../lib/format';
+import { ago, dTime, n0, pDay, pDayBn } from '../lib/format';
 import { PhoneApp } from '../phone/PhoneApp';
 import { digits, useL } from '../lib/i18n';
 
@@ -110,7 +110,16 @@ export default function Demo() {
       body: L(<>The radar was off from 27 July to 10 August; the phone says so instead of guessing. IMERG measured <b>{snap?.rain?.mm ?? 75.2} mm</b> on the wettest spot on {snap?.rain?.date ?? '5 Aug'}. The level is 76 mm, so the rain rule stayed silent, and shows why.</>, <>২৭ জুলাই থেকে ১০ আগস্ট রাডার বন্ধ ছিল; ফোন অনুমান না করে তা-ই জানায়। ৫ আগস্ট সবচেয়ে বৃষ্টির জায়গায় IMERG মেপেছে <b>{n(snap?.rain?.mm ?? 75.2)} মিমি</b>। সীমা ৭৬ মিমি, তাই বৃষ্টির নিয়ম চুপ ছিল, আর কেন তা দেখায়।</>),
       action: L('Back to today (live)', 'আজকের দিনে ফিরুন (লাইভ)'), act: () => sid && void run(() => sandboxApi.clock(sid, { mode: 'live' })) },
     { icon: 'globe', title: L('Today, live', 'আজ, সরাসরি'),
-      body: L(<>The monsoon is over and the river is low; the phone says “no new information” and sends nothing. {live ? <>NASA's newest pass over the reach is {dTime(live.acquired_utc)} ({live.maturity}, {ago(live.acquired_utc)}), read live from NASA CMR. The pipeline ingests it next.</> : null}</>, <>বর্ষা শেষ, নদী নিচে; ফোন বলে “নতুন তথ্য নেই” এবং কিছু পাঠায় না। {live ? <>নাসার সর্বশেষ ছবি {n(dTime(live.acquired_utc))} ({live.maturity === 'VALIDATED' ? 'যাচাইকৃত' : 'প্রাথমিক'}), সরাসরি নাসা CMR থেকে পড়া। এটিই পরের ধাপে যোগ হবে।</> : null}</>) },
+      body: (() => {
+        const r = snap?.mode === 'live' ? snap.radar : null;
+        const dm = snap?.people.find((p) => p.is_visitor)?.rules.radar.values?.distance_m ?? null;
+        const km = dm != null ? (dm / 1000).toFixed(1) : null;
+        const valid = !!r && !r.processing_level.includes('PROVISIONAL');
+        const same = !!(r && live && live.track === r.track && live.acquired_utc.slice(0, 10).replace(/-/g, '') === r.date);
+        return L(
+          <>Back to today. {r ? <>The newest NISAR pass, {pDay(r.acquired_utc)} ({valid ? 'VALIDATED' : 'PROVISIONAL'}), is already processed{km ? <>: the nearest new water is <b>{km} km</b> from this home, beyond the 1 km you chose, so your phone stays calm and sends nothing</> : null}.</> : <>The phone uses the newest processed pass and sends nothing unless a rule fires.</>} {live ? (same ? <>It is also NASA's newest pass over the reach in CMR, checked just now.</> : <>NASA's newest pass over the reach is {dTime(live.acquired_utc)} ({live.maturity}, {ago(live.acquired_utc)}), read live from NASA CMR; the pipeline ingests it next.</>) : null}</>,
+          <>আজকের দিনে ফিরে এলাম। {r ? <>সর্বশেষ NISAR ছবি {pDayBn(r.acquired_utc)} ({valid ? 'যাচাইকৃত' : 'প্রাথমিক'}) ইতিমধ্যে হিসাব করা হয়েছে{km ? <>: নতুন পানি এই বাড়ি থেকে <b>{n(km)} কিমি</b> দূরে, আপনার বেছে নেওয়া ১ কিমির বাইরে, তাই ফোন শান্ত থাকে এবং কিছু পাঠায় না</> : null}।</> : <>ফোন সর্বশেষ হিসাব করা ছবি ব্যবহার করে; কোনো নিয়ম না মিললে কিছু পাঠায় না।</>} {live ? (same ? <>এটিই নাসা CMR-এ এই এলাকার সর্বশেষ ছবি, এইমাত্র দেখা।</> : <>নাসার সর্বশেষ ছবি {n(dTime(live.acquired_utc))} ({live.maturity === 'VALIDATED' ? 'যাচাইকৃত' : 'প্রাথমিক'}), সরাসরি নাসা CMR থেকে পড়া; এটিই পরের ধাপে যোগ হবে।</>) : null}</>);
+      })() },
   ];
 
   return (

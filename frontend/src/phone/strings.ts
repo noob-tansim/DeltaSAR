@@ -77,7 +77,15 @@ const S = {
   modeVibrateSub: ['শব্দ ছাড়াই সতর্কতা', 'Alerts without sound'],
   myArea: ['আমার এলাকা', 'My area'],
   chooseUnion: ['আপনার ইউনিয়ন বেছে নিন', 'Choose your union'], // NEW
-  searchUnion: ['ইউনিয়নের নাম লিখুন', 'Type the union name'], // NEW
+  searchUnion: ['ইউনিয়ন বা উপজেলার নাম লিখুন', 'Type a union or upazila name'], // NEW
+  coverage: ['যমুনা নদীর পাড়ের {n}টি ইউনিয়ন · সিরাজগঞ্জ, টাঙ্গাইল, বগুড়া, জামালপুর ও পাবনা জেলা', '{n} unions along the Jamuna river · Sirajganj, Tangail, Bogura, Jamalpur and Pabna districts'], // NEW
+  notCovered: ['“{q}” আমাদের এলাকায় নেই। বন্যা সাথী এখন শুধু যমুনা নদীর পাড়ের এই ইউনিয়নগুলোতে কাজ করে, কারণ রাডারের হিসাব এই এলাকার জন্যই করা। নিচ থেকে আপনার সবচেয়ে কাছের ইউনিয়ন বেছে নিন।', '“{q}” is not in our area. বন্যা সাথী works only in these unions along the Jamuna for now, because the radar analysis covers this reach. Choose the union nearest to you below.'], // NEW
+  findNearest: ['আমার কাছের ইউনিয়ন খুঁজুন', 'Find my nearest union'], // NEW
+  nearestOutside: ['আপনি এখন আমাদের এলাকার বাইরে আছেন। তালিকা থেকে ইউনিয়ন বেছে নিন।', 'You are outside our area right now. Choose a union from the list.'], // NEW
+  unionsLoading: ['ইউনিয়নের তালিকা আসছে…', 'Loading the union list…'], // NEW
+  unionsWaking: ['সার্ভার চালু হচ্ছে, তালিকা একটু পরে আসবে…', 'The server is waking up; the list will appear in a moment…'], // NEW
+  unionsFailed: ['তালিকা আনা যায়নি।', 'Could not load the list.'], // NEW
+  tryAgain: ['আবার চেষ্টা করুন', 'Try again'], // NEW
   homePlace: ['বাড়ির জায়গা', 'Home location'], // NEW
   homeAtCentre: ['ইউনিয়নের মাঝখান ধরা হয়েছে', 'The centre of the union is used'], // NEW
   useMyLocation: ['আমার এখনকার জায়গা নিন', 'Use where I am now'], // NEW

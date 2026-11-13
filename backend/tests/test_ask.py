@@ -81,3 +81,30 @@ def test_falls_back_when_a_model_is_busy(monkeypatch):
     ask_routes._ip_hits.clear(); ask_routes._all_hits.clear()
     r = client().post("/api/v1/ask", json={"question": "Which polarisation?", "lang": "en"}).json()
     assert r["model"] == "good-model" and len(calls) == 2
+
+
+def test_reply_language_follows_the_question():
+    assert ask_routes.question_lang("বাংলা পারো?") == "bn"
+    assert ask_routes.question_lang("Do you speak Bangla?") == "en"
+    bn = ask_routes.build_request(ask_routes.AskIn(question="বাংলা পারো?", lang="en"))      # English site, Bangla question
+    sys_bn = bn["system_instruction"]["parts"][0]["text"]
+    assert "reply in Bangla" in sys_bn and "Reply in English" not in sys_bn
+    en = ask_routes.build_request(ask_routes.AskIn(question="bangla paro?", lang="en"))
+    assert "English letters" in en["system_instruction"]["parts"][0]["text"]               # Banglish -> Bangla script
+
+
+def test_bangla_question_english_answer_is_rewritten(monkeypatch):
+    monkeypatch.setenv("GEMINI_API_KEY", "test-key")
+    answers = iter(["Yes, I can reply in English.", "হ্যাঁ, আমি বাংলা ও ইংরেজি দুই ভাষাতেই উত্তর দিই।"])
+
+    class R:
+        status_code = 200
+        def __init__(self, text):
+            self.text = text
+        def json(self):
+            return {"candidates": [{"content": {"parts": [{"text": self.text}]}}]}
+
+    monkeypatch.setattr(ask_routes.requests, "post", lambda url, json, timeout, headers: R(next(answers)))
+    ask_routes._ip_hits.clear(); ask_routes._all_hits.clear()
+    r = client().post("/api/v1/ask", json={"question": "বাংলা পারো?", "lang": "en"}).json()
+    assert ask_routes.bangla_share(r["answer"]) > 0.5

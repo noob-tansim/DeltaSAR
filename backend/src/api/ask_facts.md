@@ -14,7 +14,10 @@
 - NISAR is the NASA–ISRO Synthetic Aperture Radar satellite. It uses L-band radar (about 24 cm wavelength), which passes through cloud and rain, day and night.
 - Product used: NISAR L2 GCOV (geocoded polarimetric covariance), distributed by NASA's ASF DAAC (Alaska Satellite Facility). Data before 25 Oct 2026 is PROVISIONAL (CRID P05023); VALIDATED files (CRID P05036) exist from 25 Oct 2026.
 - Two tracks cover the whole reach: 069A (ascending, about 05:21 Dhaka time) and 019D (descending). Each track repeats every 12 days. Different tracks are never mixed in one comparison.
-- 12 passes were processed: track 069A on 18 Jun, 30 Jun, 12 Jul, 24 Jul, 17 Aug, 29 Aug, 10 Sep, 22 Sep, 4 Oct, 16 Oct 2026 and track 019D on 27 Jun and 13 Oct 2026 (UTC dates). Newer passes exist at NASA: 25 Oct, 6 Nov (019D) and 9 Nov 2026 (069A, VALIDATED); they are next to be processed.
+- 13 passes were processed: track 069A on 18 Jun, 30 Jun, 12 Jul, 24 Jul, 17 Aug, 29 Aug, 10 Sep, 22 Sep, 4 Oct, 16 Oct and 9 Nov 2026 and track 019D on 27 Jun and 13 Oct 2026 (UTC dates).
+- The 9 Nov 2026 pass (track 069A) is a VALIDATED NISAR file (CRID P05036; the earlier ones are PROVISIONAL, CRID P05023). It was streamed from NASA's ASF archive with Earthdata Login and added only after a consistency check: median radar brightness (HH) over the core river was -18.24 dB and over stable land -7.94 dB, both inside the range of the ten earlier track-069A passes (river -18.99 to -17.10 dB, land -8.83 to -7.29 dB).
+- On 9 Nov 2026: 292.2 km² of open water in the reach, 128.1 km² of it outside the main channel (16 Oct: 317.6 and 148.0 km²); modelled river flow 5,727 m³/s (GloFAS). New water compared with 18 Jun: 24.19 km² at the threshold, 20.09 to 49.88 km² over the ±1 dB range.
+- Not yet processed: the track 019D passes of 25 Oct and 6 Nov 2026 (VALIDATED files at NASA). The newest pass, 9 Nov 2026 on track 069A, is processed.
 - The radar was off from 27 July to 10 August 2026. That gap is shown as a gap and never filled by a model.
 - NASA published track 069A files 45 to 71 hours after the satellite passed (measured from NASA CMR records since late July), except 122 hours for 17 Aug, the first pass after the radar gap.
 

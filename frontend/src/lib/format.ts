@@ -33,3 +33,10 @@ export const range = (r: (number | null)[] | null | undefined, f = n0, unit = ''
 export function clamp(v: number, a: number, b: number) {
   return Math.max(a, Math.min(b, v));
 }
+
+const BN_MONTHS = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
+/** Pass day in Bangla ("৯ নভেম্বর"), by UTC date like pDay. */
+export const pDayBn = (iso: string) => {
+  const d = new Date(iso);
+  return `${String(d.getUTCDate()).replace(/\d/g, (x) => '০১২৩৪৫৬৭৮৯'[+x]!)} ${BN_MONTHS[d.getUTCMonth()]}`;
+};

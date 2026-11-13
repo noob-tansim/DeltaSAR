@@ -27,7 +27,7 @@ See section 1 of [AI_USE.md](AI_USE.md); the paragraph there is written for the 
 
 ## NASA data used (paste)
 
-NISAR L2 GCOV, NASA–ISRO, via ASF DAAC and NASA Earthdata (12 passes, 18 Jun – 16 Oct 2026; newest pass read live from NASA CMR) · NASA CMR / Earthdata Search · ASF Search API (Vertex) · NASA GIBS map tiles (NISAR GCOV, OPERA DSWx-S1, OPERA RTC-S1, MODIS flood, MODIS true colour, IMERG) · GPM IMERG V07 Early via NASA SERVIR ClimateSERV · NASA POWER · NASA EONET.
+NISAR L2 GCOV, NASA–ISRO, via ASF DAAC and NASA Earthdata (13 passes, 18 Jun – 9 Nov 2026; the 9 Nov pass is a VALIDATED file streamed with Earthdata Login; newest pass read live from NASA CMR) · NASA CMR / Earthdata Search · ASF Search API (Vertex) · NASA GIBS map tiles (NISAR GCOV, OPERA DSWx-S1, OPERA RTC-S1, MODIS flood, MODIS true colour, IMERG) · GPM IMERG V07 Early via NASA SERVIR ClimateSERV · NASA POWER · NASA EONET.
 Other agencies and sources: FFWC (Bangladesh Water Development Board), Copernicus (Sentinel-1/2, DEM GLO-30, GloFAS via Open-Meteo), ESA WorldCover, JRC Global Surface Water, MERIT Hydro, Google Open Buildings, geoBoundaries. Licences: `NOTICE.md`.
 
 ## Before pressing submit

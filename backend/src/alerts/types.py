@@ -212,6 +212,7 @@ class UnionOut(BaseModel):
     name_en: str
     name_bn: str | None = None
     upazila_en: str | None = None
+    upazila_bn: str | None = None
     lat: float
     lon: float
 
