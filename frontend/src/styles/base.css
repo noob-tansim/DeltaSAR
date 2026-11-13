@@ -76,7 +76,7 @@ p { margin: 0 0 1em; }
 .skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--paper); padding: 10px 16px; border-radius: 8px; }
 .skip:focus { top: 12px; }
 
-.container { width: min(1180px, 100% - 32px); margin-inline: auto; }
+.container { width: min(1320px, 100% - 32px); margin-inline: auto; }
 .narrow { width: min(780px, 100% - 32px); margin-inline: auto; }
 .mono { font-family: var(--font-mono); font-size: 0.86em; letter-spacing: -0.01em; }
 .num { font-variant-numeric: tabular-nums; }
