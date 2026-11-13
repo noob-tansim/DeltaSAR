@@ -29,6 +29,7 @@ router = APIRouter(prefix="/api/v1/tts", tags=["speech"])
 URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 BENGALI = re.compile(r"[ঀ-৿]")
 PER_IP = int(os.environ.get("TTS_PER_IP_PER_10MIN", 30))
+CACHE_VERSION = "v2"   # v1 clips were made with a spoken instruction in front of the sentence; never serve them
 _lock = threading.Lock()
 _hits: dict[str, deque[float]] = {}
 
@@ -82,7 +83,7 @@ def synthesize(text: str) -> bytes:
     for m in models():
         try:
             r = requests.post(URL.format(model=m), timeout=60, headers={"x-goog-api-key": key(), "Content-Type": "application/json"},
-                              json={"contents": [{"parts": [{"text": "Say calmly and slowly, in Bangla: " + text}]}],
+                              json={"contents": [{"parts": [{"text": text}]}],   # the sentence only: any instruction here can be read aloud
                                     "generationConfig": {"responseModalities": ["AUDIO"],
                                                          "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice()}}}}})
         except requests.RequestException as exc:
@@ -110,7 +111,7 @@ def speak(body: SpeakIn, request: Request) -> Response:
     text = " ".join(body.text.split())
     if len(BENGALI.findall(text)) < 4:
         raise HTTPException(422, "Only Bangla text is read aloud here.")
-    digest = hashlib.sha256(f"{voice()}|{text}".encode()).hexdigest()
+    digest = hashlib.sha256(f"{CACHE_VERSION}|{voice()}|{text}".encode()).hexdigest()
     with session_scope() as s:
         row = s.get(TtsCache, digest)
         if row is not None:
