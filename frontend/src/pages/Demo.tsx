@@ -94,7 +94,7 @@ export default function Demo() {
     { icon: 'sat', title: L('New radar data has arrived', 'নতুন রাডার তথ্য এসেছে'),
       body: L(<>{label ?? 'The 24 July pass is now public.'} A fixed rule now checks every home against the new water.</>, <>২৪ জুলাইয়ের ছবি এখন প্রকাশিত (উপগ্রহ যাওয়ার প্রায় ৫৬ ঘণ্টা পর)। এখন একটি নির্দিষ্ট নিয়ম প্রতিটি বাড়ি নতুন পানির সাথে মিলিয়ে দেখবে।</>),
       action: L('Run the rules', 'নিয়ম চালান'), act: () => sid && void run(() => sandboxApi.tick(sid)) },
-    { icon: 'bell', title: L('A draft, not a message', 'খসড়া, বার্তা নয়'),
+    { icon: 'bell', title: L('The rule drafted an alert', 'নিয়ম একটি খসড়া বানিয়েছে'),
       body: L(<>The radar rule found new water within 1 km of <b>{radarEv?.recipients.length ?? '…'}</b> of the 6 homes and drafted one alert. The other homes stay silent, with the reason shown. Open the receipt, then decide.</>, <>রাডারের নিয়ম ৬টি বাড়ির মধ্যে <b>{n(radarEv?.recipients.length ?? '…')}</b>টির ১ কিমির মধ্যে নতুন পানি পেয়েছে এবং একটি খসড়া বানিয়েছে। বাকি বাড়িগুলো চুপ, কারণসহ দেখানো। প্রমাণ খুলে দেখুন, তারপর সিদ্ধান্ত নিন।</>),
       action: L('Approve as the volunteer', 'স্বেচ্ছাসেবক হিসেবে অনুমোদন দিন'), act: () => sid && radarEv && void run(() => sandboxApi.approve(sid, radarEv.event_id, volunteer)) },
     { icon: 'speaker', title: L('The phone buzzes and speaks', 'ফোন কাঁপে আর পড়ে শোনায়'),
@@ -103,10 +103,10 @@ export default function Demo() {
     { icon: 'help', title: L('Help requests are waiting', 'সাহায্যের অনুরোধ অপেক্ষায়'),
       body: L(<>The console shows {helpOpen.length === 1 ? 'it' : `all ${helpOpen.length}`} in red. In a pilot, a union volunteer phones or visits each one. The demo households answered too, by keypad or SMS (simulated, labelled).</>, <>কনসোলে {helpOpen.length === 1 ? 'অনুরোধটি' : `${n(helpOpen.length)}টি অনুরোধ`} লাল রঙে দেখাচ্ছে। পাইলটে ইউনিয়নের স্বেচ্ছাসেবক প্রত্যেককে ফোন করবেন বা দেখা করবেন। ডেমো পরিবারগুলোও কিপ্যাড বা এসএমএসে উত্তর দিয়েছে (অনুকরণ, চিহ্নিত)।</>),
       action: helpOpen.length > 1 ? L(`Mark the ${helpOpen.length} call-backs done`, `${n(helpOpen.length)}টি ফোন করা শেষ`) : L('Mark the call-back done', 'ফোন করা শেষ'), act: () => sid && helpOpen.length && void run(async () => { let s: Snapshot | null = null; for (const r of helpOpen) s = await sandboxApi.callbackDone(sid, r.recipient_id, volunteer); return s!; }) },
-    { icon: 'shield', title: L('Counted, not guessed', 'অনুমান নয়, গোনা'),
+    { icon: 'shield', title: L('Every step is in the ledger', 'প্রতিটি ধাপ খাতায় লেখা আছে'),
       body: L(<>Every step wrote one row to the ledger; the impact numbers below come only from those rows. Next: the moments when the system must <b>not</b> alert.</>, <>প্রতিটি ধাপ খাতায় একটি সারি লিখেছে; নিচের প্রভাবের সংখ্যা শুধু সেখান থেকেই। এবার দেখুন কখন ব্যবস্থাটি সতর্কবার্তা <b>দেবে না</b>।</>),
       action: L('Jump to 7 August: radar off, heavy rain', '৭ আগস্টে যান: রাডার বন্ধ, ভারী বৃষ্টি'), act: () => sid && void run(async () => { await sandboxApi.clock(sid, { mode: 'replay', preset: 'gap_rain' }); return sandboxApi.tick(sid); }) },
-    { icon: 'tri', title: L('Silent, on purpose', 'ইচ্ছা করেই চুপ'),
+    { icon: 'tri', title: L('When the system stays silent', 'ব্যবস্থাটি কখন চুপ থাকে'),
       body: L(<>The radar was off from 27 July to 10 August; the phone says so instead of guessing. IMERG measured <b>{snap?.rain?.mm ?? 75.2} mm</b> on the wettest spot on {snap?.rain?.date ?? '5 Aug'}. The level is 76 mm, so the rain rule stayed silent, and shows why.</>, <>২৭ জুলাই থেকে ১০ আগস্ট রাডার বন্ধ ছিল; ফোন অনুমান না করে তা-ই জানায়। ৫ আগস্ট সবচেয়ে বৃষ্টির জায়গায় IMERG মেপেছে <b>{n(snap?.rain?.mm ?? 75.2)} মিমি</b>। সীমা ৭৬ মিমি, তাই বৃষ্টির নিয়ম চুপ ছিল, আর কেন তা দেখায়।</>),
       action: L('Back to today (live)', 'আজকের দিনে ফিরুন (লাইভ)'), act: () => sid && void run(() => sandboxApi.clock(sid, { mode: 'live' })) },
     { icon: 'globe', title: L('Today, live', 'আজ, সরাসরি'),
@@ -128,7 +128,7 @@ export default function Demo() {
       <div className="demo-top">
         <div className="demo-top-in">
           <div>
-            <div className="eyebrow" style={{ marginBottom: 6 }}><Icon name="play" size={14} /> {L('Live demo · private sandbox', 'লাইভ ডেমো · নিজস্ব স্যান্ডবক্স')}</div>
+            <div className="eyebrow" style={{ marginBottom: 4 }}>{L('Live demo · private sandbox', 'লাইভ ডেমো · নিজস্ব স্যান্ডবক্স')}</div>
             <h1 style={{ fontSize: 'clamp(1.4rem,2.4vw,2rem)', margin: 0 }}>{L('The alert loop, on the real 24 July 2026 radar pass', '২৪ জুলাই ২০২৬-এর আসল রাডার ছবিতে সতর্কবার্তার পুরো ধাপ')}</h1>
           </div>
           {snap && (
@@ -174,7 +174,6 @@ export default function Demo() {
         <section className="demo-console" aria-label="Volunteer console">
           {!snap ? (
             <div className="card" style={{ textAlign: 'center', padding: '48px 24px' }}>
-              <div style={{ width: 64, height: 64, borderRadius: 20, background: 'var(--river-lt)', color: 'var(--river)', display: 'grid', placeItems: 'center', margin: '0 auto 14px' }}><Icon name="shield" size={30} /></div>
               <h2 style={{ fontSize: '1.5rem' }}>{L('You are the union volunteer.', 'আপনি ইউনিয়নের স্বেচ্ছাসেবক।')}</h2>
               <p className="muted" style={{ maxWidth: '46ch', margin: '0 auto 18px' }}>{L('Rules draft alerts from NASA data. Nothing reaches a phone until you approve it. Every answer is counted.', 'নাসার তথ্য থেকে নিয়ম সতর্কবার্তার খসড়া বানায়। আপনি অনুমোদন না দিলে কোনো ফোনে কিছু যায় না। প্রতিটি উত্তর গোনা হয়।')}</p>
               <button className="btn btn-primary btn-lg" onClick={() => void start()} disabled={busy}><Icon name="play" size={18} /> {busy ? L('Starting… (the server may be waking up)', 'শুরু হচ্ছে… (সার্ভার চালু হতে পারে)') : L('Start the demo', 'ডেমো শুরু করুন')}</button>
@@ -222,8 +221,8 @@ export default function Demo() {
         .demo-console{display:grid;gap:14px}
         .demo-phone{position:sticky;top:calc(var(--nav-h) + 12px)}
         .dg-steps{list-style:none;margin:0;padding:0;display:grid;gap:4px}
-        .dg-steps li{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:10px 12px;border-radius:14px}
-        .dg-steps li.now{background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow-1)}
+        .dg-steps li{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:10px 12px;border-radius:var(--r-md)}
+        .dg-steps li.now{background:var(--paper);border:1px solid var(--line)}
         .dg-steps li.later{opacity:.55}
         .dg-steps li.done b{color:var(--ink-2)}
         .dg-n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:700 .82rem var(--font-body);background:var(--mist-2);color:var(--ink-2)}

@@ -46,7 +46,7 @@ export function LiveNasaStrip({ compact = false }: { compact?: boolean }) {
   return (
     <div className="live-strip" aria-live="polite">
       <span className={`chip ${live === false ? '' : 'chip-live'}`}>
-        <span className={`dot ${live ? 'pulse' : ''}`} /> {live === false ? L('NASA CMR · saved 12 Nov', 'নাসা CMR · ১২ নভেম্বরে সংরক্ষিত') : L('LIVE · NASA CMR', 'সরাসরি · নাসা CMR')}
+        <span className="dot" /> {live === false ? L('NASA CMR · saved 12 Nov', 'নাসা CMR · ১২ নভেম্বরে সংরক্ষিত') : L('LIVE · NASA CMR', 'সরাসরি · নাসা CMR')}
       </span>
       {pass ? (
         <span className="live-main">

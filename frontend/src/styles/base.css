@@ -38,12 +38,12 @@
   --font-body: 'Hind Siliguri', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
 
-  --r-sm: 10px;
-  --r-md: 14px;
-  --r-lg: 20px;
-  --r-xl: 28px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 10px;
+  --r-xl: 12px;
   --shadow-1: 0 1px 2px rgba(18, 34, 46, 0.06), 0 2px 8px rgba(18, 34, 46, 0.06);
-  --shadow-2: 0 4px 12px rgba(18, 34, 46, 0.08), 0 16px 40px rgba(18, 34, 46, 0.1);
+  --shadow-2: 0 2px 6px rgba(18, 34, 46, 0.08), 0 8px 24px rgba(18, 34, 46, 0.08);
   --focus: 0 0 0 3px #fff, 0 0 0 6px var(--river);
   --nav-h: 60px;
   color-scheme: light;
@@ -84,14 +84,14 @@ p { margin: 0 0 1em; }
 .small { font-size: 0.88rem; }
 .tiny { font-size: 0.78rem; }
 .bn { font-family: var(--font-body); }
-.eyebrow { font: 600 0.78rem/1 var(--font-body); letter-spacing: 0.14em; text-transform: uppercase; color: var(--river); margin-bottom: 14px; display: inline-flex; gap: 8px; align-items: center; }
-.on-night .eyebrow { color: var(--water); }
+.eyebrow { font: 600 0.92rem/1.4 var(--font-body); color: var(--ink-3); margin-bottom: 10px; }
+.on-night .eyebrow { color: var(--sky-3); }
 .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .stack { display: grid; gap: 12px; }
 .spacer { flex: 1; }
 
 /* buttons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: 999px; border: 1.5px solid transparent; font-weight: 600; font-size: 1rem; text-decoration: none; transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s; white-space: nowrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: 8px; border: 1.5px solid transparent; font-weight: 600; font-size: 1rem; text-decoration: none; transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s; white-space: nowrap; }
 .btn:active { transform: translateY(1px); }
 .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
 .btn-primary { background: var(--river); color: #fff; }
@@ -111,7 +111,7 @@ p { margin: 0 0 1em; }
 /* surfaces */
 .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px; box-shadow: var(--shadow-1); }
 .on-night .card { background: var(--night-2); border-color: var(--night-line); box-shadow: none; }
-.chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; background: var(--mist); border: 1px solid var(--line); color: var(--ink-2); white-space: nowrap; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; background: var(--mist); border: 1px solid var(--line); color: var(--ink-2); white-space: nowrap; }
 .on-night .chip { background: rgba(255, 255, 255, 0.06); border-color: var(--night-line); color: var(--sky-2); }
 .chip-live { background: rgba(60, 200, 240, 0.12); border-color: rgba(60, 200, 240, 0.35); color: var(--water); }
 .chip-replay { background: var(--kantha); border-color: var(--kantha); color: #fff; }
@@ -140,13 +140,12 @@ p { margin: 0 0 1em; }
 .input:focus { border-color: var(--river); outline: none; }
 label.field { display: grid; gap: 6px; font-weight: 600; font-size: 0.92rem; }
 
-.fade-in { animation: fadeIn 0.35s ease both; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
 }
 
 /* MapLibre tweaks */
 .maplibregl-ctrl-attrib { font-size: 10px; }
-.maplibregl-ctrl-group { border-radius: 10px !important; }
+.maplibregl-ctrl-group { border-radius: 6px !important; }
 .maplibregl-canvas:focus-visible { box-shadow: inset 0 0 0 3px var(--water); }

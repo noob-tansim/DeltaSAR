@@ -83,7 +83,7 @@ export function AskWidget() {
     <>
       {!open && (
         <button className={`askw-fab ${loc.pathname.startsWith('/demo') ? 'left' : ''}`} onClick={() => setOpen(true)} aria-label={L('Ask DeltaSAR a question', 'ডেল্টাসারকে প্রশ্ন করুন')}>
-          <Icon name="sparkle" size={20} /> <span>{L('Ask DeltaSAR', 'প্রশ্ন করুন')}</span>
+          <Icon name="chat" size={18} /> <span>{L('Ask DeltaSAR', 'প্রশ্ন করুন')}</span>
         </button>
       )}
       {open && (
@@ -112,7 +112,7 @@ export function AskWidget() {
                 {m.warn && <p className="warn"><Icon name="info" size={13} /> {L(`Could not trace: ${m.warn.join(', ')}. Check Methods before quoting.`, `এই সংখ্যাগুলোর উৎস মেলেনি: ${m.warn.join(', ')}। ব্যবহারের আগে “পদ্ধতি” পাতা দেখুন।`)}</p>}
               </div>
             ))}
-            {busy && <div className="m assistant"><p className="muted">{L('Thinking…', 'ভাবছে…')}</p></div>}
+            {busy && <div className="m assistant"><p className="muted">{L('Looking it up…', 'উত্তর খোঁজা হচ্ছে…')}</p></div>}
             <div ref={end} />
           </div>
           <form onSubmit={(e) => { e.preventDefault(); void send(); }}>
@@ -123,38 +123,37 @@ export function AskWidget() {
         </div>
       )}
       <style>{`
-        .askw-fab{position:fixed;right:18px;bottom:18px;z-index:70;display:inline-flex;align-items:center;gap:8px;padding:0 18px;height:52px;border-radius:999px;border:0;background:linear-gradient(135deg,var(--river),#0e8aa0);color:#fff;font-weight:700;box-shadow:0 10px 30px rgba(11,110,127,.4)}
-        .askw-fab:hover{filter:brightness(1.08)}
+        .askw-fab{position:fixed;right:18px;bottom:18px;z-index:70;display:inline-flex;align-items:center;gap:8px;padding:0 18px;height:46px;border-radius:8px;border:0;background:var(--river);color:#fff;font-weight:600;box-shadow:var(--shadow-2)}
+        .askw-fab:hover{background:var(--river-2)}
         .askw-fab.left{right:auto;left:50%;transform:translateX(-50%)}
-        .askw{position:fixed;right:18px;bottom:18px;z-index:75;width:min(420px,calc(100vw - 24px));height:min(640px,calc(100vh - 100px));display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 70px rgba(10,24,33,.35);overflow:hidden;color:var(--ink)}
-        .askw header{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:14px 16px;background:linear-gradient(135deg,var(--night),var(--night-3));color:#fff}
+        .askw{position:fixed;right:18px;bottom:18px;z-index:75;width:min(420px,calc(100vw - 24px));height:min(640px,calc(100vh - 100px));display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 40px rgba(10,24,33,.25);overflow:hidden;color:var(--ink)}
+        .askw header{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:14px 16px;background:var(--night);color:#fff}
         .askw header .tiny{color:var(--sky-2)}
-        .askw .x{background:rgba(255,255,255,.08);border:0;color:#fff;width:36px;height:36px;border-radius:10px;display:grid;place-items:center}
+        .askw .x{background:rgba(255,255,255,.08);border:0;color:#fff;width:36px;height:36px;border-radius:6px;display:grid;place-items:center}
         .askw .body{flex:1;overflow:auto;padding:14px 14px 6px}
         .askw .faq{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-        .askw .faq button{border:1px solid var(--line);background:var(--mist);border-radius:999px;padding:6px 11px;font-size:.82rem;font-weight:600;color:var(--river)}
+        .askw .faq button{border:1px solid var(--line);background:var(--mist);border-radius:6px;text-align:left;padding:6px 11px;font-size:.82rem;font-weight:600;color:var(--river)}
         .askw .faq button:hover{border-color:var(--river)}
         .askw .m{margin:8px 0;display:flex;flex-direction:column}
-        .askw .m p{margin:0;padding:10px 12px;border-radius:14px;font-size:.92rem;line-height:1.5;white-space:pre-wrap}
+        .askw .m p{margin:0;padding:10px 12px;border-radius:10px;font-size:.92rem;line-height:1.5;white-space:pre-wrap}
         .askw .m.user{align-items:flex-end}
         .askw .m.user p{background:var(--river);color:#fff;border-bottom-right-radius:4px;max-width:85%}
         .askw .m.assistant p{background:var(--mist);border-bottom-left-radius:4px}
         .askw .m.note p{background:var(--watch-lt);color:var(--watch-ink)}
         .askw .meta{display:flex;gap:8px;align-items:center;margin-top:5px}
-        .askw .meta .tag{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--river-lt);color:var(--river)}
-        .askw .meta .tag.ai{background:#efe9f7;color:#5b3a8c}
+        .askw .meta .tag{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:5px;background:var(--river-lt);color:var(--river)}
         .askw .meta button{border:0;background:none;color:var(--ink-2);font-size:.78rem;display:inline-flex;gap:4px;align-items:center}
         .askw .m p.warn{background:var(--danger-lt);color:#8e1616;font-size:.78rem;margin-top:4px;padding:6px 10px}
         .askw form{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--line)}
-        .askw form input{flex:1;min-height:46px;border-radius:14px;border:1.5px solid var(--line);padding:0 12px}
+        .askw form input{flex:1;min-height:46px;border-radius:8px;border:1.5px solid var(--line);padding:0 12px}
         .askw form input:focus{border-color:var(--river);outline:none}
-        .askw form button{width:46px;height:46px;border-radius:14px;border:0;background:var(--river);color:#fff;display:grid;place-items:center}
+        .askw form button{width:46px;height:46px;border-radius:8px;border:0;background:var(--river);color:#fff;display:grid;place-items:center}
         .askw form button[disabled]{opacity:.45}
         .askw .foot{margin:0;padding:0 14px 10px;font-size:.72rem;color:var(--ink-3)}
         @media (max-width:560px){
-          .askw-fab{right:12px;bottom:12px;height:48px;padding:0 14px}
+          .askw-fab{right:12px;bottom:12px;height:46px;padding:0 14px}
           .askw-fab span{display:none}
-          .askw{right:0;left:0;bottom:0;width:100%;height:82vh;height:82dvh;border-radius:22px 22px 0 0}
+          .askw{right:0;left:0;bottom:0;width:100%;height:82vh;height:82dvh;border-radius:12px 12px 0 0}
         }
       `}</style>
     </>

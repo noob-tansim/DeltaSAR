@@ -345,10 +345,10 @@ function CompareNumbers({ a, b }: { a: Processed; b: Processed }) {
       ) : (
         <div className="small">{same ? 'Whole-reach water area is computed for track 069A passes only; track 019D is a cross-check. Compare visually, or pick two 069A passes.' : 'Different tracks see the river from different angles, so no change number is computed. Pick two passes of the same track.'}</div>
       )}
-      <style>{`.cmp-num{position:absolute;left:50%;transform:translateX(-50%);bottom:28px;z-index:5;width:min(620px,calc(100% - 24px));background:rgba(10,24,33,.92);border:1px solid var(--night-line);border-radius:16px;padding:12px 16px;color:var(--sky-2);backdrop-filter:blur(6px)}
+      <style>{`.cmp-num{position:absolute;left:50%;transform:translateX(-50%);bottom:28px;z-index:5;width:min(620px,calc(100% - 24px));background:rgba(10,24,33,.92);border:1px solid var(--night-line);border-radius:var(--r-lg);padding:12px 16px;color:var(--sky-2)}
         .cmp-num b{display:block;font-family:var(--font-display);font-size:1.6rem;color:#fff;line-height:1}
         .cmp-num .tiny{color:var(--sky-3)}
-        .cmp-num .delta{margin-left:auto;font-weight:700;padding:4px 10px;border-radius:999px}
+        .cmp-num .delta{margin-left:auto;font-weight:700;padding:4px 10px;border-radius:6px}
         .cmp-num .delta.up{background:rgba(43,183,227,.18);color:#7fe2ff}
         .cmp-num .delta.down{background:rgba(91,191,122,.18);color:#9be3b0}`}</style>
     </div>

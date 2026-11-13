@@ -71,7 +71,6 @@ export default function AppPage() {
             </>
           ) : (
             <section className="app-intro">
-              <div className="eyebrow"><Icon name="phone" size={14} /> The resident app</div>
               <h1>বন্যা সাথী · Bonna Sathi</h1>
               <p className="lead">What NISAR radar saw near your home, how old the picture is, and an alert you can hear and answer. Bangla first; every screen can be read aloud; status is always shape, word and colour.</p>
               <ul className="ticks" style={{ marginTop: 18 }}>

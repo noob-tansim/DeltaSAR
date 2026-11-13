@@ -38,7 +38,7 @@ export function DesktopPanel({ deviceId }: { deviceId: string }) {
     <div className="dp">
       <header className="dp-head">
         <div>
-          <div className="eyebrow" style={{ marginBottom: 4 }}><Icon name="home" size={14} /> My area · আমার এলাকা</div>
+          <div className="eyebrow" style={{ marginBottom: 4 }}>My area · আমার এলাকা</div>
           <h1>{u ? `${u.name_en}${u.name_bn ? ` · ${u.name_bn}` : ''}` : 'Home'}</h1>
           <div className="small muted">{u?.upazila_en} · home at {person.home_lat.toFixed(4)}° N, {person.home_lon.toFixed(4)}° E · alert distance {n1(person.radar_km)} km</div>
         </div>

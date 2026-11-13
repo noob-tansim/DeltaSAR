@@ -3,7 +3,7 @@ import { lazy, Suspense, useEffect, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Footer, Nav } from '../components/Chrome';
 import { PolChart } from '../components/charts';
-import { Icon, type IconName } from '../components/Icon';
+import { Icon } from '../components/Icon';
 import { LiveNasaStrip } from '../components/LiveNasa';
 import { Stat } from '../components/Stat';
 import { prewarm } from '../lib/api';
@@ -50,12 +50,11 @@ function Hero({ season, story }: { season: Season | null; story: StoryT | null }
   const bank = hp ? `${d(Math.round(hp.mainland_bank_loss_ha_range[0]))}–${d(Math.round(hp.mainland_bank_loss_ha_range[1]))}` : '–';
   return (
     <section className="on-night hero">
-      <div className="hero-glow" aria-hidden="true" />
       <div className="container hero-grid">
-        <div className="fade-in">
-          <div className="eyebrow"><Icon name="sat" size={15} /> {L('NASA–ISRO NISAR · Jamuna River, Bangladesh · 2026 monsoon', 'নাসা–ইসরো NISAR · যমুনা নদী, বাংলাদেশ · ২০২৬ বর্ষা')}</div>
+        <div>
+          <div className="eyebrow">{L('NASA–ISRO NISAR · Jamuna River, Bangladesh · 2026 monsoon', 'নাসা–ইসরো NISAR · যমুনা নদী, বাংলাদেশ · ২০২৬ বর্ষা')}</div>
           <h1>
-            {L(<>The river moved.<br /><span className="hl">Radar saw it through the cloud.</span></>, <>নদী সরে গেছে।<br /><span className="hl">মেঘের ভেতর দিয়েও রাডার তা দেখেছে।</span></>)}
+            {L(<>The river moved.<br />Radar saw it through the cloud.</>, <>নদী সরে গেছে।<br />মেঘের ভেতর দিয়েও রাডার তা দেখেছে।</>)}
           </h1>
           <p className="lead">
             {L(
@@ -67,9 +66,6 @@ function Hero({ season, story }: { season: Season | null; story: StoryT | null }
             <Link to="/demo" className="btn btn-water btn-lg"><Icon name="play" size={18} /> {L('Run the alert loop · 2 min', 'সতর্কবার্তার পুরো ধাপ দেখুন · ২ মিনিট')}</Link>
             <Link to="/explore" className="btn btn-ghost btn-lg"><Icon name="map" size={18} /> {L('Explore the radar map', 'রাডার মানচিত্র দেখুন')}</Link>
           </div>
-          <p className="small" style={{ marginTop: 16, color: 'var(--sky-3)' }}>
-            {L('“Radar evidence, a human check, a spoken alert, and a counted reply.”', '“রাডারের প্রমাণ, মানুষের যাচাই, পড়ে শোনানো সতর্কবার্তা, আর গোনা উত্তর।”')}
-          </p>
         </div>
         <figure className="radar-window" aria-label={L('NISAR radar picture of the reach on 24 July 2026, with new water since 18 June in cyan', '২৪ জুলাই ২০২৬-এর NISAR রাডার ছবি; নীল রঙে ১৮ জুনের পর নতুন পানি')}>
           {pics && (
@@ -79,7 +75,7 @@ function Hero({ season, story }: { season: Season | null; story: StoryT | null }
             </>
           )}
           <figcaption>
-            <span className="chip chip-live" style={{ padding: '2px 9px' }}>NISAR L-band HH</span>
+            <b>NISAR L-band HH</b>
             <span>{L('24 Jul 2026, 23:21 UTC (25 Jul, 05:21 in Dhaka) · through monsoon cloud', '২৪ জুলাই ২০২৬, ২৩:২১ UTC (ঢাকায় ২৫ জুলাই ভোর ৫:২১) · বর্ষার মেঘের ভেতর দিয়ে')}</span>
             <span className="row" style={{ gap: 6 }}><span className="sw" style={{ background: 'var(--water)' }} /> {L('new water since 18 Jun', '১৮ জুনের পর নতুন পানি')}</span>
           </figcaption>
@@ -88,33 +84,31 @@ function Hero({ season, story }: { season: Season | null; story: StoryT | null }
       <div className="container" style={{ marginTop: 40 }}>
         <div className="live-band"><LiveNasaStrip /></div>
         <div className="stats" style={{ marginTop: 16 }}>
-          <Stat icon="sat" tone="water" value={season ? d(season.processed.length) : '–'} unit={L('passes', 'টি ছবি')}
-            label={L('NISAR radar passes mapped, 18 Jun – 16 Oct, on the two tracks that cover the whole reach', '১৮ জুন – ১৬ অক্টোবর, পুরো এলাকার দুই ট্র্যাকের NISAR রাডার ছবি থেকে মানচিত্র')}
+          <Stat value={season ? d(season.processed.length) : '–'} unit={L('passes', 'টি ছবি')}
+            label={L('NISAR radar passes mapped, 18 Jun – 9 Nov, on the two tracks that cover the whole reach', '১৮ জুন – ৯ নভেম্বর, পুরো এলাকার দুই ট্র্যাকের NISAR রাডার ছবি থেকে মানচিত্র')}
             source={L('NASA–ISRO NISAR L2 GCOV', 'নাসা–ইসরো NISAR L2 GCOV')} />
-          <Stat icon="tri" tone="loss" value={bank} unit={L('ha', 'হেক্টর')}
+          <Stat value={bank} unit={L('ha', 'হেক্টর')}
             label={L(<>of mainland riverbank became river, <b>confirmed</b> by a later pass</>, <>মূল ভূখণ্ডের নদীর পাড় নদীতে পরিণত, পরের ছবিতে <b>নিশ্চিত</b></>)}
             source={L('NISAR track 069A, 18 Jun → 4 Oct', 'NISAR ট্র্যাক ০৬৯এ, ১৮ জুন → ৪ অক্টোবর')} />
-          <Stat icon="home" tone="people" value={near100 ? d(n0(near100.buildings)) : '–'}
+          <Stat value={near100 ? d(n0(near100.buildings)) : '–'}
             label={L('buildings stand within 100 m of a bank that retreated this season', 'টি ঘরবাড়ি এই মৌসুমে সরে যাওয়া পাড়ের ১০০ মিটারের মধ্যে')}
             source={L('Google Open Buildings + NISAR bank line', 'গুগল ওপেন বিল্ডিংস + NISAR পাড়ের রেখা')} />
-          <Stat icon="drop" tone="crop" value={peakCrop ? d(n0(peakCrop)) : '–'} unit={L('ha', 'হেক্টর')}
+          <Stat value={peakCrop ? d(n0(peakCrop)) : '–'} unit={L('ha', 'হেক্টর')}
             label={L('of cropland under water at the peak pass, 24 Jul, seen through cloud', 'ফসলি জমি পানির নিচে, ২৪ জুলাইয়ের সর্বোচ্চ ছবিতে, মেঘ ভেদ করে দেখা')}
             source={L('ESA WorldCover + NISAR water map', 'ESA WorldCover + NISAR পানির মানচিত্র')} />
         </div>
       </div>
       <style>{`
-        .hero{position:relative;overflow:hidden;padding:clamp(40px,6vw,84px) 0 clamp(40px,6vw,72px);background:radial-gradient(1200px 700px at 85% -10%,rgba(43,183,227,.14),transparent 60%),radial-gradient(900px 500px at -10% 110%,rgba(156,47,110,.12),transparent 60%),var(--night)}
-        .hero h1 .hl{color:var(--water)}
+        .hero{padding:clamp(40px,6vw,84px) 0 clamp(40px,6vw,72px)}
         .hero .lead .em{color:#fff}
-        .hero-glow{display:none}
         .hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,56px);align-items:center;position:relative}
         @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
-        .radar-window{margin:0;position:relative;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/5;background:#05121a;border:1px solid var(--night-line);box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(43,183,227,.08)}
+        .radar-window{margin:0;position:relative;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/5;background:#05121a;border:1px solid var(--night-line)}
         .radar-window img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 38%;transform:scale(1.55);transform-origin:52% 38%}
         .radar-window img.nw{opacity:.85;animation:nwpulse 5s ease-in-out infinite}
         @keyframes nwpulse{0%,100%{opacity:.35}50%{opacity:.95}}
-        .radar-window figcaption{position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:.8rem;color:var(--sky);background:rgba(5,18,26,.8);backdrop-filter:blur(6px);padding:10px 12px;border-radius:14px;border:1px solid var(--night-line)}
-        .live-band{border:1px solid rgba(43,183,227,.18);background:rgba(43,183,227,.06);border-radius:var(--r-lg);padding:14px 18px;isolation:isolate}
+        .radar-window figcaption{position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:.8rem;color:var(--sky);background:rgba(5,18,26,.88);padding:10px 12px;border-radius:var(--r-md);border:1px solid var(--night-line)}
+        .live-band{border:1px solid var(--night-line);border-radius:var(--r-lg);padding:14px 18px}
       `}</style>
     </section>
   );
@@ -135,8 +129,7 @@ function HonestSection({ val }: { val: Validation }) {
   return (
     <section className="section on-night">
       <div className="container">
-        <div className="eyebrow"><Icon name="shield" size={15} /> {L('What the radar can tell, and what it cannot', 'রাডার কী বলতে পারে, আর কী পারে না')}</div>
-        <h2 style={{ maxWidth: '24ch' }}>{L('We tested our own claims. Two answers for the challenge.', 'নিজেদের দাবি আমরা নিজেরাই পরীক্ষা করেছি। চ্যালেঞ্জের দুটি প্রশ্নের উত্তর।')}</h2>
+        <h2 style={{ maxWidth: '24ch' }}>{L('What the radar can tell, and what it cannot', 'রাডার কী বলতে পারে, আর কী পারে না')}</h2>
         <div className="grid-2" style={{ marginTop: 28, alignItems: 'stretch' }}>
           <div className="card">
             <h3>{L('Which polarisation shows the change?', 'কোন পোলারাইজেশনে পরিবর্তন সবচেয়ে স্পষ্ট?')} <span style={{ color: 'var(--water)' }}>HH.</span></h3>
@@ -168,8 +161,8 @@ function HonestSection({ val }: { val: Validation }) {
                     <span style={{ color: '#fff', fontWeight: 600 }}>{t} <span className="tiny" style={{ color: 'var(--sky-3)', fontWeight: 400 }}>· {sub}</span></span>
                     <b className="num" style={{ color: i === 0 ? 'var(--water)' : 'var(--sky)' }}>{digits(v.toFixed(2), lang)}</b>
                   </div>
-                  <div style={{ height: 10, background: 'rgba(255,255,255,.06)', borderRadius: 6, marginTop: 6 }}>
-                    <div style={{ width: `${(v / 0.6) * 100}%`, height: '100%', borderRadius: 6, background: i === 0 ? 'linear-gradient(90deg,#2bb7e3,#7fe2ff)' : i === 1 ? '#7d97a1' : '#4c6470' }} />
+                  <div style={{ height: 10, background: 'rgba(255,255,255,.06)', borderRadius: 2, marginTop: 6 }}>
+                    <div style={{ width: `${(v / 0.6) * 100}%`, height: '100%', borderRadius: 2, background: i === 0 ? '#3cc8f0' : i === 1 ? '#7d97a1' : '#4c6470' }} />
                   </div>
                 </div>
               ))}
@@ -202,7 +195,7 @@ function ChallengeSection() {
       <div className="container">
         <div className="split" style={{ alignItems: 'end' }}>
           <div>
-            <div className="eyebrow"><Icon name="sat" size={15} /> Dancing with the SARs</div>
+            <div className="eyebrow">NASA Space Apps 2026 · Dancing with the SARs</div>
             <h2>{L('What the challenge asks, and where we answer it.', 'চ্যালেঞ্জ কী চেয়েছে, আর আমরা কোথায় উত্তর দিয়েছি।')}</h2>
           </div>
           <p className="lead" style={{ marginBottom: 6 }}>
@@ -224,8 +217,7 @@ function ChallengeSection() {
         .asks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:28px}
         @media (max-width:1000px){.asks{grid-template-columns:repeat(2,minmax(0,1fr))}}
         @media (max-width:560px){.asks{grid-template-columns:1fr}}
-        .ask{border:1px solid var(--line);border-radius:var(--r-lg);padding:16px 16px 14px;background:linear-gradient(180deg,#fff,var(--mist));display:flex;flex-direction:column;transition:box-shadow .15s,border-color .15s}
-        .ask:hover{border-color:#b9d6da;box-shadow:var(--shadow-1)}
+        .ask{border:1px solid var(--line);border-radius:var(--r-lg);padding:16px 16px 14px;background:#fff;display:flex;flex-direction:column}
         .ask .q{font-family:var(--font-display);font-weight:600;font-size:1.02rem;line-height:1.3;color:var(--river);margin:0 0 8px}
         .ask .a{color:var(--ink-2);flex:1}
       `}</style>
@@ -234,26 +226,25 @@ function ChallengeSection() {
 }
 
 // ---------------------------------------------------------------- the loop
-const LOOP: [IconName, string, string, string, string][] = [
-  ['sat', 'New data', 'A NISAR pass is published (about 2 days after the satellite), or a FFWC river reading, or a day of IMERG rain.', 'নতুন তথ্য', 'NISAR-এর নতুন ছবি প্রকাশ (উপগ্রহ যাওয়ার প্রায় ২ দিন পর), বা FFWC-এর নদীর মাপ, বা IMERG-এর এক দিনের বৃষ্টি।'],
-  ['receipt', 'Fixed rule', 'Typed, range-checked rules: new water within 1 km of home; river at danger level −0.30 m; rain over your own level. No AI.', 'নির্দিষ্ট নিয়ম', 'যাচাই করা নিয়ম: বাড়ির ১ কিমির মধ্যে নতুন পানি; নদী বিপদসীমার ০.৩০ মি নিচে; আপনার ঠিক করা সীমার বেশি বৃষ্টি। কোনো এআই নয়।'],
-  ['bell', 'Draft', 'The rule can only draft. Each draft carries the evidence receipt: granule, threshold, ±1 dB test, data age.', 'খসড়া', 'নিয়ম শুধু খসড়া বানাতে পারে। প্রতিটি খসড়ায় প্রমাণ থাকে: কোন ছবি, কোন সীমা, ±১ ডিবি পরীক্ষা, তথ্যের বয়স।'],
-  ['shield', 'A volunteer approves', 'Nothing is sent without a person. A draft not approved in 15 minutes turns red; it never sends itself.', 'স্বেচ্ছাসেবকের অনুমোদন', 'মানুষ ছাড়া কিছুই পাঠানো হয় না। ১৫ মিনিটে অনুমোদন না হলে খসড়া লাল হয়; নিজে থেকে কখনো যায় না।'],
-  ['speaker', 'The phone speaks', 'App alert with vibration and light, push, email; voice call and SMS shown as demos. Bangla first, read aloud.', 'ফোন পড়ে শোনায়', 'কাঁপুনি ও আলোসহ অ্যাপ সতর্কবার্তা, পুশ, ইমেইল; ফোন কল ও এসএমএস ডেমো হিসেবে। বাংলায়, পড়ে শোনানো।'],
-  ['phone', 'Safe or help', 'Press and hold “আমি নিরাপদ” or “সাহায্য দরকার”, or press 1 or 2 on a call. Unanswered: retried twice.', 'নিরাপদ নাকি সাহায্য', '“আমি নিরাপদ” বা “সাহায্য দরকার” চেপে ধরুন, বা কলে ১ অথবা ২ চাপুন। উত্তর না এলে দুবার আবার পাঠানো হয়।'],
-  ['users', 'Follow-up', '“Help” opens a call-back task for the volunteer. The alert closes only when every help request is done.', 'খোঁজ নেওয়া', '“সাহায্য” চাইলে স্বেচ্ছাসেবকের কাছে ফোন করার কাজ যায়। সব অনুরোধের পর সতর্কবার্তা বন্ধ হয়।'],
-  ['check', 'Counted', 'Every step writes one row to an append-only ledger. Impact numbers are counted from it, nowhere else.', 'গোনা হয়', 'প্রতিটি ধাপ একটি খাতায় লেখা হয়, যা মোছা যায় না। প্রভাবের সংখ্যা শুধু সেখান থেকেই গোনা।'],
+const LOOP: [string, string, string, string][] = [
+  ['New data', 'A NISAR pass is published (about 2 days after the satellite), or a FFWC river reading, or a day of IMERG rain.', 'নতুন তথ্য', 'NISAR-এর নতুন ছবি প্রকাশ (উপগ্রহ যাওয়ার প্রায় ২ দিন পর), বা FFWC-এর নদীর মাপ, বা IMERG-এর এক দিনের বৃষ্টি।'],
+  ['Fixed rule', 'Typed, range-checked rules: new water within 1 km of home; river at danger level −0.30 m; rain over your own level. No AI.', 'নির্দিষ্ট নিয়ম', 'যাচাই করা নিয়ম: বাড়ির ১ কিমির মধ্যে নতুন পানি; নদী বিপদসীমার ০.৩০ মি নিচে; আপনার ঠিক করা সীমার বেশি বৃষ্টি। কোনো এআই নয়।'],
+  ['Draft', 'The rule can only draft. Each draft carries the evidence receipt: granule, threshold, ±1 dB test, data age.', 'খসড়া', 'নিয়ম শুধু খসড়া বানাতে পারে। প্রতিটি খসড়ায় প্রমাণ থাকে: কোন ছবি, কোন সীমা, ±১ ডিবি পরীক্ষা, তথ্যের বয়স।'],
+  ['A volunteer approves', 'Nothing is sent without a person. A draft not approved in 15 minutes turns red; it never sends itself.', 'স্বেচ্ছাসেবকের অনুমোদন', 'মানুষ ছাড়া কিছুই পাঠানো হয় না। ১৫ মিনিটে অনুমোদন না হলে খসড়া লাল হয়; নিজে থেকে কখনো যায় না।'],
+  ['The phone speaks', 'App alert with vibration and light, push, email; voice call and SMS shown as demos. Bangla first, read aloud.', 'ফোন পড়ে শোনায়', 'কাঁপুনি ও আলোসহ অ্যাপ সতর্কবার্তা, পুশ, ইমেইল; ফোন কল ও এসএমএস ডেমো হিসেবে। বাংলায়, পড়ে শোনানো।'],
+  ['Safe or help', 'Press and hold “আমি নিরাপদ” or “সাহায্য দরকার”, or press 1 or 2 on a call. Unanswered: retried twice.', 'নিরাপদ নাকি সাহায্য', '“আমি নিরাপদ” বা “সাহায্য দরকার” চেপে ধরুন, বা কলে ১ অথবা ২ চাপুন। উত্তর না এলে দুবার আবার পাঠানো হয়।'],
+  ['Follow-up', '“Help” opens a call-back task for the volunteer. The alert closes only when every help request is done.', 'খোঁজ নেওয়া', '“সাহায্য” চাইলে স্বেচ্ছাসেবকের কাছে ফোন করার কাজ যায়। সব অনুরোধের পর সতর্কবার্তা বন্ধ হয়।'],
+  ['Counted', 'Every step writes one row to an append-only ledger. Impact numbers are counted from it, nowhere else.', 'গোনা হয়', 'প্রতিটি ধাপ একটি খাতায় লেখা হয়, যা মোছা যায় না। প্রভাবের সংখ্যা শুধু সেখান থেকেই গোনা।'],
 ];
 
 function LoopSection() {
   const { L } = useL();
   return (
-    <section className="section" style={{ background: 'linear-gradient(180deg,#fff, var(--mist))' }}>
+    <section className="section" style={{ background: 'var(--mist)' }}>
       <div className="container">
         <div className="split" style={{ alignItems: 'end' }}>
           <div>
-            <div className="eyebrow" style={{ color: 'var(--kantha)' }}><Icon name="users" size={15} /> {L('From pixels to people', 'ছবি থেকে মানুষের কাছে')}</div>
-            <h2>{L('A map does not save anyone. A message that is heard, and answered, might.', 'মানচিত্র কাউকে বাঁচায় না। যে বার্তা শোনা যায় আর যার উত্তর দেওয়া যায়, সেটি হয়তো বাঁচায়।')}</h2>
+            <h2>{L('How an alert reaches a family', 'সতর্কবার্তা কীভাবে পরিবারের কাছে পৌঁছায়')}</h2>
           </div>
           <p className="lead" style={{ marginBottom: 12 }}>
             {L('Many people on the chars share basic phones and many do not read. Voice alerts worked better than SMS in a Practical Action pilot with about 10,000 people, and the government already runs a free voice forecast line, 1090. বন্যা সাথী adds what radar saw near each home, and a way to answer.',
@@ -261,11 +252,9 @@ function LoopSection() {
           </p>
         </div>
         <ol className="loop">
-          {LOOP.map(([ic, ten, den, tbn, dbn], i) => (
-            <li key={ten} className={i === 5 ? 'hl' : ''}>
-              <span className="n">{i + 1}</span>
-              <span className="ic"><Icon name={ic} size={20} /></span>
-              <b>{L(ten, tbn)}</b>
+          {LOOP.map(([ten, den, tbn, dbn], i) => (
+            <li key={ten}>
+              <b><span className="n">{i + 1}.</span> {L(ten, tbn)}</b>
               <span className="small">{L(den, dbn)}</span>
             </li>
           ))}
@@ -282,14 +271,11 @@ function LoopSection() {
         .loop{list-style:none;padding:0;margin:32px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
         @media (max-width:900px){.loop{grid-template-columns:repeat(2,minmax(0,1fr))}}
         @media (max-width:520px){.loop{grid-template-columns:1fr}}
-        .loop li{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:18px 18px 16px;display:grid;gap:8px;align-content:start}
-        .loop li .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--river-lt);color:var(--river)}
+        .loop li{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:16px 18px;display:grid;gap:6px;align-content:start}
         .loop li b{color:var(--ink);font-family:var(--font-display);font-size:1.12rem}
         .loop li .small{color:var(--ink-2)}
-        .loop li .n{position:absolute;top:16px;right:16px;font:700 .8rem var(--font-mono);color:var(--ink-3)}
-        .loop li.hl{border-color:var(--kantha);box-shadow:0 0 0 3px var(--kantha-lt)}
-        .loop li.hl .ic{background:var(--kantha-lt);color:var(--kantha)}
-        .cta-band{margin-top:28px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding:22px 26px;border-radius:var(--r-lg);border:1px solid #e7c6d9;background:linear-gradient(90deg,var(--kantha-lt),#fff)}
+        .loop li .n{color:var(--ink-3)}
+        .cta-band{margin-top:28px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding:22px 26px;border-radius:var(--r-lg);border:1px solid var(--line);background:#fff}
       `}</style>
     </section>
   );
@@ -299,11 +285,10 @@ function LoopSection() {
 function LimitsSection() {
   const { L } = useL();
   return (
-    <section className="section tight" style={{ background: 'var(--mist)' }}>
+    <section className="section tight" style={{ background: 'var(--paper)' }}>
       <div className="container split even" style={{ alignItems: 'start' }}>
         <div>
-          <div className="eyebrow"><Icon name="info" size={15} /> {L('What we do not claim', 'যা আমরা দাবি করি না')}</div>
-          <h2 style={{ fontSize: 'clamp(1.5rem,2.6vw,2rem)' }}>{L('Said before anyone asks.', 'কেউ জিজ্ঞেস করার আগেই বলে রাখি।')}</h2>
+          <h2 style={{ fontSize: 'clamp(1.5rem,2.6vw,2rem)' }}>{L('What we do not claim', 'যা আমরা দাবি করি না')}</h2>
           <ul className="ticks no" style={{ marginTop: 14 }}>
             <li><span>{L(<><b>Not real-time.</b> Radar arrives about two days after each pass (45–71 h on track 069A since late July; 122 h for the first pass after the radar gap). Rain within a day or two; river daily.</>, <><b>তাৎক্ষণিক নয়।</b> প্রতিটি ছবি উপগ্রহ যাওয়ার প্রায় দুই দিন পর আসে (জুলাইয়ের শেষ থেকে ৪৫–৭১ ঘণ্টা; রাডার বন্ধের পর প্রথম ছবিতে ১২২ ঘণ্টা)। বৃষ্টির তথ্য এক-দুই দিনে; নদীর তথ্য প্রতিদিন।</>)}</span></li>
             <li><span>{L(<><b>Not a forecast.</b> Our model does not beat the last picture; we show the picture and its age.</>, <><b>পূর্বাভাস নয়।</b> আমাদের মডেল আগের ছবির চেয়ে ভালো নয়; তাই ছবি আর তার বয়স দেখানো হয়।</>)}</span></li>
@@ -312,8 +297,7 @@ function LimitsSection() {
           </ul>
         </div>
         <div>
-          <div className="eyebrow"><Icon name="check" size={15} /> {L('What is real in this demo', 'এই ডেমোতে কী আসল')}</div>
-          <h2 style={{ fontSize: 'clamp(1.5rem,2.6vw,2rem)' }}>{L('Real data, labelled replay.', 'আসল তথ্য, চিহ্নিত রিপ্লে।')}</h2>
+          <h2 style={{ fontSize: 'clamp(1.5rem,2.6vw,2rem)' }}>{L('What is real in this demo', 'এই ডেমোতে কী আসল')}</h2>
           <ul className="ticks" style={{ marginTop: 14 }}>
             <li><span>{L('Every radar number comes from real NISAR files (PROVISIONAL, CRID P05023; VALIDATED from 25 Oct), with granule IDs.', 'রাডারের প্রতিটি সংখ্যা আসল NISAR ফাইল থেকে (২৫ অক্টোবরের আগে প্রাথমিক, পরে যাচাইকৃত), ফাইলের নামসহ।')}</span></li>
             <li><span>{L('The replay uses only data that NASA had published at that moment. The screen says REPLAY.', 'রিপ্লেতে শুধু সেই সময়ে নাসার প্রকাশিত তথ্যই ব্যবহার হয়। পর্দায় “রিপ্লে” লেখা থাকে।')}</span></li>

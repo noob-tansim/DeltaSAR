@@ -53,7 +53,6 @@ export default function Methods() {
       <main id="main" className="on-paper">
         <section className="section tight" style={{ background: 'var(--mist)' }}>
           <div className="narrow">
-            <div className="eyebrow"><Icon name="receipt" size={15} /> {L('Methods and data', 'পদ্ধতি ও তথ্য')}</div>
             <h1 style={{ fontSize: 'clamp(2rem,4vw,3rem)' }}>{L('How every number is made, and how sure it is.', 'প্রতিটি সংখ্যা কীভাবে তৈরি, আর তা কতটা নিশ্চিত।')}</h1>
             <p className="lead">{L('Fixed code computes every value; no AI model produces a number or sends an alert. Each value carries a receipt back to the NASA file it came from.', 'প্রতিটি মান নির্দিষ্ট কোড দিয়ে হিসাব করা; কোনো এআই সংখ্যা বানায় না বা সতর্কবার্তা পাঠায় না। প্রতিটি মানের সাথে নাসার যে ফাইল থেকে এসেছে তার প্রমাণ থাকে।')}</p>
             <div className="row" style={{ marginTop: 12 }}>
@@ -86,7 +85,7 @@ export default function Methods() {
                   </tbody>
                 </table>
                 <p className="small muted">Areas are reported at the threshold and ±1 dB. A range wider than ±25 % of its middle makes an alert “less sure”. Track 019D has no clear histogram valley, so it is a cross-check only.</p>
-                <h3 style={{ marginTop: 28 }}>How fast is the radar? (measured, not promised)</h3>
+                <h3 style={{ marginTop: 28 }}>How fast is the radar? Measured delay per pass</h3>
                 <p className="small">Since late July, NASA published track 069A full frames <b>{lat.length ? `${Math.floor(Math.min(...lat))}–${Math.round(Math.max(...lat))} hours` : '45–71 hours'}</b> after the satellite passed{afterGap ? `, except ${Math.round(afterGap.latency_hours)} hours for 17 Aug, the first pass after the radar gap` : ''} (CMR record insert time, {season.cmr.granules.length} granules checked). Each track repeats every 12 days. The radar was off from 27 July to 10 August 2026; that gap is shown, never filled.</p>
               </>
             )}
@@ -156,7 +155,7 @@ export default function Methods() {
 
         <section className="section tight" id="limits" style={{ background: 'var(--mist)' }}>
           <div className="narrow">
-            <h2>{L('Limits, said plainly', 'সীমাবদ্ধতা, সোজা কথায়')}</h2>
+            <h2>{L('Limits', 'সীমাবদ্ধতা')}</h2>
             <ul className="ticks no">
               <li><span>NISAR data before 25 Oct 2026 is PROVISIONAL (CRID P05023). Validated files (P05036) exist from 25 Oct; we added the 9 Nov validated pass after checking that its river and land values sit inside the range of the earlier passes (river −18.24 dB, land −7.94 dB). Every screen shows the label of the pass it uses.</span></li>
               <li><span>River level differs between dates: land-to-water change near the bank includes some water-level effect. River flow here is modelled (GloFAS), not a gauge.</span></li>

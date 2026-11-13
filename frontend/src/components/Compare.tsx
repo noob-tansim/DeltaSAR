@@ -92,7 +92,7 @@ export function Compare({ left, right, leftLabel, rightLabel, base = 'dark', sty
       </div>
       <button type="button" onClick={() => setPos(100)} className="cmp-label" style={{ left: 12 }}>{leftLabel}</button>
       <button type="button" onClick={() => setPos(0)} className="cmp-label" style={{ right: 12 }}>{rightLabel}</button>
-      <style>{`.cmp-label{position:absolute;top:12px;z-index:4;background:rgba(10,24,33,.82);color:#e6f1f3;border:1px solid rgba(214,238,242,.18);border-radius:999px;padding:6px 12px;font-size:.82rem;font-weight:600;backdrop-filter:blur(6px);max-width:44%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}`}</style>
+      <style>{`.cmp-label{position:absolute;top:12px;z-index:4;background:rgba(10,24,33,.82);color:#e6f1f3;border:1px solid rgba(214,238,242,.18);border-radius:6px;padding:6px 12px;font-size:.82rem;font-weight:600;max-width:44%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}`}</style>
     </div>
   );
 }

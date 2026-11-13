@@ -29,7 +29,6 @@ export function WhyRadar() {
     <section className="section on-paper">
       <div className="container split">
         <div>
-          <div className="eyebrow"><Icon name="radar" size={15} /> {L('Why radar', 'কেন রাডার')}</div>
           <h2>{L('In the monsoon, cameras in space see cloud. NISAR sees water.', 'বর্ষায় মহাকাশের ক্যামেরা দেখে মেঘ। NISAR দেখে পানি।')}</h2>
           <p className="lead">
             {L('Drag the divider. On the left, NASA\'s MODIS camera on the morning of 25 July (Dhaka). On the right, NISAR\'s L-band radar six hours earlier, at dawn. The radar\'s 24 cm wave passes through cloud and rain, so the river shows up every pass.',
@@ -92,10 +91,9 @@ export function SeasonSection({ season }: { season: Season }) {
   return (
     <section className="section on-night">
       <div className="container">
-        <div className="eyebrow"><Icon name="clock" size={15} /> {L('The 2026 season, pass by pass', '২০২৬ মৌসুম, ছবি ধরে ধরে')}</div>
         <div className="split rev" style={{ alignItems: 'start' }}>
           <div>
-            <h2>{L(`A monsoon in ${season.processed.length} radar pictures.`, `${d(season.processed.length)}টি রাডার ছবিতে একটি বর্ষা।`)}</h2>
+            <h2>{L(`The 2026 monsoon in ${season.processed.length} NISAR passes`, `${d(season.processed.length)}টি NISAR ছবিতে ২০২৬-এর বর্ষা`)}</h2>
             <p className="lead">
               {L('Each bar is one NISAR pass: the water it saw over the reach. The line is the river\'s flow. Rain is at the bottom. Click a bar, or press play.',
                 'প্রতিটি দণ্ড একটি NISAR ছবি: এলাকায় কতটা পানি দেখা গেছে। রেখাটি নদীর প্রবাহ। নিচে বৃষ্টি। কোনো দণ্ডে ক্লিক করুন, বা চালু করুন।')}
@@ -184,7 +182,6 @@ export function BankSection({ story, season }: { story: StoryT; season: Season }
       <div className="container">
         <div className="split" style={{ alignItems: 'start' }}>
           <div>
-            <div className="eyebrow" style={{ color: 'var(--danger)' }}><Icon name="tri" size={15} /> {L('Riverbank loss', 'নদীভাঙন')}</div>
             <h2>{L(`${lo}–${hi} hectares of land became river.`, `${d(lo)}–${d(hi)} হেক্টর জমি নদী হয়ে গেছে।`)}</h2>
             <p className="lead">
               {L(
@@ -199,10 +196,10 @@ export function BankSection({ story, season }: { story: StoryT; season: Season }
               )}
             </div>
             <div className="stats two" style={{ marginTop: 18 }}>
-              <Stat icon="map" tone="loss" value={d(exp.sites)} label={L('places where the bank moved, each 0.5 ha or more', 'জায়গায় পাড় সরেছে, প্রতিটি ০.৫ হেক্টর বা বেশি')} source={L('NISAR bank-loss rule', 'NISAR ভাঙনের নিয়ম')} />
-              <Stat icon="drop" tone="crop" value={d(n0(exp.land_cover.ha.cropland ?? null))} unit={L('ha', 'হেক্টর')} label={L('of it was cropland', 'ছিল ফসলি জমি')} source="ESA WorldCover 2021" />
-              <Stat icon="home" tone="people" value={d(exp.buildings)} label={L('buildings stood on the land that is now river', 'টি ঘরবাড়ি ছিল সেই জমিতে, যা এখন নদী')} source="Google Open Buildings" />
-              {s01 && <Stat icon="tri" tone="loss" value={d(n1(s01.largest_ha))} unit={L('ha', 'হেক্টর')} label={L(`the largest single site, ${s01.largest_site} in ${s01.union}, ${s01.upazila}`, `সবচেয়ে বড় একক জায়গা, ${s01.largest_site}, ${s01.union}, ${s01.upazila}`)} source={L('Site list, Explorer', 'জায়গার তালিকা, মানচিত্রে')} to="/explore?view=bank" />}
+              <Stat value={d(exp.sites)} label={L('places where the bank moved, each 0.5 ha or more', 'জায়গায় পাড় সরেছে, প্রতিটি ০.৫ হেক্টর বা বেশি')} source={L('NISAR bank-loss rule', 'NISAR ভাঙনের নিয়ম')} />
+              <Stat value={d(n0(exp.land_cover.ha.cropland ?? null))} unit={L('ha', 'হেক্টর')} label={L('of it was cropland', 'ছিল ফসলি জমি')} source="ESA WorldCover 2021" />
+              <Stat value={d(exp.buildings)} label={L('buildings stood on the land that is now river', 'টি ঘরবাড়ি ছিল সেই জমিতে, যা এখন নদী')} source="Google Open Buildings" />
+              {s01 && <Stat value={d(n1(s01.largest_ha))} unit={L('ha', 'হেক্টর')} label={L(`the largest single site, ${s01.largest_site} in ${s01.union}, ${s01.upazila}`, `সবচেয়ে বড় একক জায়গা, ${s01.largest_site}, ${s01.union}, ${s01.upazila}`)} source={L('Site list, Explorer', 'জায়গার তালিকা, মানচিত্রে')} to="/explore?view=bank" />}
             </div>
           </div>
           <div className="stack" style={{ gap: 16 }}>
