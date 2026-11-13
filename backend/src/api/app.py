@@ -64,7 +64,13 @@ def health() -> dict[str, Any]:
     except Exception:
         db_ok = False
     passes = inputs.radar_passes()
-    return {"ok": db_ok and bool(passes), "version": VERSION, "db": "ok" if db_ok else "error",
+    rasters = "ok"
+    try:                                       # read one real cell, so a broken GDAL/rasterio shows up here
+        inputs.sample_raster(settings.AOI_OUT / "layers" / "river_mask.tif", 24.5, 89.69)
+    except Exception as exc:
+        rasters = f"error: {type(exc).__name__}: {exc}"[:200]
+    return {"ok": db_ok and bool(passes) and rasters == "ok", "version": VERSION, "db": "ok" if db_ok else "error",
+            "rasters": rasters,
             "database": "postgres" if settings.database_url().startswith("postgresql") else "sqlite",
             "radar_passes": len(passes), "newest_pass": passes[-1].key if passes else None,
             "rain_days": rain_days, "river_readings": river_rows, "started_utc": _STATE["started_utc"],

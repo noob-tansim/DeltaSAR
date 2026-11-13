@@ -1,0 +1,14 @@
+name: Keep the API awake
+# Render's free tier sleeps after 15 minutes without traffic; the first visitor would then wait ~1 minute.
+# This pings the health endpoint every 10 minutes. (GitHub may delay scheduled runs by a few minutes.)
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - run: curl -fsS --max-time 120 https://deltasar-api.onrender.com/api/v1/health -o /dev/null -w "HTTP %{http_code} in %{time_total}s\n"

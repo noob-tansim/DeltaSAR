@@ -8,6 +8,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     DELTASAR_OUTPUTS=/app/deploy_data
 
 WORKDIR /app
+# rasterio's bundled GDAL needs libexpat, which the slim image leaves out
+RUN apt-get update && apt-get install -y --no-install-recommends libexpat1 && rm -rf /var/lib/apt/lists/*
 COPY requirements-deploy.txt .
 RUN pip install -r requirements-deploy.txt
 
