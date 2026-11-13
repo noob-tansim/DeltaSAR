@@ -38,6 +38,9 @@ export function Nav({ dark = true }: { dark?: boolean }) {
             </NavLink>
           ))}
         </nav>
+        <span className="chip chip-live nav-chip" title="NASA Space Apps Challenge 2026">
+          <Icon name="sat" size={14} /> Dancing with the SARs
+        </span>
         <div className="lang" role="group" aria-label="Language / ভাষা">
           <button aria-pressed={lang === 'en'} onClick={() => setLang('en')} lang="en">EN</button>
           <button aria-pressed={lang === 'bn'} onClick={() => setLang('bn')} lang="bn">বাংলা</button>
@@ -47,26 +50,28 @@ export function Nav({ dark = true }: { dark?: boolean }) {
         </button>
       </div>
       <style>{`
-        .nav{position:sticky;top:0;z-index:50;height:var(--nav-h)}
-        .nav-dark{background:var(--night);color:var(--sky);border-bottom:1px solid var(--night-line)}
-        .nav-light{background:#fff;color:var(--ink);border-bottom:1px solid var(--line)}
-        .nav-in{position:relative;height:100%;display:flex;align-items:center;gap:22px;width:min(1320px,100% - 32px);margin-inline:auto}
-        .brand{display:flex;flex:none;align-items:center;gap:10px;color:inherit;text-decoration:none}
+        .nav{position:sticky;top:0;z-index:50;height:var(--nav-h);backdrop-filter:saturate(1.4) blur(10px)}
+        .nav-dark{background:rgba(10,24,33,.84);color:var(--sky);border-bottom:1px solid var(--night-line)}
+        .nav-light{background:rgba(255,255,255,.88);color:var(--ink);border-bottom:1px solid var(--line)}
+        .nav-in{height:100%;display:flex;align-items:center;gap:22px;width:min(1320px,100% - 32px);margin-inline:auto}
+        .brand{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none}
         .brand-t{display:flex;flex-direction:column;line-height:1}
         .brand-t b{font-family:var(--font-display);font-size:1.15rem;letter-spacing:-.01em}
         .brand-t .bn{font-size:.8rem;opacity:.75;margin-top:3px}
-        .links{display:flex;gap:4px;position:absolute;left:50%;transform:translateX(-50%)}
-        .links a{color:inherit;text-decoration:none;padding:8px 12px;border-radius:6px;font-weight:500;font-size:.95rem;opacity:.82}
+        .links{display:flex;gap:4px;margin-left:8px}
+        .links a{color:inherit;text-decoration:none;padding:8px 12px;border-radius:999px;font-weight:500;font-size:.95rem;opacity:.82}
         .links a:hover{opacity:1;background:${dark ? 'rgba(255,255,255,.06)' : 'var(--mist)'}}
         .links a.on{opacity:1;background:${dark ? 'rgba(60,200,240,.14)' : 'var(--river-lt)'};color:${dark ? 'var(--water)' : 'var(--river)'}}
-        .lang{display:inline-flex;flex:none;margin-left:auto;border:1px solid ${dark ? 'var(--night-line)' : 'var(--line)'};border-radius:8px;padding:3px;gap:2px}
-        .lang button{border:0;background:none;color:inherit;font-weight:700;font-size:.82rem;padding:5px 11px;border-radius:5px;opacity:.7;min-height:32px}
+        .nav-chip{margin-left:auto}
+        .lang{display:inline-flex;border:1px solid ${dark ? 'var(--night-line)' : 'var(--line)'};border-radius:999px;padding:3px;gap:2px}
+        .lang button{border:0;background:none;color:inherit;font-weight:700;font-size:.82rem;padding:5px 11px;border-radius:999px;opacity:.7;min-height:32px}
         .lang button[aria-pressed='true']{opacity:1;background:${dark ? 'var(--water)' : 'var(--river)'};color:${dark ? 'var(--night)' : '#fff'}}
-        .menu{display:none;margin-left:8px;background:none;border:1px solid ${dark ? 'var(--night-line)' : 'var(--line)'};color:inherit;border-radius:8px;width:44px;height:44px;align-items:center;justify-content:center}
+        .menu{display:none;margin-left:8px;background:none;border:1px solid ${dark ? 'var(--night-line)' : 'var(--line)'};color:inherit;border-radius:10px;width:44px;height:44px;align-items:center;justify-content:center}
         @media (max-width: 1020px){
+          .nav-chip{display:none}
           .lang{margin-left:auto}
           .menu{display:inline-flex}
-          .links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;transform:none;flex-direction:column;padding:10px 16px 16px;background:${dark ? 'var(--night)' : '#fff'};border-bottom:1px solid ${dark ? 'var(--night-line)' : 'var(--line)'};margin:0}
+          .links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;padding:10px 16px 16px;background:${dark ? 'var(--night)' : '#fff'};border-bottom:1px solid ${dark ? 'var(--night-line)' : 'var(--line)'};margin:0}
           .links.open{display:flex}
           .links a{padding:12px 14px}
         }

@@ -59,9 +59,9 @@
 .ph-big.danger { background: var(--danger); color: #fff; }
 
 /* call */
-.ph-call { position: absolute; inset: 0; z-index: 35; background: linear-gradient(180deg, #0f2430, #0a1821); color: #fff; display: flex; flex-direction: column; align-items: center; padding: 30px 20px 24px; gap: 14px; }
-.ph-keys { display: grid; grid-template-columns: repeat(3, 72px); gap: 14px; margin-top: auto; }
-.ph-key { width: 72px; height: 72px; border-radius: 50%; border: 0; background: rgba(255,255,255,.1); color: #fff; font-size: 1.6em; font-weight: 600; display: grid; place-items: center; line-height: 1; }
+.ph-call { position: absolute; inset: 0; z-index: 35; background: linear-gradient(180deg, #0f2430, #0a1821); color: #fff; display: flex; flex-direction: column; align-items: center; padding: 22px 18px 14px; gap: 10px; overflow-y: auto; overscroll-behavior: contain; }
+.ph-keys { display: grid; grid-template-columns: repeat(4, 62px); gap: 12px; margin-top: auto; flex: none; }
+.ph-key { width: 62px; height: 62px; border-radius: 50%; border: 0; background: rgba(255,255,255,.1); color: #fff; font-size: 1.6em; font-weight: 600; display: grid; place-items: center; line-height: 1; }
 .ph-key small { display: block; font-size: 0.42em; font-weight: 500; opacity: 0.8; }
 .ph-key.k1 { background: var(--safe); }
 .ph-key.k2 { background: var(--danger); }

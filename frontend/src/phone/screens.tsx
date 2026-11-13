@@ -459,7 +459,7 @@ export function CallScreen({ rid }: { rid: string }) {
   return (
     <div className="ph-call" role="dialog" aria-label={T(lang, 'ফোন কল, ডেমো', 'Phone call, demo')}>
       <span className="badge-sim">{T(lang, 'ডেমো: ফোন কলের সিমুলেশন', 'Demo: simulated phone call')}</span>
-      <div style={{ width: 84, height: 84, borderRadius: 42, background: 'var(--river)', display: 'grid', placeItems: 'center', marginTop: 12 }}><Icon name="phone" size={38} /></div>
+      <div style={{ width: 64, height: 64, borderRadius: 32, background: 'var(--river)', display: 'grid', placeItems: 'center', marginTop: 6, flex: 'none' }}><Icon name="phone" size={30} /></div>
       <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.5em', fontWeight: 700 }}>{tr('appName', lang)}</div>
       <div style={{ opacity: 0.75 }}>{state === 'ringing' ? T(lang, 'কল আসছে…', 'Incoming call…') : state === 'talking' ? T(lang, 'কথা চলছে', 'In call') : T(lang, 'কল শেষ', 'Call ended')}</div>
       {state === 'ringing' ? (
@@ -472,11 +472,11 @@ export function CallScreen({ rid }: { rid: string }) {
           {a && <p style={{ textAlign: 'center', fontSize: '.92em', color: '#cfe6ec', margin: 0 }}>{lang === 'bn' ? a.message_bn : a.message_en}</p>}
           {note && <p role="status" style={{ textAlign: 'center', fontWeight: 700, margin: 0 }}>{note}</p>}
           <div className="ph-keys">
-            {[['1', T(lang, 'নিরাপদ', 'safe')], ['2', T(lang, 'সাহায্য', 'help')], ['9', T(lang, 'আবার', 'repeat')], ['', ''], ['0', '1090'], ['', '']].map(([k, s], i) => k ? (
+            {[['1', T(lang, 'নিরাপদ', 'safe')], ['2', T(lang, 'সাহায্য', 'help')], ['9', T(lang, 'আবার', 'repeat')], ['0', '1090']].map(([k, s], i) => k ? (
               <button key={k} className={`ph-key k${k}`} onClick={() => void key(k)} disabled={state === 'done' && (k === '1' || k === '2')}>{lang === 'bn' ? num(+k, 'bn') : k}<small>{s}</small></button>
             ) : <span key={i} />)}
           </div>
-          <button className="ph-big danger" style={{ width: '100%' }} onClick={back}>{T(lang, 'কল শেষ করুন', 'End call')}</button>
+          <button className="ph-big danger" style={{ width: '100%', position: 'sticky', bottom: 0, flex: 'none', boxShadow: '0 -10px 18px #0a1821' }} onClick={back}>{T(lang, 'কল শেষ করুন', 'End call')}</button>
         </>
       )}
     </div>
