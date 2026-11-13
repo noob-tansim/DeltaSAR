@@ -16,6 +16,7 @@ The code is Apache-2.0. The data in `backend/data`, `backend/deploy_data` and `f
 | ESA WorldCover 2021 v200 | CC BY 4.0 | © ESA WorldCover project 2021 / contains modified Copernicus Sentinel data (2021) |
 | Google Open Buildings v3 | CC BY 4.0 or ODbL 1.0 | Sirko et al. 2021 |
 | geoBoundaries BGD ADM4 | CC BY 3.0 IGO | Runfola et al. 2020; source BBS, OCHA ROAP |
+| Bangladesh geocode (Bangla union and upazila names) | MIT | Nuhil Mehdy, github.com/nuhil/bangladesh-geocode (BBS names); matched by backend/scripts/union_names_bn.py |
 | Esri basemaps (online only, never cached or bundled) | Esri terms of use | Esri, HERE, Garmin, © OpenStreetMap contributors; Maxar, Earthstar Geographics |
 | MapLibre GL JS | BSD-3-Clause | MapLibre contributors |
 | Fonts: Baloo Da 2, Hind Siliguri, JetBrains Mono | SIL OFL 1.1 | Ek Type; Indian Type Foundry; JetBrains |
