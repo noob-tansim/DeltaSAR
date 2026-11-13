@@ -1,0 +1,1520 @@
+{
+ "aoi": "kazipur",
+ "label": "Sirajganj-Kazipur reach (Jamuna)",
+ "bbox": [
+  89.46,
+  24.205,
+  89.918,
+  24.8
+ ],
+ "grid_m": 20,
+ "code_version": "deltasar-sar-dem 0.2",
+ "generated_utc": "2026-11-12T08:12+00:00",
+ "threshold": {
+  "threshold_db": -15.62,
+  "method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+  "water_median_db": -18.44,
+  "land_median_db": -8.16,
+  "n_water_px": 314966,
+  "n_land_px": 3591,
+  "baseline_pass": "20260618 069A"
+ },
+ "thresholds_by_track": {
+  "019D": {
+   "threshold_db": -14.06,
+   "method": "midpoint of channel vs stable-land medians (no clear histogram valley, whole scene or within 2 km of the river)",
+   "water_median_db": -19.21,
+   "land_median_db": -8.91,
+   "n_water_px": 314959,
+   "n_land_px": 3542,
+   "baseline_pass": "20260627 019D"
+  },
+  "069A": {
+   "threshold_db": -15.62,
+   "method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+   "water_median_db": -18.44,
+   "land_median_db": -8.16,
+   "n_water_px": 314966,
+   "n_land_px": 3591,
+   "baseline_pass": "20260618 069A"
+  }
+ },
+ "pairs": {
+  "erosion_069A": {
+   "pair": {
+    "id": "erosion_069A",
+    "track": "069A",
+    "before": "20260618",
+    "after": "20261016",
+    "story": "Bank erosion / char change, pre- vs post-monsoon"
+   },
+   "threshold_db": -15.62,
+   "threshold_tested_db": [
+    -16.619999999999997,
+    -15.62,
+    -14.62
+   ],
+   "new_water_km2_range": [
+    32.131,
+    44.913
+   ],
+   "new_water_km2_mid": 32.914,
+   "receded_km2_range": [
+    56.035,
+    64.486
+   ],
+   "mainland_bank_loss_ha_range": [
+    194.4,
+    280.2
+   ],
+   "mainland_bank_loss_ha_mid": 198.84,
+   "bank_loss_rule": "mainland land in before (land component touching the AOI west/east edge, water specks < 2.0 ha removed + 3x3 closing) that is water in after (single pass: UNCONFIRMED), 8-connected to the main channel in after, within 1500 m of the before mainland bankline, >= 2 px; each component must touch (within 1 px, 8-conn) the before mainland bankline, otherwise it is counted as other new water",
+   "bank_loss_confirmed": false,
+   "erosion_ha_range": [
+    194.4,
+    280.2
+   ],
+   "erosion_rule": "mainland land in before (land component touching the AOI west/east edge, water specks < 2.0 ha removed + 3x3 closing) that is water in after (single pass: UNCONFIRMED), 8-connected to the main channel in after, within 1500 m of the before mainland bankline, >= 2 px; each component must touch (within 1 px, 8-conn) the before mainland bankline, otherwise it is counted as other new water",
+   "bank_loss_dropped_not_touching_bankline_ha_range": [
+    0.0,
+    57.72
+   ],
+   "bank_loss_dropped_sites_ge_0_5ha": 16,
+   "char_area_change_ha_range": [
+    -30.0,
+    1931.36
+   ],
+   "char_change_reliable": false,
+   "char_change_unreliable_reason": "at T +/- 1 dB narrow water channels open or close, so chars join or split from the mainland and the char area can swing from gain to loss; seasonal submergence also counts. Shown as an overlay only, not a headline number.",
+   "char_area_change_rule": "char land before minus char land after (char = land component not touching the AOI west/east edge); positive = char land lost",
+   "other_new_water_km2_range": [
+    12.184,
+    18.349
+   ],
+   "other_new_water_rule": "new water that is neither mainland bank loss nor on before-char land",
+   "flooded_vegetation_km2_range": [
+    523.051,
+    523.051
+   ],
+   "flooded_vegetation_rule": "EXPERIMENTAL: not open water in after AND HH_after > -8.0 dB AND HH_after - HV_after > 6.0 dB AND HH_after - HH_before >= 3.0 dB",
+   "unknown_pixel_pct": 0.0,
+   "confirm_pass": null,
+   "receipts": {
+    "before": {
+     "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+     "cmr_id": "G4240316601-ASF",
+     "source_url": null,
+     "acquired_utc": "2026-06-18T23:21:35Z",
+     "track": "069A",
+     "frame": "014",
+     "mode": "4005",
+     "polarization": "DHDH",
+     "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+     "native_crs": "EPSG:32646",
+     "pixel_m": 10.0,
+     "analysis_crs": "EPSG:32645",
+     "valid_range_db": [
+      -35.0,
+      5.0
+     ],
+     "stats": {
+      "HHHH": {
+       "unknown_pct": 0.4,
+       "median_db": -9.74
+      },
+      "HVHV": {
+       "unknown_pct": 0.0,
+       "median_db": -17.3
+      }
+     }
+    },
+    "after": {
+     "granule_id": "NISAR_L2_PR_GCOV_033_069_A_014_4005_DHDH_A_20261016T232132_20261016T232206_P05023_N_F_J_001",
+     "cmr_id": "G4376132583-ASF",
+     "source_url": "https://nisar.asf.earthdatacloud.nasa.gov/NISAR/NISAR_L2_GCOV_PROVISIONAL_V1/NISAR_L2_PR_GCOV_033_069_A_014_4005_DHDH_A_20261016T232132_20261016T232206_P05023_N_F_J_001/NISAR_L2_PR_GCOV_033_069_A_014_4005_DHDH_A_20261016T232132_20261016T232206_P05023_N_F_J_001.h5",
+     "acquired_utc": "2026-10-16T23:21:32Z",
+     "track": "069A",
+     "frame": "014",
+     "mode": "4005",
+     "polarization": "DHDH",
+     "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+     "native_crs": "EPSG:32646",
+     "pixel_m": 10.0,
+     "analysis_crs": "EPSG:32645",
+     "valid_range_db": [
+      -35.0,
+      5.0
+     ],
+     "stats": {
+      "HHHH": {
+       "unknown_pct": 0.4,
+       "median_db": -7.92
+      },
+      "HVHV": {
+       "unknown_pct": 0.0,
+       "median_db": -16.22
+      }
+     }
+    }
+   },
+   "threshold": {
+    "threshold_db": -15.62,
+    "method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+    "water_median_db": -18.44,
+    "land_median_db": -8.16,
+    "n_water_px": 314966,
+    "n_land_px": 3591,
+    "baseline_pass": "20260618 069A"
+   },
+   "code_version": "deltasar-sar-dem 0.2",
+   "caveat": "River stage differs between dates; land-to-water change near the bank includes stage effect. Compare with the FFWC Sirajganj gauge before quoting.",
+   "exposure": {
+    "mainland_bank_loss": {
+     "sites": 40,
+     "area_ha": 178.4,
+     "buildings": 47,
+     "building_area_m2": 2106.9,
+     "land_cover": {
+      "ha": {
+       "cropland": 77.92,
+       "built_up": 0.48,
+       "tree": 12.36,
+       "grass": 6.48,
+       "shrub": 0.0,
+       "bare": 4.0,
+       "water_2021": 77.16,
+       "wetland_2021": 0.0,
+       "other": 0.0
+      },
+      "pct": {
+       "cropland": 43.7,
+       "built_up": 0.3,
+       "tree": 6.9,
+       "grass": 3.6,
+       "shrub": 0.0,
+       "bare": 2.2,
+       "water_2021": 43.3,
+       "wetland_2021": 0.0,
+       "other": 0.0
+      },
+      "labels": {
+       "cropland": "cropland",
+       "built_up": "built-up (houses, roads)",
+       "tree": "trees / homestead groves",
+       "grass": "grass",
+       "shrub": "shrub",
+       "bare": "bare sand / soil",
+       "water_2021": "already water in 2021",
+       "wetland_2021": "wetland in 2021",
+       "other": "no data / other"
+      }
+     },
+     "area_ha_range": [
+      194.4,
+      280.2
+     ]
+    },
+    "char_land_lost": {
+     "sites": 303,
+     "area_ha": 4430.64,
+     "buildings": 1155,
+     "building_area_m2": 39336.9,
+     "land_cover": {
+      "ha": {
+       "cropland": 1725.52,
+       "built_up": 0.84,
+       "tree": 44.88,
+       "grass": 253.28,
+       "shrub": 0.0,
+       "bare": 124.28,
+       "water_2021": 2249.24,
+       "wetland_2021": 32.6,
+       "other": 0.0
+      },
+      "pct": {
+       "cropland": 38.9,
+       "built_up": 0.0,
+       "tree": 1.0,
+       "grass": 5.7,
+       "shrub": 0.0,
+       "bare": 2.8,
+       "water_2021": 50.8,
+       "wetland_2021": 0.7,
+       "other": 0.0
+      },
+      "labels": {
+       "cropland": "cropland",
+       "built_up": "built-up (houses, roads)",
+       "tree": "trees / homestead groves",
+       "grass": "grass",
+       "shrub": "shrub",
+       "bare": "bare sand / soil",
+       "water_2021": "already water in 2021",
+       "wetland_2021": "wetland in 2021",
+       "other": "no data / other"
+      }
+     }
+    },
+    "buildings_source": {
+     "source": "Google Open Buildings v3 polygons (S2 level-4 tile 39f)",
+     "url": "https://storage.googleapis.com/open-buildings-data/v3/polygons_s2_level_4_gzip/39f_buildings.csv.gz",
+     "licence": "CC BY 4.0 or ODbL v1.0 (user's choice), (c) Google",
+     "min_confidence": 0.7,
+     "bbox": [
+      89.46,
+      24.205,
+      89.918,
+      24.8
+     ],
+     "rows_read": 87929503,
+     "buildings_kept": 664442,
+     "imagery_note": "footprints detected by a model on satellite imagery up to ~2023; not a damage survey",
+     "generated_utc": "2026-11-11T12:09+00:00"
+    },
+    "buildings_note": null,
+    "buildings_near_sites_written": 2140,
+    "land_cover_source": "ESA WorldCover 10 m 2021 v200 (Sentinel-1 + Sentinel-2), CC BY 4.0",
+    "min_site_ha": 0.5,
+    "files": {
+     "sites": "pairs/erosion_069A_sites.geojson",
+     "char_sites": "pairs/erosion_069A_char_sites.geojson",
+     "buildings": "pairs/erosion_069A_buildings.geojson",
+     "banklines": "pairs/erosion_069A_banklines.geojson"
+    },
+    "caveat": "Land cover is WorldCover 2021 and buildings are model-detected footprints from older imagery: they describe what stood there before, not a verified damage count. River stage differs between dates."
+   }
+  },
+  "rise_069A": {
+   "pair": {
+    "id": "rise_069A",
+    "track": "069A",
+    "before": "20260618",
+    "after": "20260724",
+    "story": "Monsoon rise before the 27 Jul radar gap"
+   },
+   "threshold_db": -15.62,
+   "threshold_tested_db": [
+    -16.619999999999997,
+    -15.62,
+    -14.62
+   ],
+   "new_water_km2_range": [
+    310.005,
+    568.565
+   ],
+   "new_water_km2_mid": 451.568,
+   "receded_km2_range": [
+    16.456,
+    35.939
+   ],
+   "mainland_bank_loss_ha_range": [
+    0.0,
+    0.0
+   ],
+   "mainland_bank_loss_ha_mid": 0.0,
+   "bank_loss_rule": "not computed for this pair (flood pair)",
+   "bank_loss_confirmed": false,
+   "erosion_ha_range": [
+    0.0,
+    0.0
+   ],
+   "erosion_rule": "not computed for this pair (flood pair)",
+   "bank_loss_dropped_not_touching_bankline_ha_range": null,
+   "bank_loss_dropped_sites_ge_0_5ha": null,
+   "char_area_change_ha_range": [
+    9600.16,
+    11461.32
+   ],
+   "char_change_reliable": false,
+   "char_change_unreliable_reason": "at T +/- 1 dB narrow water channels open or close, so chars join or split from the mainland and the char area can swing from gain to loss; seasonal submergence also counts. Shown as an overlay only, not a headline number.",
+   "char_area_change_rule": "char land before minus char land after (char = land component not touching the AOI west/east edge); positive = char land lost",
+   "other_new_water_km2_range": [
+    214.316,
+    418.153
+   ],
+   "other_new_water_rule": "new water that is neither mainland bank loss nor on before-char land",
+   "flooded_vegetation_km2_range": [
+    21.511,
+    21.511
+   ],
+   "flooded_vegetation_rule": "EXPERIMENTAL: not open water in after AND HH_after > -8.0 dB AND HH_after - HV_after > 6.0 dB AND HH_after - HH_before >= 3.0 dB",
+   "unknown_pixel_pct": 0.0,
+   "confirm_pass": null,
+   "receipts": {
+    "before": {
+     "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+     "cmr_id": "G4240316601-ASF",
+     "source_url": null,
+     "acquired_utc": "2026-06-18T23:21:35Z",
+     "track": "069A",
+     "frame": "014",
+     "mode": "4005",
+     "polarization": "DHDH",
+     "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+     "native_crs": "EPSG:32646",
+     "pixel_m": 10.0,
+     "analysis_crs": "EPSG:32645",
+     "valid_range_db": [
+      -35.0,
+      5.0
+     ],
+     "stats": {
+      "HHHH": {
+       "unknown_pct": 0.4,
+       "median_db": -9.74
+      },
+      "HVHV": {
+       "unknown_pct": 0.0,
+       "median_db": -17.3
+      }
+     }
+    },
+    "after": {
+     "granule_id": "NISAR_L2_PR_GCOV_026_069_A_014_4005_DHDH_A_20260724T232133_20260724T232208_P05023_N_F_J_001",
+     "cmr_id": "G4261131483-ASF",
+     "source_url": "https://nisar.asf.earthdatacloud.nasa.gov/NISAR/NISAR_L2_GCOV_PROVISIONAL_V1/NISAR_L2_PR_GCOV_026_069_A_014_4005_DHDH_A_20260724T232133_20260724T232208_P05023_N_F_J_001/NISAR_L2_PR_GCOV_026_069_A_014_4005_DHDH_A_20260724T232133_20260724T232208_P05023_N_F_J_001.h5",
+     "acquired_utc": "2026-07-24T23:21:33Z",
+     "track": "069A",
+     "frame": "014",
+     "mode": "4005",
+     "polarization": "DHDH",
+     "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+     "native_crs": "EPSG:32646",
+     "pixel_m": 10.0,
+     "analysis_crs": "EPSG:32645",
+     "valid_range_db": [
+      -35.0,
+      5.0
+     ],
+     "stats": {
+      "HHHH": {
+       "unknown_pct": 0.4,
+       "median_db": -11.74
+      },
+      "HVHV": {
+       "unknown_pct": 0.0,
+       "median_db": -18.93
+      }
+     }
+    }
+   },
+   "threshold": {
+    "threshold_db": -15.62,
+    "method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+    "water_median_db": -18.44,
+    "land_median_db": -8.16,
+    "n_water_px": 314966,
+    "n_land_px": 3591,
+    "baseline_pass": "20260618 069A"
+   },
+   "code_version": "deltasar-sar-dem 0.2"
+  },
+  "erosion_019D": {
+   "pair": {
+    "id": "erosion_019D",
+    "track": "019D",
+    "before": "20260627",
+    "after": "20261013",
+    "story": "Erosion cross-check on the descending track"
+   },
+   "threshold_db": -14.06,
+   "threshold_tested_db": [
+    -15.06,
+    -14.06,
+    -13.06
+   ],
+   "new_water_km2_range": [
+    24.194,
+    49.06
+   ],
+   "new_water_km2_mid": 34.179,
+   "receded_km2_range": [
+    161.676,
+    292.862
+   ],
+   "mainland_bank_loss_ha_range": [
+    85.08,
+    107.24
+   ],
+   "mainland_bank_loss_ha_mid": 107.24,
+   "bank_loss_rule": "mainland land in before (land component touching the AOI west/east edge, water specks < 2.0 ha removed + 3x3 closing) that is water in after (single pass: UNCONFIRMED), 8-connected to the main channel in after, within 1500 m of the before mainland bankline, >= 2 px; each component must touch (within 1 px, 8-conn) the before mainland bankline, otherwise it is counted as other new water",
+   "bank_loss_confirmed": false,
+   "erosion_ha_range": [
+    85.08,
+    107.24
+   ],
+   "erosion_rule": "mainland land in before (land component touching the AOI west/east edge, water specks < 2.0 ha removed + 3x3 closing) that is water in after (single pass: UNCONFIRMED), 8-connected to the main channel in after, within 1500 m of the before mainland bankline, >= 2 px; each component must touch (within 1 px, 8-conn) the before mainland bankline, otherwise it is counted as other new water",
+   "bank_loss_dropped_not_touching_bankline_ha_range": [
+    0.0,
+    0.0
+   ],
+   "bank_loss_dropped_sites_ge_0_5ha": 0,
+   "char_area_change_ha_range": [
+    -2683.16,
+    -440.8
+   ],
+   "char_change_reliable": false,
+   "char_change_unreliable_reason": "at T +/- 1 dB narrow water channels open or close, so chars join or split from the mainland and the char area can swing from gain to loss; seasonal submergence also counts. Shown as an overlay only, not a headline number.",
+   "char_area_change_rule": "char land before minus char land after (char = land component not touching the AOI west/east edge); positive = char land lost",
+   "other_new_water_km2_range": [
+    12.153,
+    26.364
+   ],
+   "other_new_water_rule": "new water that is neither mainland bank loss nor on before-char land",
+   "flooded_vegetation_km2_range": [
+    600.454,
+    600.454
+   ],
+   "flooded_vegetation_rule": "EXPERIMENTAL: not open water in after AND HH_after > -8.0 dB AND HH_after - HV_after > 6.0 dB AND HH_after - HH_before >= 3.0 dB",
+   "unknown_pixel_pct": 0.6,
+   "confirm_pass": null,
+   "receipts": {
+    "before": {
+     "granule_id": "NISAR_L2_PR_GCOV_024_019_D_076_2005_DHDH_M_20260627T124243_20260627T124317_P05023_N_F_J_001",
+     "cmr_id": "G4250873649-ASF",
+     "source_url": "https://nisar.asf.earthdatacloud.nasa.gov/NISAR/NISAR_L2_GCOV_PROVISIONAL_V1/NISAR_L2_PR_GCOV_024_019_D_076_2005_DHDH_M_20260627T124243_20260627T124317_P05023_N_F_J_001/NISAR_L2_PR_GCOV_024_019_D_076_2005_DHDH_M_20260627T124243_20260627T124317_P05023_N_F_J_001.h5",
+     "acquired_utc": "2026-06-27T12:42:43Z",
+     "track": "019D",
+     "frame": "076",
+     "mode": "2005",
+     "polarization": "DHDH",
+     "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+     "native_crs": "EPSG:32645",
+     "pixel_m": 20.0,
+     "analysis_crs": "EPSG:32645",
+     "valid_range_db": [
+      -35.0,
+      5.0
+     ],
+     "stats": {
+      "HHHH": {
+       "unknown_pct": 0.5,
+       "median_db": -10.39
+      },
+      "HVHV": {
+       "unknown_pct": 0.0,
+       "median_db": -16.23
+      }
+     }
+    },
+    "after": {
+     "granule_id": "NISAR_L2_PR_GCOV_033_019_D_076_2005_DHDH_M_20261013T124240_20261013T124315_P05023_N_F_J_001",
+     "cmr_id": "G4367592137-ASF",
+     "source_url": "https://nisar.asf.earthdatacloud.nasa.gov/NISAR/NISAR_L2_GCOV_PROVISIONAL_V1/NISAR_L2_PR_GCOV_033_019_D_076_2005_DHDH_M_20261013T124240_20261013T124315_P05023_N_F_J_001/NISAR_L2_PR_GCOV_033_019_D_076_2005_DHDH_M_20261013T124240_20261013T124315_P05023_N_F_J_001.h5",
+     "acquired_utc": "2026-10-13T12:42:40Z",
+     "track": "019D",
+     "frame": "076",
+     "mode": "2005",
+     "polarization": "DHDH",
+     "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+     "native_crs": "EPSG:32645",
+     "pixel_m": 20.0,
+     "analysis_crs": "EPSG:32645",
+     "valid_range_db": [
+      -35.0,
+      5.0
+     ],
+     "stats": {
+      "HHHH": {
+       "unknown_pct": 0.6,
+       "median_db": -7.63
+      },
+      "HVHV": {
+       "unknown_pct": 0.0,
+       "median_db": -16.51
+      }
+     }
+    }
+   },
+   "threshold": {
+    "threshold_db": -14.06,
+    "method": "midpoint of channel vs stable-land medians (no clear histogram valley, whole scene or within 2 km of the river)",
+    "water_median_db": -19.21,
+    "land_median_db": -8.91,
+    "n_water_px": 314959,
+    "n_land_px": 3542,
+    "baseline_pass": "20260627 019D"
+   },
+   "code_version": "deltasar-sar-dem 0.2",
+   "caveat": "River stage differs between dates; land-to-water change near the bank includes stage effect. Compare with the FFWC Sirajganj gauge before quoting.",
+   "exposure": {
+    "mainland_bank_loss": {
+     "sites": 18,
+     "area_ha": 99.04,
+     "buildings": 46,
+     "building_area_m2": 2086.9,
+     "land_cover": {
+      "ha": {
+       "cropland": 51.92,
+       "built_up": 0.52,
+       "tree": 11.76,
+       "grass": 4.64,
+       "shrub": 0.0,
+       "bare": 0.56,
+       "water_2021": 28.72,
+       "wetland_2021": 0.92,
+       "other": 0.0
+      },
+      "pct": {
+       "cropland": 52.4,
+       "built_up": 0.5,
+       "tree": 11.9,
+       "grass": 4.7,
+       "shrub": 0.0,
+       "bare": 0.6,
+       "water_2021": 29.0,
+       "wetland_2021": 0.9,
+       "other": 0.0
+      },
+      "labels": {
+       "cropland": "cropland",
+       "built_up": "built-up (houses, roads)",
+       "tree": "trees / homestead groves",
+       "grass": "grass",
+       "shrub": "shrub",
+       "bare": "bare sand / soil",
+       "water_2021": "already water in 2021",
+       "wetland_2021": "wetland in 2021",
+       "other": "no data / other"
+      }
+     },
+     "area_ha_range": [
+      85.08,
+      107.24
+     ]
+    },
+    "char_land_lost": {
+     "sites": 452,
+     "area_ha": 5604.0,
+     "buildings": 6686,
+     "building_area_m2": 258966.3,
+     "land_cover": {
+      "ha": {
+       "cropland": 3710.76,
+       "built_up": 6.56,
+       "tree": 665.8,
+       "grass": 238.96,
+       "shrub": 0.0,
+       "bare": 93.08,
+       "water_2021": 843.12,
+       "wetland_2021": 45.72,
+       "other": 0.0
+      },
+      "pct": {
+       "cropland": 66.2,
+       "built_up": 0.1,
+       "tree": 11.9,
+       "grass": 4.3,
+       "shrub": 0.0,
+       "bare": 1.7,
+       "water_2021": 15.0,
+       "wetland_2021": 0.8,
+       "other": 0.0
+      },
+      "labels": {
+       "cropland": "cropland",
+       "built_up": "built-up (houses, roads)",
+       "tree": "trees / homestead groves",
+       "grass": "grass",
+       "shrub": "shrub",
+       "bare": "bare sand / soil",
+       "water_2021": "already water in 2021",
+       "wetland_2021": "wetland in 2021",
+       "other": "no data / other"
+      }
+     }
+    },
+    "buildings_source": {
+     "source": "Google Open Buildings v3 polygons (S2 level-4 tile 39f)",
+     "url": "https://storage.googleapis.com/open-buildings-data/v3/polygons_s2_level_4_gzip/39f_buildings.csv.gz",
+     "licence": "CC BY 4.0 or ODbL v1.0 (user's choice), (c) Google",
+     "min_confidence": 0.7,
+     "bbox": [
+      89.46,
+      24.205,
+      89.918,
+      24.8
+     ],
+     "rows_read": 87929503,
+     "buildings_kept": 664442,
+     "imagery_note": "footprints detected by a model on satellite imagery up to ~2023; not a damage survey",
+     "generated_utc": "2026-11-11T12:09+00:00"
+    },
+    "buildings_note": null,
+    "buildings_near_sites_written": 907,
+    "land_cover_source": "ESA WorldCover 10 m 2021 v200 (Sentinel-1 + Sentinel-2), CC BY 4.0",
+    "min_site_ha": 0.5,
+    "files": {
+     "sites": "pairs/erosion_019D_sites.geojson",
+     "char_sites": "pairs/erosion_019D_char_sites.geojson",
+     "buildings": "pairs/erosion_019D_buildings.geojson",
+     "banklines": "pairs/erosion_019D_banklines.geojson"
+    },
+    "caveat": "Land cover is WorldCover 2021 and buildings are model-detected footprints from older imagery: they describe what stood there before, not a verified damage count. River stage differs between dates."
+   }
+  },
+  "erosion_069A_interim": {
+   "pair": {
+    "id": "erosion_069A_interim",
+    "track": "069A",
+    "before": "20260618",
+    "after": "20261004",
+    "story": "INTERIM bank erosion / char change, Jun 18 vs Oct 4 (16 Oct confirms it when present)"
+   },
+   "threshold_db": -15.62,
+   "threshold_tested_db": [
+    -16.619999999999997,
+    -15.62,
+    -14.62
+   ],
+   "new_water_km2_range": [
+    48.57,
+    74.94
+   ],
+   "new_water_km2_mid": 55.438,
+   "receded_km2_range": [
+    33.058,
+    45.379
+   ],
+   "mainland_bank_loss_ha_range": [
+    187.2,
+    232.32
+   ],
+   "mainland_bank_loss_ha_mid": 187.72,
+   "bank_loss_rule": "mainland land in before (land component touching the AOI west/east edge, water specks < 2.0 ha removed + 3x3 closing) that is water in after AND confirm pass, 8-connected to the main channel in after, within 1500 m of the before mainland bankline, >= 2 px; each component must touch (within 1 px, 8-conn) the before mainland bankline, otherwise it is counted as other new water",
+   "bank_loss_confirmed": true,
+   "erosion_ha_range": [
+    187.2,
+    232.32
+   ],
+   "erosion_rule": "mainland land in before (land component touching the AOI west/east edge, water specks < 2.0 ha removed + 3x3 closing) that is water in after AND confirm pass, 8-connected to the main channel in after, within 1500 m of the before mainland bankline, >= 2 px; each component must touch (within 1 px, 8-conn) the before mainland bankline, otherwise it is counted as other new water",
+   "bank_loss_dropped_not_touching_bankline_ha_range": [
+    9.92,
+    41.6
+   ],
+   "bank_loss_dropped_sites_ge_0_5ha": 19,
+   "char_area_change_ha_range": [
+    440.76,
+    2380.16
+   ],
+   "char_change_reliable": false,
+   "char_change_unreliable_reason": "at T +/- 1 dB narrow water channels open or close, so chars join or split from the mainland and the char area can swing from gain to loss; seasonal submergence also counts. Shown as an overlay only, not a headline number.",
+   "char_area_change_rule": "char land before minus char land after (char = land component not touching the AOI west/east edge); positive = char land lost",
+   "other_new_water_km2_range": [
+    24.785,
+    38.598
+   ],
+   "other_new_water_rule": "new water that is neither mainland bank loss nor on before-char land",
+   "flooded_vegetation_km2_range": [
+    369.32,
+    369.32
+   ],
+   "flooded_vegetation_rule": "EXPERIMENTAL: not open water in after AND HH_after > -8.0 dB AND HH_after - HV_after > 6.0 dB AND HH_after - HH_before >= 3.0 dB",
+   "unknown_pixel_pct": 0.0,
+   "confirm_pass": "20261016",
+   "receipts": {
+    "before": {
+     "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+     "cmr_id": "G4240316601-ASF",
+     "source_url": null,
+     "acquired_utc": "2026-06-18T23:21:35Z",
+     "track": "069A",
+     "frame": "014",
+     "mode": "4005",
+     "polarization": "DHDH",
+     "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+     "native_crs": "EPSG:32646",
+     "pixel_m": 10.0,
+     "analysis_crs": "EPSG:32645",
+     "valid_range_db": [
+      -35.0,
+      5.0
+     ],
+     "stats": {
+      "HHHH": {
+       "unknown_pct": 0.4,
+       "median_db": -9.74
+      },
+      "HVHV": {
+       "unknown_pct": 0.0,
+       "median_db": -17.3
+      }
+     }
+    },
+    "after": {
+     "granule_id": "NISAR_L2_PR_GCOV_032_069_A_014_4005_DHDH_A_20261004T232132_20261004T232206_P05023_N_F_J_001",
+     "cmr_id": "G4345771157-ASF",
+     "source_url": null,
+     "acquired_utc": "2026-10-04T23:21:32Z",
+     "track": "069A",
+     "frame": "014",
+     "mode": "4005",
+     "polarization": "DHDH",
+     "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+     "native_crs": "EPSG:32646",
+     "pixel_m": 10.0,
+     "analysis_crs": "EPSG:32645",
+     "valid_range_db": [
+      -35.0,
+      5.0
+     ],
+     "stats": {
+      "HHHH": {
+       "unknown_pct": 0.4,
+       "median_db": -8.32
+      },
+      "HVHV": {
+       "unknown_pct": 0.0,
+       "median_db": -16.6
+      }
+     }
+    }
+   },
+   "threshold": {
+    "threshold_db": -15.62,
+    "method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+    "water_median_db": -18.44,
+    "land_median_db": -8.16,
+    "n_water_px": 314966,
+    "n_land_px": 3591,
+    "baseline_pass": "20260618 069A"
+   },
+   "code_version": "deltasar-sar-dem 0.2",
+   "caveat": "River stage differs between dates; land-to-water change near the bank includes stage effect. Compare with the FFWC Sirajganj gauge before quoting.",
+   "exposure": {
+    "mainland_bank_loss": {
+     "sites": 38,
+     "area_ha": 165.8,
+     "buildings": 47,
+     "building_area_m2": 2106.9,
+     "land_cover": {
+      "ha": {
+       "cropland": 74.4,
+       "built_up": 0.48,
+       "tree": 11.92,
+       "grass": 5.76,
+       "shrub": 0.0,
+       "bare": 2.6,
+       "water_2021": 69.92,
+       "wetland_2021": 0.72,
+       "other": 0.0
+      },
+      "pct": {
+       "cropland": 44.9,
+       "built_up": 0.3,
+       "tree": 7.2,
+       "grass": 3.5,
+       "shrub": 0.0,
+       "bare": 1.6,
+       "water_2021": 42.2,
+       "wetland_2021": 0.4,
+       "other": 0.0
+      },
+      "labels": {
+       "cropland": "cropland",
+       "built_up": "built-up (houses, roads)",
+       "tree": "trees / homestead groves",
+       "grass": "grass",
+       "shrub": "shrub",
+       "bare": "bare sand / soil",
+       "water_2021": "already water in 2021",
+       "wetland_2021": "wetland in 2021",
+       "other": "no data / other"
+      }
+     },
+     "area_ha_range": [
+      187.2,
+      232.32
+     ]
+    },
+    "char_land_lost": {
+     "sites": 409,
+     "area_ha": 4095.16,
+     "buildings": 1145,
+     "building_area_m2": 38840.4,
+     "land_cover": {
+      "ha": {
+       "cropland": 1980.28,
+       "built_up": 0.4,
+       "tree": 43.76,
+       "grass": 280.04,
+       "shrub": 0.0,
+       "bare": 113.84,
+       "water_2021": 1639.24,
+       "wetland_2021": 37.6,
+       "other": 0.0
+      },
+      "pct": {
+       "cropland": 48.4,
+       "built_up": 0.0,
+       "tree": 1.1,
+       "grass": 6.8,
+       "shrub": 0.0,
+       "bare": 2.8,
+       "water_2021": 40.0,
+       "wetland_2021": 0.9,
+       "other": 0.0
+      },
+      "labels": {
+       "cropland": "cropland",
+       "built_up": "built-up (houses, roads)",
+       "tree": "trees / homestead groves",
+       "grass": "grass",
+       "shrub": "shrub",
+       "bare": "bare sand / soil",
+       "water_2021": "already water in 2021",
+       "wetland_2021": "wetland in 2021",
+       "other": "no data / other"
+      }
+     }
+    },
+    "buildings_source": {
+     "source": "Google Open Buildings v3 polygons (S2 level-4 tile 39f)",
+     "url": "https://storage.googleapis.com/open-buildings-data/v3/polygons_s2_level_4_gzip/39f_buildings.csv.gz",
+     "licence": "CC BY 4.0 or ODbL v1.0 (user's choice), (c) Google",
+     "min_confidence": 0.7,
+     "bbox": [
+      89.46,
+      24.205,
+      89.918,
+      24.8
+     ],
+     "rows_read": 87929503,
+     "buildings_kept": 664442,
+     "imagery_note": "footprints detected by a model on satellite imagery up to ~2023; not a damage survey",
+     "generated_utc": "2026-11-11T12:09+00:00"
+    },
+    "buildings_note": null,
+    "buildings_near_sites_written": 1900,
+    "land_cover_source": "ESA WorldCover 10 m 2021 v200 (Sentinel-1 + Sentinel-2), CC BY 4.0",
+    "min_site_ha": 0.5,
+    "files": {
+     "sites": "pairs/erosion_069A_interim_sites.geojson",
+     "char_sites": "pairs/erosion_069A_interim_char_sites.geojson",
+     "buildings": "pairs/erosion_069A_interim_buildings.geojson",
+     "banklines": "pairs/erosion_069A_interim_banklines.geojson"
+    },
+    "caveat": "Land cover is WorldCover 2021 and buildings are model-detected footprints from older imagery: they describe what stood there before, not a verified damage count. River stage differs between dates."
+   }
+  },
+  "rise_069A_interim": {
+   "pair": {
+    "id": "rise_069A_interim",
+    "track": "069A",
+    "before": "20260618",
+    "after": "20260910",
+    "story": "INTERIM monsoon water, Jun 18 vs Sep 10 (12 Jul copy incomplete, 17 Aug not on disk yet)"
+   },
+   "threshold_db": -15.62,
+   "threshold_tested_db": [
+    -16.619999999999997,
+    -15.62,
+    -14.62
+   ],
+   "new_water_km2_range": [
+    173.19,
+    330.037
+   ],
+   "new_water_km2_mid": 241.738,
+   "receded_km2_range": [
+    20.739,
+    29.002
+   ],
+   "mainland_bank_loss_ha_range": [
+    0.0,
+    0.0
+   ],
+   "mainland_bank_loss_ha_mid": 0.0,
+   "bank_loss_rule": "not computed for this pair (flood pair)",
+   "bank_loss_confirmed": false,
+   "erosion_ha_range": [
+    0.0,
+    0.0
+   ],
+   "erosion_rule": "not computed for this pair (flood pair)",
+   "bank_loss_dropped_not_touching_bankline_ha_range": null,
+   "bank_loss_dropped_sites_ge_0_5ha": null,
+   "char_area_change_ha_range": [
+    4931.0,
+    10602.56
+   ],
+   "char_change_reliable": false,
+   "char_change_unreliable_reason": "at T +/- 1 dB narrow water channels open or close, so chars join or split from the mainland and the char area can swing from gain to loss; seasonal submergence also counts. Shown as an overlay only, not a headline number.",
+   "char_area_change_rule": "char land before minus char land after (char = land component not touching the AOI west/east edge); positive = char land lost",
+   "other_new_water_km2_range": [
+    104.358,
+    216.074
+   ],
+   "other_new_water_rule": "new water that is neither mainland bank loss nor on before-char land",
+   "flooded_vegetation_km2_range": [
+    88.18,
+    88.18
+   ],
+   "flooded_vegetation_rule": "EXPERIMENTAL: not open water in after AND HH_after > -8.0 dB AND HH_after - HV_after > 6.0 dB AND HH_after - HH_before >= 3.0 dB",
+   "unknown_pixel_pct": 0.0,
+   "confirm_pass": null,
+   "receipts": {
+    "before": {
+     "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+     "cmr_id": "G4240316601-ASF",
+     "source_url": null,
+     "acquired_utc": "2026-06-18T23:21:35Z",
+     "track": "069A",
+     "frame": "014",
+     "mode": "4005",
+     "polarization": "DHDH",
+     "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+     "native_crs": "EPSG:32646",
+     "pixel_m": 10.0,
+     "analysis_crs": "EPSG:32645",
+     "valid_range_db": [
+      -35.0,
+      5.0
+     ],
+     "stats": {
+      "HHHH": {
+       "unknown_pct": 0.4,
+       "median_db": -9.74
+      },
+      "HVHV": {
+       "unknown_pct": 0.0,
+       "median_db": -17.3
+      }
+     }
+    },
+    "after": {
+     "granule_id": "NISAR_L2_PR_GCOV_030_069_A_014_4005_DHDH_A_20260910T232131_20260910T232206_P05023_N_F_J_001",
+     "cmr_id": "G4310083498-ASF",
+     "source_url": null,
+     "acquired_utc": "2026-09-10T23:21:31Z",
+     "track": "069A",
+     "frame": "014",
+     "mode": "4005",
+     "polarization": "DHDH",
+     "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+     "native_crs": "EPSG:32646",
+     "pixel_m": 10.0,
+     "analysis_crs": "EPSG:32645",
+     "valid_range_db": [
+      -35.0,
+      5.0
+     ],
+     "stats": {
+      "HHHH": {
+       "unknown_pct": 0.5,
+       "median_db": -10.56
+      },
+      "HVHV": {
+       "unknown_pct": 0.0,
+       "median_db": -18.73
+      }
+     }
+    }
+   },
+   "threshold": {
+    "threshold_db": -15.62,
+    "method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+    "water_median_db": -18.44,
+    "land_median_db": -8.16,
+    "n_water_px": 314966,
+    "n_land_px": 3591,
+    "baseline_pass": "20260618 069A"
+   },
+   "code_version": "deltasar-sar-dem 0.2"
+  }
+ },
+ "latest_pass": {
+  "date": "20261016",
+  "track": "069A",
+  "acquired_utc": "2026-10-16T23:21:32Z",
+  "data_age_hours": 633,
+  "water_beyond_channel_km2": 148.0
+ },
+ "passes_available": [
+  "20260618 069A",
+  "20260627 019D",
+  "20260630 069A",
+  "20260712 069A",
+  "20260724 069A",
+  "20260817 069A",
+  "20260829 069A",
+  "20260910 069A",
+  "20260922 069A",
+  "20261004 069A",
+  "20261013 019D",
+  "20261016 069A"
+ ],
+ "radar_gap": {
+  "utc": [
+   "2026-07-27T22:03:25Z",
+   "2026-08-10T00:55:27Z"
+  ],
+  "note": "No NISAR data; shown as a gap, never interpolated"
+ },
+ "experimental_7day": {
+  "label": "Experimental planning layer, not an official warning (official forecasts: FFWC/BMD)",
+  "days": [
+   {
+    "date": "2026-11-12",
+    "rain_mm": 1.5,
+    "area_p50_km2": 0.0
+   },
+   {
+    "date": "2026-11-13",
+    "rain_mm": 0.0,
+    "area_p50_km2": 0.0
+   },
+   {
+    "date": "2026-11-14",
+    "rain_mm": 0.0,
+    "area_p50_km2": 0.0
+   },
+   {
+    "date": "2026-11-15",
+    "rain_mm": 0.0,
+    "area_p50_km2": 0.0
+   },
+   {
+    "date": "2026-11-16",
+    "rain_mm": 0.0,
+    "area_p50_km2": 0.0
+   },
+   {
+    "date": "2026-11-17",
+    "rain_mm": 0.0,
+    "area_p50_km2": 0.0
+   },
+   {
+    "date": "2026-11-18",
+    "rain_mm": 0.0,
+    "area_p50_km2": 0.0
+   }
+  ],
+  "calibration": {
+   "bias": -1.516,
+   "passes_used": 12,
+   "error_margin_pct": 22.3,
+   "history": [
+    {
+     "pass_date": "20260618",
+     "scale_before": 1.0,
+     "bias_before": 0.0,
+     "scale_after": 0.615,
+     "bias_after": -3.61,
+     "skill_before": {
+      "brier": 0.532,
+      "brier_skill_score": -8.241,
+      "cutoff": 0.9294,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.211,
+      "hit_rate": 0.349,
+      "false_alarm_ratio": 0.651,
+      "pred_flood_frac": 0.0614,
+      "obs_flood_frac": 0.0613
+     },
+     "skill_after": {
+      "brier": 0.0554,
+      "brier_skill_score": 0.038,
+      "cutoff": 0.1167,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.211,
+      "hit_rate": 0.349,
+      "false_alarm_ratio": 0.651,
+      "pred_flood_frac": 0.0614,
+      "obs_flood_frac": 0.0613
+     },
+     "note": null,
+     "error_margin_pct": 23.5
+    },
+    {
+     "pass_date": "20260627",
+     "scale_before": 0.615,
+     "bias_before": -3.61,
+     "scale_after": 0.528,
+     "bias_after": -2.643,
+     "skill_before": {
+      "brier": 0.1212,
+      "brier_skill_score": -0.089,
+      "cutoff": 0.0336,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.222,
+      "hit_rate": 0.364,
+      "false_alarm_ratio": 0.636,
+      "pred_flood_frac": 0.1275,
+      "obs_flood_frac": 0.1275
+     },
+     "skill_after": {
+      "brier": 0.114,
+      "brier_skill_score": -0.025,
+      "cutoff": 0.081,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.222,
+      "hit_rate": 0.364,
+      "false_alarm_ratio": 0.636,
+      "pred_flood_frac": 0.1275,
+      "obs_flood_frac": 0.1275
+     },
+     "note": null,
+     "error_margin_pct": 33.8
+    },
+    {
+     "pass_date": "20260630",
+     "scale_before": 0.528,
+     "bias_before": -2.643,
+     "scale_after": 0.497,
+     "bias_after": -2.478,
+     "skill_before": {
+      "brier": 0.0931,
+      "brier_skill_score": 0.031,
+      "cutoff": 0.1313,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.228,
+      "hit_rate": 0.371,
+      "false_alarm_ratio": 0.629,
+      "pred_flood_frac": 0.1077,
+      "obs_flood_frac": 0.1077
+     },
+     "skill_after": {
+      "brier": 0.0927,
+      "brier_skill_score": 0.035,
+      "cutoff": 0.1457,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.228,
+      "hit_rate": 0.371,
+      "false_alarm_ratio": 0.629,
+      "pred_flood_frac": 0.1077,
+      "obs_flood_frac": 0.1077
+     },
+     "note": null,
+     "error_margin_pct": 30.4
+    },
+    {
+     "pass_date": "20260712",
+     "scale_before": 0.497,
+     "bias_before": -2.478,
+     "scale_after": 0.497,
+     "bias_after": -2.478,
+     "skill_before": {
+      "brier": 0.4513,
+      "brier_skill_score": -5.899,
+      "cutoff": 0.8177,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.167,
+      "hit_rate": 0.287,
+      "false_alarm_ratio": 0.714,
+      "pred_flood_frac": 0.0705,
+      "obs_flood_frac": 0.0704
+     },
+     "skill_after": {
+      "brier": 0.4513,
+      "brier_skill_score": -5.899,
+      "cutoff": 0.8177,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.167,
+      "hit_rate": 0.287,
+      "false_alarm_ratio": 0.714,
+      "pred_flood_frac": 0.0705,
+      "obs_flood_frac": 0.0704
+     },
+     "note": "refit rejected: Brier 0.9296 > 0.4513 before; kept previous scale/bias",
+     "error_margin_pct": 67.2
+    },
+    {
+     "pass_date": "20260724",
+     "scale_before": 0.497,
+     "bias_before": -2.478,
+     "scale_after": 0.389,
+     "bias_after": -1.957,
+     "skill_before": {
+      "brier": 0.1784,
+      "brier_skill_score": -0.048,
+      "cutoff": 0.1405,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.228,
+      "hit_rate": 0.372,
+      "false_alarm_ratio": 0.628,
+      "pred_flood_frac": 0.2178,
+      "obs_flood_frac": 0.2178
+     },
+     "skill_after": {
+      "brier": 0.1703,
+      "brier_skill_score": 0.0,
+      "cutoff": 0.1924,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.228,
+      "hit_rate": 0.372,
+      "false_alarm_ratio": 0.628,
+      "pred_flood_frac": 0.2178,
+      "obs_flood_frac": 0.2178
+     },
+     "note": null,
+     "error_margin_pct": 41.3
+    },
+    {
+     "pass_date": "20260817",
+     "scale_before": 0.389,
+     "bias_before": -1.957,
+     "scale_after": 0.368,
+     "bias_after": -2.214,
+     "skill_before": {
+      "brier": 0.0605,
+      "brier_skill_score": -0.006,
+      "cutoff": 0.1534,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.153,
+      "hit_rate": 0.265,
+      "false_alarm_ratio": 0.735,
+      "pred_flood_frac": 0.0642,
+      "obs_flood_frac": 0.0642
+     },
+     "skill_after": {
+      "brier": 0.0594,
+      "brier_skill_score": 0.011,
+      "cutoff": 0.1214,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.153,
+      "hit_rate": 0.265,
+      "false_alarm_ratio": 0.735,
+      "pred_flood_frac": 0.0642,
+      "obs_flood_frac": 0.0642
+     },
+     "note": null,
+     "error_margin_pct": 24.4
+    },
+    {
+     "pass_date": "20260829",
+     "scale_before": 0.368,
+     "bias_before": -2.214,
+     "scale_after": 0.381,
+     "bias_after": -1.88,
+     "skill_before": {
+      "brier": 0.1086,
+      "brier_skill_score": -0.008,
+      "cutoff": 0.0964,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.186,
+      "hit_rate": 0.314,
+      "false_alarm_ratio": 0.686,
+      "pred_flood_frac": 0.1229,
+      "obs_flood_frac": 0.1228
+     },
+     "skill_after": {
+      "brier": 0.1061,
+      "brier_skill_score": 0.015,
+      "cutoff": 0.1296,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.186,
+      "hit_rate": 0.314,
+      "false_alarm_ratio": 0.686,
+      "pred_flood_frac": 0.1229,
+      "obs_flood_frac": 0.1228
+     },
+     "note": null,
+     "error_margin_pct": 32.6
+    },
+    {
+     "pass_date": "20260910",
+     "scale_before": 0.381,
+     "bias_before": -1.88,
+     "scale_after": 0.364,
+     "bias_after": -1.762,
+     "skill_before": {
+      "brier": 0.118,
+      "brier_skill_score": 0.018,
+      "cutoff": 0.1535,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.201,
+      "hit_rate": 0.335,
+      "false_alarm_ratio": 0.665,
+      "pred_flood_frac": 0.1398,
+      "obs_flood_frac": 0.1398
+     },
+     "skill_after": {
+      "brier": 0.1175,
+      "brier_skill_score": 0.023,
+      "cutoff": 0.1684,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.201,
+      "hit_rate": 0.335,
+      "false_alarm_ratio": 0.665,
+      "pred_flood_frac": 0.1398,
+      "obs_flood_frac": 0.1398
+     },
+     "note": null,
+     "error_margin_pct": 34.3
+    },
+    {
+     "pass_date": "20260922",
+     "scale_before": 0.364,
+     "bias_before": -1.762,
+     "scale_after": 0.387,
+     "bias_after": -1.87,
+     "skill_before": {
+      "brier": 0.0904,
+      "brier_skill_score": 0.022,
+      "cutoff": 0.1762,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.209,
+      "hit_rate": 0.345,
+      "false_alarm_ratio": 0.655,
+      "pred_flood_frac": 0.103,
+      "obs_flood_frac": 0.103
+     },
+     "skill_after": {
+      "brier": 0.0899,
+      "brier_skill_score": 0.027,
+      "cutoff": 0.1628,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.209,
+      "hit_rate": 0.345,
+      "false_alarm_ratio": 0.655,
+      "pred_flood_frac": 0.103,
+      "obs_flood_frac": 0.103
+     },
+     "note": null,
+     "error_margin_pct": 30.0
+    },
+    {
+     "pass_date": "20261004",
+     "scale_before": 0.387,
+     "bias_before": -1.87,
+     "scale_after": 0.449,
+     "bias_after": -1.685,
+     "skill_before": {
+      "brier": 0.0628,
+      "brier_skill_score": 0.021,
+      "cutoff": 0.0946,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.201,
+      "hit_rate": 0.335,
+      "false_alarm_ratio": 0.665,
+      "pred_flood_frac": 0.069,
+      "obs_flood_frac": 0.0689
+     },
+     "skill_after": {
+      "brier": 0.0625,
+      "brier_skill_score": 0.026,
+      "cutoff": 0.1057,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.201,
+      "hit_rate": 0.335,
+      "false_alarm_ratio": 0.665,
+      "pred_flood_frac": 0.069,
+      "obs_flood_frac": 0.0689
+     },
+     "note": null,
+     "error_margin_pct": 25.0
+    },
+    {
+     "pass_date": "20261013",
+     "scale_before": 0.449,
+     "bias_before": -1.685,
+     "scale_after": 0.487,
+     "bias_after": -1.54,
+     "skill_before": {
+      "brier": 0.0644,
+      "brier_skill_score": 0.025,
+      "cutoff": 0.1016,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.2,
+      "hit_rate": 0.333,
+      "false_alarm_ratio": 0.667,
+      "pred_flood_frac": 0.0711,
+      "obs_flood_frac": 0.0711
+     },
+     "skill_after": {
+      "brier": 0.0641,
+      "brier_skill_score": 0.029,
+      "cutoff": 0.1114,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.2,
+      "hit_rate": 0.333,
+      "false_alarm_ratio": 0.667,
+      "pred_flood_frac": 0.0711,
+      "obs_flood_frac": 0.0711
+     },
+     "note": null,
+     "error_margin_pct": 25.3
+    },
+    {
+     "pass_date": "20261016",
+     "scale_before": 0.487,
+     "bias_before": -1.54,
+     "scale_after": 0.535,
+     "bias_after": -1.516,
+     "skill_before": {
+      "brier": 0.0497,
+      "brier_skill_score": 0.027,
+      "cutoff": 0.1083,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.202,
+      "hit_rate": 0.337,
+      "false_alarm_ratio": 0.664,
+      "pred_flood_frac": 0.0541,
+      "obs_flood_frac": 0.054
+     },
+     "skill_after": {
+      "brier": 0.0496,
+      "brier_skill_score": 0.03,
+      "cutoff": 0.1052,
+      "cutoff_method": "frequency-matched (predicted wet fraction = observed)",
+      "csi": 0.202,
+      "hit_rate": 0.337,
+      "false_alarm_ratio": 0.664,
+      "pred_flood_frac": 0.0541,
+      "obs_flood_frac": 0.054
+     },
+     "note": null,
+     "error_margin_pct": 22.3
+    }
+   ],
+   "status": "calibrated"
+  }
+ },
+ "weather": {
+  "antecedent_dates": [
+   "2026-11-09",
+   "2026-11-10",
+   "2026-11-11"
+  ],
+  "antecedent_mm": [
+   0.4,
+   2.7,
+   0.3
+  ],
+  "forecast_dates": [
+   "2026-11-12",
+   "2026-11-13",
+   "2026-11-14",
+   "2026-11-15",
+   "2026-11-16",
+   "2026-11-17",
+   "2026-11-18"
+  ],
+  "forecast_mm": [
+   1.5,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "baseline_2yr_mean_daily_mm": 6.88,
+  "baseline_heavy_p90_mm": 27.6,
+  "baseline_period": [
+   "2024-11-05",
+   "2026-11-05"
+  ],
+  "sources": {
+   "forecast": "Open-Meteo",
+   "baseline": "NASA POWER PRECTOTCORR"
+  },
+  "mode": "live"
+ },
+ "sources": {
+  "river_khal": "Sentinel-1 2-yr dry season + Sentinel-2 NDWI + JRC GSW (Earth Engine)",
+  "hand": "MERIT Hydro HAND",
+  "dem": "Copernicus GLO-30 (EGM2008 geoid)"
+ }
+}

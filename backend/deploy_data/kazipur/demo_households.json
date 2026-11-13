@@ -1,0 +1,1295 @@
+{
+ "_note": "Real union centre points (geoBoundaries) and their real distance to new water on the NISAR 24 Jul 2026 pass (069A, threshold T and T-1 dB). Households are demo participants placed there, not residents.",
+ "pass": "069A_20260724",
+ "visitor": {
+  "union_id": "29066614B9254577622986",
+  "union": "Balia Dighi",
+  "upazila": "Gabtali",
+  "lat": 24.78896,
+  "lon": 89.51294,
+  "d_mid_m": 251,
+  "d_strict_m": 360
+ },
+ "households": [
+  {
+   "union_id": "29066614B31804180184173",
+   "union": "Gopalnagar",
+   "upazila": "Dhunat",
+   "lat": 24.59201,
+   "lon": 89.58029,
+   "d_mid_m": 255,
+   "d_strict_m": 628
+  },
+  {
+   "union_id": "29066614B94988653554921",
+   "union": "Elenga",
+   "upazila": "Kalihati",
+   "lat": 24.34285,
+   "lon": 89.90173,
+   "d_mid_m": 172,
+   "d_strict_m": 2076
+  },
+  {
+   "union_id": "29066614B88209359372299",
+   "union": "Belkuchi",
+   "upazila": "Belkuchi",
+   "lat": 24.31926,
+   "lon": 89.73548,
+   "d_mid_m": 60,
+   "d_strict_m": 80
+  },
+  {
+   "union_id": "29066614B15033349648064",
+   "union": "Hatikumrul",
+   "upazila": "Ullah Para",
+   "lat": 24.40594,
+   "lon": 89.55214,
+   "d_mid_m": 1072,
+   "d_strict_m": 1616
+  },
+  {
+   "union_id": "29066614B39043488051854",
+   "union": "Chhangachha",
+   "upazila": "Sirajganj Sadar",
+   "lat": 24.52795,
+   "lon": 89.67059,
+   "d_mid_m": 1904,
+   "d_strict_m": 2841
+  }
+ ],
+ "all_ranked": [
+  {
+   "union_id": "29066614B30695252985374",
+   "union": "Alamnagar",
+   "upazila": "Gopalpur",
+   "lat": 24.54462,
+   "lon": 89.89578,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B27365652964548",
+   "union": "Anehola",
+   "upazila": "Ghatail",
+   "lat": 24.43286,
+   "lon": 89.90045,
+   "d_mid_m": 0,
+   "d_strict_m": 20
+  },
+  {
+   "union_id": "29066614B74512846552340",
+   "union": "Balibhadra",
+   "upazila": "Dhanbari",
+   "lat": 24.64434,
+   "lon": 89.87776,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B40153149489527",
+   "union": "Bangala",
+   "upazila": "Ullah Para",
+   "lat": 24.34769,
+   "lon": 89.48065,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B889847367601",
+   "union": "Bara Pangashi",
+   "upazila": "Ullah Para",
+   "lat": 24.28999,
+   "lon": 89.48333,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B11682462084095",
+   "union": "Beltail",
+   "upazila": "Shahjadpur",
+   "lat": 24.22128,
+   "lon": 89.6334,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B87000916238757",
+   "union": "Bohail",
+   "upazila": "Sariakandi",
+   "lat": 24.77399,
+   "lon": 89.6609,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B73285470094466",
+   "union": "Bri-lahiribari",
+   "upazila": "Faridpur",
+   "lat": 24.22517,
+   "lon": 89.46952,
+   "d_mid_m": 0,
+   "d_strict_m": 20
+  },
+  {
+   "union_id": "29066614B14953583936060",
+   "union": "Chaukibari",
+   "upazila": "Dhunat",
+   "lat": 24.62632,
+   "lon": 89.52509,
+   "d_mid_m": 0,
+   "d_strict_m": 720
+  },
+  {
+   "union_id": "29066614B10249423858663",
+   "union": "Dashkia",
+   "upazila": "Kalihati",
+   "lat": 24.35611,
+   "lon": 89.87759,
+   "d_mid_m": 0,
+   "d_strict_m": 100
+  },
+  {
+   "union_id": "29066614B29420072650593",
+   "union": "Dil Pasar",
+   "upazila": "Bhangura",
+   "lat": 24.25117,
+   "lon": 89.46253,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B65949046813995",
+   "union": "Durganagar",
+   "upazila": "Ullah Para",
+   "lat": 24.26837,
+   "lon": 89.54917,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B8571702998546",
+   "union": "Falda",
+   "upazila": "Bhuapur",
+   "lat": 24.51184,
+   "lon": 89.86983,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B34472282797115",
+   "union": "Gabsara",
+   "upazila": "Bhuapur",
+   "lat": 24.48857,
+   "lon": 89.79121,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B58900844981906",
+   "union": "Gopalpur Paurashava",
+   "upazila": "Gopalpur",
+   "lat": 24.56741,
+   "lon": 89.90803,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B50303356128955",
+   "union": "Kalia Haripur",
+   "upazila": "Sirajganj Sadar",
+   "lat": 24.42544,
+   "lon": 89.71552,
+   "d_mid_m": 0,
+   "d_strict_m": 321
+  },
+  {
+   "union_id": "29066614B76028201206405",
+   "union": "Katuli",
+   "upazila": "Tangail Sadar",
+   "lat": 24.22134,
+   "lon": 89.81802,
+   "d_mid_m": 0,
+   "d_strict_m": 1050
+  },
+  {
+   "union_id": "29066614B77343521713026",
+   "union": "Kayempur",
+   "upazila": "Shahjadpur",
+   "lat": 24.22708,
+   "lon": 89.54439,
+   "d_mid_m": 0,
+   "d_strict_m": 20
+  },
+  {
+   "union_id": "29066614B92970651993439",
+   "union": "Khukni",
+   "upazila": "Shahjadpur",
+   "lat": 24.21992,
+   "lon": 89.68034,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B60622091684243",
+   "union": "Mechhra",
+   "upazila": "Sirajganj Sadar",
+   "lat": 24.56271,
+   "lon": 89.73492,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B68119258038882",
+   "union": "Mirzapur",
+   "upazila": "Gopalpur",
+   "lat": 24.50009,
+   "lon": 89.89751,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B57399659374151",
+   "union": "Nagda Simla",
+   "upazila": "Gopalpur",
+   "lat": 24.59449,
+   "lon": 89.89394,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B15387702168275",
+   "union": "Nikrail",
+   "upazila": "Bhuapur",
+   "lat": 24.42133,
+   "lon": 89.79136,
+   "d_mid_m": 0,
+   "d_strict_m": 45
+  },
+  {
+   "union_id": "29066614B62238194953872",
+   "union": "Purnimaganti",
+   "upazila": "Ullah Para",
+   "lat": 24.32318,
+   "lon": 89.51868,
+   "d_mid_m": 0,
+   "d_strict_m": 89
+  },
+  {
+   "union_id": "29066614B17901437039769",
+   "union": "Salanga",
+   "upazila": "Ullah Para",
+   "lat": 24.38961,
+   "lon": 89.50344,
+   "d_mid_m": 0,
+   "d_strict_m": 28
+  },
+  {
+   "union_id": "29066614B25700145495793",
+   "union": "Tekani",
+   "upazila": "Kazipur",
+   "lat": 24.62461,
+   "lon": 89.71794,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B77163161233644",
+   "union": "Titpalla",
+   "upazila": "Jamalpur Sadar",
+   "lat": 24.78926,
+   "lon": 89.90872,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B3284704920786",
+   "union": "Udhunia",
+   "upazila": "Ullah Para",
+   "lat": 24.28372,
+   "lon": 89.46567,
+   "d_mid_m": 0,
+   "d_strict_m": 0
+  },
+  {
+   "union_id": "29066614B77434540852123",
+   "union": "Kazipur Paurashava",
+   "upazila": "Kazipur",
+   "lat": 24.64031,
+   "lon": 89.64221,
+   "d_mid_m": 20,
+   "d_strict_m": 360
+  },
+  {
+   "union_id": "29066614B2464731464020",
+   "union": "Nasipur",
+   "upazila": "Gabtali",
+   "lat": 24.77979,
+   "lon": 89.48268,
+   "d_mid_m": 20,
+   "d_strict_m": 396
+  },
+  {
+   "union_id": "29066614B59909452598014",
+   "union": "Natuar Para",
+   "upazila": "Kazipur",
+   "lat": 24.68515,
+   "lon": 89.69403,
+   "d_mid_m": 20,
+   "d_strict_m": 20
+  },
+  {
+   "union_id": "29066614B73135537460214",
+   "union": "Nishchintapur",
+   "upazila": "Kazipur",
+   "lat": 24.64411,
+   "lon": 89.75883,
+   "d_mid_m": 20,
+   "d_strict_m": 45
+  },
+  {
+   "union_id": "29066614B23548343717113",
+   "union": "Pungali",
+   "upazila": "Faridpur",
+   "lat": 24.21448,
+   "lon": 89.4954,
+   "d_mid_m": 20,
+   "d_strict_m": 63
+  },
+  {
+   "union_id": "29066614B85739088182885",
+   "union": "Royganj Paurashava",
+   "upazila": "Royganj",
+   "lat": 24.51532,
+   "lon": 89.53191,
+   "d_mid_m": 20,
+   "d_strict_m": 20
+  },
+  {
+   "union_id": "29066614B46567212298859",
+   "union": "Sughat",
+   "upazila": "Sherpur",
+   "lat": 24.60744,
+   "lon": 89.48802,
+   "d_mid_m": 20,
+   "d_strict_m": 40
+  },
+  {
+   "union_id": "29066614B63898729344674",
+   "union": "Digpaith",
+   "upazila": "Jamalpur Sadar",
+   "lat": 24.78824,
+   "lon": 89.91527,
+   "d_mid_m": 28,
+   "d_strict_m": 28
+  },
+  {
+   "union_id": "29066614B9787894224603",
+   "union": "Salla",
+   "upazila": "Kalihati",
+   "lat": 24.38077,
+   "lon": 89.87883,
+   "d_mid_m": 28,
+   "d_strict_m": 555
+  },
+  {
+   "union_id": "29066614B75519297229397",
+   "union": "Bara Dhul",
+   "upazila": "Belkuchi",
+   "lat": 24.28646,
+   "lon": 89.75037,
+   "d_mid_m": 40,
+   "d_strict_m": 40
+  },
+  {
+   "union_id": "29066614B49202710044128",
+   "union": "Elangi",
+   "upazila": "Dhunat",
+   "lat": 24.69784,
+   "lon": 89.50025,
+   "d_mid_m": 40,
+   "d_strict_m": 40
+  },
+  {
+   "union_id": "29066614B83815576455909",
+   "union": "Mahadan",
+   "upazila": "Sarishabari",
+   "lat": 24.7592,
+   "lon": 89.89018,
+   "d_mid_m": 40,
+   "d_strict_m": 144
+  },
+  {
+   "union_id": "29066614B44690725148188",
+   "union": "Dhunat",
+   "upazila": "Dhunat",
+   "lat": 24.66386,
+   "lon": 89.52405,
+   "d_mid_m": 57,
+   "d_strict_m": 57
+  },
+  {
+   "union_id": "29066614B53062779557034",
+   "union": "Pingna",
+   "upazila": "Sarishabari",
+   "lat": 24.60622,
+   "lon": 89.8037,
+   "d_mid_m": 57,
+   "d_strict_m": 72
+  },
+  {
+   "union_id": "29066614B88209359372299",
+   "union": "Belkuchi",
+   "upazila": "Belkuchi",
+   "lat": 24.31926,
+   "lon": 89.73548,
+   "d_mid_m": 60,
+   "d_strict_m": 80
+  },
+  {
+   "union_id": "29066614B45191340422035",
+   "union": "Bhangabari",
+   "upazila": "Belkuchi",
+   "lat": 24.3067,
+   "lon": 89.67242,
+   "d_mid_m": 60,
+   "d_strict_m": 60
+  },
+  {
+   "union_id": "29066614B45291353663559",
+   "union": "Daulatpur",
+   "upazila": "Belkuchi",
+   "lat": 24.25544,
+   "lon": 89.68607,
+   "d_mid_m": 60,
+   "d_strict_m": 63
+  },
+  {
+   "union_id": "29066614B19351406623578",
+   "union": "Narandia",
+   "upazila": "Kalihati",
+   "lat": 24.40315,
+   "lon": 89.89533,
+   "d_mid_m": 60,
+   "d_strict_m": 1381
+  },
+  {
+   "union_id": "29066614B81471152048310",
+   "union": "Khamarkandi",
+   "upazila": "Sherpur",
+   "lat": 24.70151,
+   "lon": 89.47908,
+   "d_mid_m": 63,
+   "d_strict_m": 80
+  },
+  {
+   "union_id": "29066614B8787242116193",
+   "union": "Ramkrishnapur",
+   "upazila": "Ullah Para",
+   "lat": 24.39421,
+   "lon": 89.4712,
+   "d_mid_m": 72,
+   "d_strict_m": 72
+  },
+  {
+   "union_id": "29066614B78965963550753",
+   "union": "Dhukaria Bera",
+   "upazila": "Belkuchi",
+   "lat": 24.25739,
+   "lon": 89.64442,
+   "d_mid_m": 80,
+   "d_strict_m": 89
+  },
+  {
+   "union_id": "29066614B16986329306715",
+   "union": "Paiska",
+   "upazila": "Dhanbari",
+   "lat": 24.6878,
+   "lon": 89.90945,
+   "d_mid_m": 82,
+   "d_strict_m": 333
+  },
+  {
+   "union_id": "29066614B84246303101584",
+   "union": "Nimgachhi",
+   "upazila": "Dhunat",
+   "lat": 24.7606,
+   "lon": 89.51353,
+   "d_mid_m": 89,
+   "d_strict_m": 465
+  },
+  {
+   "union_id": "29066614B92403137166523",
+   "union": "Birtara",
+   "upazila": "Dhanbari",
+   "lat": 24.71749,
+   "lon": 89.89514,
+   "d_mid_m": 100,
+   "d_strict_m": 141
+  },
+  {
+   "union_id": "29066614B32821610737445",
+   "union": "Chikashi",
+   "upazila": "Dhunat",
+   "lat": 24.75413,
+   "lon": 89.5637,
+   "d_mid_m": 100,
+   "d_strict_m": 100
+  },
+  {
+   "union_id": "29066614B45487044820485",
+   "union": "Durgapur",
+   "upazila": "Kalihati",
+   "lat": 24.35785,
+   "lon": 89.84589,
+   "d_mid_m": 108,
+   "d_strict_m": 140
+  },
+  {
+   "union_id": "29066614B15740991825122",
+   "union": "Khanpur",
+   "upazila": "Sherpur",
+   "lat": 24.6556,
+   "lon": 89.48187,
+   "d_mid_m": 108,
+   "d_strict_m": 660
+  },
+  {
+   "union_id": "29066614B40785525406062",
+   "union": "Khas Rajbari",
+   "upazila": "Kazipur",
+   "lat": 24.73982,
+   "lon": 89.69232,
+   "d_mid_m": 113,
+   "d_strict_m": 108
+  },
+  {
+   "union_id": "29066614B49337834681903",
+   "union": "Narnia",
+   "upazila": "Shahjadpur",
+   "lat": 24.21906,
+   "lon": 89.6014,
+   "d_mid_m": 117,
+   "d_strict_m": 120
+  },
+  {
+   "union_id": "29066614B3140279907841",
+   "union": "Birhati",
+   "upazila": "Bhuapur",
+   "lat": 24.4253,
+   "lon": 89.86575,
+   "d_mid_m": 120,
+   "d_strict_m": 643
+  },
+  {
+   "union_id": "29066614B20057181211944",
+   "union": "Rajapur",
+   "upazila": "Belkuchi",
+   "lat": 24.34611,
+   "lon": 89.7186,
+   "d_mid_m": 126,
+   "d_strict_m": 301
+  },
+  {
+   "union_id": "29066614B79418462204105",
+   "union": "Bhadraghat",
+   "upazila": "Kamarkhanda",
+   "lat": 24.40973,
+   "lon": 89.61122,
+   "d_mid_m": 128,
+   "d_strict_m": 481
+  },
+  {
+   "union_id": "29066614B77852574533228",
+   "union": "Amrool",
+   "upazila": "Shajahanpur",
+   "lat": 24.73446,
+   "lon": 89.48065,
+   "d_mid_m": 134,
+   "d_strict_m": 144
+  },
+  {
+   "union_id": "29066614B7984353153084",
+   "union": "Sarishabari Paurashava",
+   "upazila": "Sarishabari",
+   "lat": 24.7493,
+   "lon": 89.84003,
+   "d_mid_m": 134,
+   "d_strict_m": 161
+  },
+  {
+   "union_id": "29066614B63877851042239",
+   "union": "Mohanpur",
+   "upazila": "Ullah Para",
+   "lat": 24.24154,
+   "lon": 89.4953,
+   "d_mid_m": 140,
+   "d_strict_m": 140
+  },
+  {
+   "union_id": "29066614B56531814371214",
+   "union": "Salap",
+   "upazila": "Ullah Para",
+   "lat": 24.27222,
+   "lon": 89.60871,
+   "d_mid_m": 140,
+   "d_strict_m": 234
+  },
+  {
+   "union_id": "29066614B35457284084886",
+   "union": "Bahuli",
+   "upazila": "Sirajganj Sadar",
+   "lat": 24.47161,
+   "lon": 89.6427,
+   "d_mid_m": 141,
+   "d_strict_m": 1083
+  },
+  {
+   "union_id": "29066614B41359218766443",
+   "union": "Hugra",
+   "upazila": "Tangail Sadar",
+   "lat": 24.26378,
+   "lon": 89.81813,
+   "d_mid_m": 141,
+   "d_strict_m": 260
+  },
+  {
+   "union_id": "29066614B45285033509386",
+   "union": "Sadia Chandpur",
+   "upazila": "Chauhali",
+   "lat": 24.2423,
+   "lon": 89.74808,
+   "d_mid_m": 156,
+   "d_strict_m": 172
+  },
+  {
+   "union_id": "29066614B92328893142251",
+   "union": "Mahishaban",
+   "upazila": "Gabtali",
+   "lat": 24.79891,
+   "lon": 89.47988,
+   "d_mid_m": 161,
+   "d_strict_m": 675
+  },
+  {
+   "union_id": "29066614B55526853277732",
+   "union": "Magra",
+   "upazila": "Tangail Sadar",
+   "lat": 24.32745,
+   "lon": 89.87099,
+   "d_mid_m": 170,
+   "d_strict_m": 1000
+  },
+  {
+   "union_id": "29066614B47866869946726",
+   "union": "Arjuna",
+   "upazila": "Bhuapur",
+   "lat": 24.54213,
+   "lon": 89.80607,
+   "d_mid_m": 172,
+   "d_strict_m": 200
+  },
+  {
+   "union_id": "29066614B94988653554921",
+   "union": "Elenga",
+   "upazila": "Kalihati",
+   "lat": 24.34285,
+   "lon": 89.90173,
+   "d_mid_m": 172,
+   "d_strict_m": 2076
+  },
+  {
+   "union_id": "29066614B50066021446771",
+   "union": "Char Girish",
+   "upazila": "Kazipur",
+   "lat": 24.69489,
+   "lon": 89.75514,
+   "d_mid_m": 179,
+   "d_strict_m": 197
+  },
+  {
+   "union_id": "29066614B21442846978122",
+   "union": "Lakher Para",
+   "upazila": "Ghatail",
+   "lat": 24.46634,
+   "lon": 89.89412,
+   "d_mid_m": 180,
+   "d_strict_m": 224
+  },
+  {
+   "union_id": "29066614B1344935738010",
+   "union": "Satpoa",
+   "upazila": "Kazipur",
+   "lat": 24.77026,
+   "lon": 89.77619,
+   "d_mid_m": 180,
+   "d_strict_m": 784
+  },
+  {
+   "union_id": "29066614B98068863009834",
+   "union": "Gobindasi",
+   "upazila": "Bhuapur",
+   "lat": 24.44222,
+   "lon": 89.83645,
+   "d_mid_m": 190,
+   "d_strict_m": 556
+  },
+  {
+   "union_id": "29066614B92975352782607",
+   "union": "Mathurapur",
+   "upazila": "Dhunat",
+   "lat": 24.57733,
+   "lon": 89.54995,
+   "d_mid_m": 200,
+   "d_strict_m": 825
+  },
+  {
+   "union_id": "29066614B92903343312560",
+   "union": "Pathrail",
+   "upazila": "Delduar",
+   "lat": 24.20791,
+   "lon": 89.90094,
+   "d_mid_m": 200,
+   "d_strict_m": 240
+  },
+  {
+   "union_id": "29066614B33218306190030",
+   "union": "Brahmagachha",
+   "upazila": "Royganj",
+   "lat": 24.52431,
+   "lon": 89.58595,
+   "d_mid_m": 201,
+   "d_strict_m": 349
+  },
+  {
+   "union_id": "29066614B59423060551427",
+   "union": "Pangashi",
+   "upazila": "Royganj",
+   "lat": 24.47579,
+   "lon": 89.58974,
+   "d_mid_m": 201,
+   "d_strict_m": 382
+  },
+  {
+   "union_id": "29066614B71869995274858",
+   "union": "Shimabari",
+   "upazila": "Sherpur",
+   "lat": 24.56827,
+   "lon": 89.50135,
+   "d_mid_m": 201,
+   "d_strict_m": 628
+  },
+  {
+   "union_id": "29066614B56850513161414",
+   "union": "Kaler Para",
+   "upazila": "Dhunat",
+   "lat": 24.72694,
+   "lon": 89.5248,
+   "d_mid_m": 213,
+   "d_strict_m": 228
+  },
+  {
+   "union_id": "29066614B61755487261961",
+   "union": "Kamalpur",
+   "upazila": "Sariakandi",
+   "lat": 24.77316,
+   "lon": 89.59861,
+   "d_mid_m": 220,
+   "d_strict_m": 561
+  },
+  {
+   "union_id": "29066614B35213255479834",
+   "union": "Chandan Baisha",
+   "upazila": "Sariakandi",
+   "lat": 24.79276,
+   "lon": 89.60736,
+   "d_mid_m": 224,
+   "d_strict_m": 216
+  },
+  {
+   "union_id": "29066614B64115346220740",
+   "union": "Roy Daulatpur",
+   "upazila": "Kamarkhanda",
+   "lat": 24.33316,
+   "lon": 89.65112,
+   "d_mid_m": 226,
+   "d_strict_m": 233
+  },
+  {
+   "union_id": "29066614B36020247727503",
+   "union": "Dhunat Paurashava",
+   "upazila": "Dhunat",
+   "lat": 24.69096,
+   "lon": 89.5411,
+   "d_mid_m": 243,
+   "d_strict_m": 1003
+  },
+  {
+   "union_id": "29066614B21119783475401",
+   "union": "Gandail",
+   "upazila": "Kazipur",
+   "lat": 24.61724,
+   "lon": 89.62895,
+   "d_mid_m": 244,
+   "d_strict_m": 2072
+  },
+  {
+   "union_id": "29066614B49761015319599",
+   "union": "Musuddi",
+   "upazila": "Dhanbari",
+   "lat": 24.66571,
+   "lon": 89.89426,
+   "d_mid_m": 244,
+   "d_strict_m": 272
+  },
+  {
+   "union_id": "29066614B9254577622986",
+   "union": "Balia Dighi",
+   "upazila": "Gabtali",
+   "lat": 24.78896,
+   "lon": 89.51294,
+   "d_mid_m": 251,
+   "d_strict_m": 360
+  },
+  {
+   "union_id": "29066614B31804180184173",
+   "union": "Gopalnagar",
+   "upazila": "Dhunat",
+   "lat": 24.59201,
+   "lon": 89.58029,
+   "d_mid_m": 255,
+   "d_strict_m": 628
+  },
+  {
+   "union_id": "29066614B2840658946769",
+   "union": "Doail",
+   "upazila": "Sarishabari",
+   "lat": 24.70251,
+   "lon": 89.86405,
+   "d_mid_m": 279,
+   "d_strict_m": 306
+  },
+  {
+   "union_id": "29066614B96285607997061",
+   "union": "Ghurka",
+   "upazila": "Royganj",
+   "lat": 24.46521,
+   "lon": 89.51341,
+   "d_mid_m": 281,
+   "d_strict_m": 330
+  },
+  {
+   "union_id": "29066614B70992689161272",
+   "union": "Belkuchi Paurashava",
+   "upazila": "Belkuchi",
+   "lat": 24.28627,
+   "lon": 89.71326,
+   "d_mid_m": 286,
+   "d_strict_m": 305
+  },
+  {
+   "union_id": "29066614B82087285083208",
+   "union": "Porabari",
+   "upazila": "Tangail Sadar",
+   "lat": 24.22065,
+   "lon": 89.87013,
+   "d_mid_m": 286,
+   "d_strict_m": 1271
+  },
+  {
+   "union_id": "29066614B66117723921511",
+   "union": "Bhatara",
+   "upazila": "Sarishabari",
+   "lat": 24.78131,
+   "lon": 89.86963,
+   "d_mid_m": 297,
+   "d_strict_m": 860
+  },
+  {
+   "union_id": "29066614B18607710787611",
+   "union": "Ullah Para Paurashava",
+   "upazila": "Ullah Para",
+   "lat": 24.30544,
+   "lon": 89.57781,
+   "d_mid_m": 305,
+   "d_strict_m": 896
+  },
+  {
+   "union_id": "29066614B32302742844740",
+   "union": "Danya",
+   "upazila": "Tangail Sadar",
+   "lat": 24.25838,
+   "lon": 89.86941,
+   "d_mid_m": 316,
+   "d_strict_m": 539
+  },
+  {
+   "union_id": "29066614B11006239062001",
+   "union": "Pogaldigha",
+   "upazila": "Sarishabari",
+   "lat": 24.70323,
+   "lon": 89.81323,
+   "d_mid_m": 320,
+   "d_strict_m": 340
+  },
+  {
+   "union_id": "29066614B38719190719431",
+   "union": "Kamrabad",
+   "upazila": "Sarishabari",
+   "lat": 24.77752,
+   "lon": 89.82462,
+   "d_mid_m": 322,
+   "d_strict_m": 322
+  },
+  {
+   "union_id": "29066614B79342204949030",
+   "union": "Hadira",
+   "upazila": "Gopalpur",
+   "lat": 24.62776,
+   "lon": 89.89322,
+   "d_mid_m": 340,
+   "d_strict_m": 382
+  },
+  {
+   "union_id": "29066614B73436810985088",
+   "union": "Silimpur",
+   "upazila": "Tangail Sadar",
+   "lat": 24.21103,
+   "lon": 89.89141,
+   "d_mid_m": 344,
+   "d_strict_m": 588
+  },
+  {
+   "union_id": "29066614B66854720265180",
+   "union": "Baniajan",
+   "upazila": "Dhanbari",
+   "lat": 24.72607,
+   "lon": 89.91223,
+   "d_mid_m": 349,
+   "d_strict_m": 420
+  },
+  {
+   "union_id": "29066614B10728356220272",
+   "union": "Jhawail",
+   "upazila": "Gopalpur",
+   "lat": 24.59935,
+   "lon": 89.84991,
+   "d_mid_m": 349,
+   "d_strict_m": 481
+  },
+  {
+   "union_id": "29066614B64289030979686",
+   "union": "Sthal",
+   "upazila": "Chauhali",
+   "lat": 24.21307,
+   "lon": 89.74662,
+   "d_mid_m": 361,
+   "d_strict_m": 397
+  },
+  {
+   "union_id": "29066614B63909941428675",
+   "union": "Aona",
+   "upazila": "Sarishabari",
+   "lat": 24.65217,
+   "lon": 89.82465,
+   "d_mid_m": 384,
+   "d_strict_m": 467
+  },
+  {
+   "union_id": "29066614B37785506591699",
+   "union": "Sidhuli",
+   "upazila": "Madarganj",
+   "lat": 24.79181,
+   "lon": 89.80318,
+   "d_mid_m": 386,
+   "d_strict_m": 569
+  },
+  {
+   "union_id": "29066614B61982308157018",
+   "union": "Gala",
+   "upazila": "Tangail Sadar",
+   "lat": 24.29993,
+   "lon": 89.89795,
+   "d_mid_m": 398,
+   "d_strict_m": 546
+  },
+  {
+   "union_id": "29066614B81083113769951",
+   "union": "Dhangara",
+   "upazila": "Royganj",
+   "lat": 24.51671,
+   "lon": 89.54399,
+   "d_mid_m": 405,
+   "d_strict_m": 1145
+  },
+  {
+   "union_id": "29066614B96064890030964",
+   "union": "Jalalpur",
+   "upazila": "Shahjadpur",
+   "lat": 24.21012,
+   "lon": 89.69163,
+   "d_mid_m": 442,
+   "d_strict_m": 602
+  },
+  {
+   "union_id": "29066614B61708774655607",
+   "union": "Mansur Nagar",
+   "upazila": "Kazipur",
+   "lat": 24.7498,
+   "lon": 89.74478,
+   "d_mid_m": 449,
+   "d_strict_m": 468
+  },
+  {
+   "union_id": "29066614B75317137386752",
+   "union": "Dhubil",
+   "upazila": "Royganj",
+   "lat": 24.44448,
+   "lon": 89.48726,
+   "d_mid_m": 462,
+   "d_strict_m": 513
+  },
+  {
+   "union_id": "29066614B71806832067312",
+   "union": "Tangail Paurashava",
+   "upazila": "Tangail Sadar",
+   "lat": 24.2441,
+   "lon": 89.89644,
+   "d_mid_m": 464,
+   "d_strict_m": 2446
+  },
+  {
+   "union_id": "29066614B19980569982514",
+   "union": "Nalka",
+   "upazila": "Royganj",
+   "lat": 24.44623,
+   "lon": 89.56673,
+   "d_mid_m": 467,
+   "d_strict_m": 523
+  },
+  {
+   "union_id": "29066614B65602327284090",
+   "union": "Dhamainagar",
+   "upazila": "Royganj",
+   "lat": 24.51965,
+   "lon": 89.4709,
+   "d_mid_m": 477,
+   "d_strict_m": 1075
+  },
+  {
+   "union_id": "29066614B4393331513129",
+   "union": "Chalitadanga",
+   "upazila": "Kazipur",
+   "lat": 24.64657,
+   "lon": 89.59697,
+   "d_mid_m": 480,
+   "d_strict_m": 556
+  },
+  {
+   "union_id": "29066614B22122902688483",
+   "union": "Jamtail",
+   "upazila": "Kamarkhanda",
+   "lat": 24.36634,
+   "lon": 89.65388,
+   "d_mid_m": 494,
+   "d_strict_m": 522
+  },
+  {
+   "union_id": "29066614B70768127880423",
+   "union": "Garadaha",
+   "upazila": "Shahjadpur",
+   "lat": 24.23575,
+   "lon": 89.58214,
+   "d_mid_m": 495,
+   "d_strict_m": 1146
+  },
+  {
+   "union_id": "29066614B69915410367892",
+   "union": "Hemnagar",
+   "upazila": "Gopalpur",
+   "lat": 24.55259,
+   "lon": 89.85783,
+   "d_mid_m": 526,
+   "d_strict_m": 883
+  },
+  {
+   "union_id": "29066614B79846087678827",
+   "union": "Gosainbari",
+   "upazila": "Dhunat",
+   "lat": 24.7219,
+   "lon": 89.59283,
+   "d_mid_m": 539,
+   "d_strict_m": 864
+  },
+  {
+   "union_id": "29066614B75432735457588",
+   "union": "Kutubpur",
+   "upazila": "Sariakandi",
+   "lat": 24.79717,
+   "lon": 89.57286,
+   "d_mid_m": 546,
+   "d_strict_m": 2441
+  },
+  {
+   "union_id": "29066614B11783672383851",
+   "union": "Khoksabari",
+   "upazila": "Sirajganj Sadar",
+   "lat": 24.4928,
+   "lon": 89.68526,
+   "d_mid_m": 563,
+   "d_strict_m": 1566
+  },
+  {
+   "union_id": "29066614B74638149457729",
+   "union": "Shialkul",
+   "upazila": "Sirajganj Sadar",
+   "lat": 24.43677,
+   "lon": 89.65324,
+   "d_mid_m": 600,
+   "d_strict_m": 1668
+  },
+  {
+   "union_id": "29066614B11639638752154",
+   "union": "Saidabad",
+   "upazila": "Sirajganj Sadar",
+   "lat": 24.38781,
+   "lon": 89.72486,
+   "d_mid_m": 614,
+   "d_strict_m": 672
+  },
+  {
+   "union_id": "29066614B80334765483388",
+   "union": "Pancha Krushi",
+   "upazila": "Ullah Para",
+   "lat": 24.3254,
+   "lon": 89.60105,
+   "d_mid_m": 638,
+   "d_strict_m": 888
+  },
+  {
+   "union_id": "29066614B3598643304292",
+   "union": "Barahar",
+   "upazila": "Ullah Para",
+   "lat": 24.36414,
+   "lon": 89.57532,
+   "d_mid_m": 648,
+   "d_strict_m": 937
+  },
+  {
+   "union_id": "29066614B44440833188756",
+   "union": "Chandaikona",
+   "upazila": "Royganj",
+   "lat": 24.52677,
+   "lon": 89.49932,
+   "d_mid_m": 709,
+   "d_strict_m": 735
+  },
+  {
+   "union_id": "29066614B36461974908515",
+   "union": "Sonakhara",
+   "upazila": "Royganj",
+   "lat": 24.48157,
+   "lon": 89.47569,
+   "d_mid_m": 722,
+   "d_strict_m": 1163
+  },
+  {
+   "union_id": "29066614B36295446064144",
+   "union": "Baghbati",
+   "upazila": "Sirajganj Sadar",
+   "lat": 24.52012,
+   "lon": 89.62691,
+   "d_mid_m": 757,
+   "d_strict_m": 1154
+  },
+  {
+   "union_id": "29066614B51213638178759",
+   "union": "Baghil",
+   "upazila": "Tangail Sadar",
+   "lat": 24.29428,
+   "lon": 89.86548,
+   "d_mid_m": 806,
+   "d_strict_m": 877
+  },
+  {
+   "union_id": "29066614B54282497022387",
+   "union": "Jhawail",
+   "upazila": "Kamarkhanda",
+   "lat": 24.39885,
+   "lon": 89.65799,
+   "d_mid_m": 841,
+   "d_strict_m": 861
+  },
+  {
+   "union_id": "29066614B14697296374434",
+   "union": "Bhuapur Paurashava",
+   "upazila": "Bhuapur",
+   "lat": 24.46968,
+   "lon": 89.86283,
+   "d_mid_m": 880,
+   "d_strict_m": 1790
+  },
+  {
+   "union_id": "29066614B80713432142857",
+   "union": "Ratankandi",
+   "upazila": "Sirajganj Sadar",
+   "lat": 24.57473,
+   "lon": 89.63055,
+   "d_mid_m": 934,
+   "d_strict_m": 2451
+  },
+  {
+   "union_id": "29066614B6130142285578",
+   "union": "Bhabanipur",
+   "upazila": "Sherpur",
+   "lat": 24.55823,
+   "lon": 89.47157,
+   "d_mid_m": 1020,
+   "d_strict_m": 1053
+  },
+  {
+   "union_id": "29066614B15033349648064",
+   "union": "Hatikumrul",
+   "upazila": "Ullah Para",
+   "lat": 24.40594,
+   "lon": 89.55214,
+   "d_mid_m": 1072,
+   "d_strict_m": 1616
+  },
+  {
+   "union_id": "29066614B3735872983456",
+   "union": "Sonamukhi",
+   "upazila": "Kazipur",
+   "lat": 24.67326,
+   "lon": 89.57557,
+   "d_mid_m": 1084,
+   "d_strict_m": 1305
+  },
+  {
+   "union_id": "29066614B2668105510108",
+   "union": "Sirajganj Paurashava",
+   "upazila": "Sirajganj Sadar",
+   "lat": 24.45829,
+   "lon": 89.70708,
+   "d_mid_m": 1208,
+   "d_strict_m": 1217
+  },
+  {
+   "union_id": "29066614B43724832432493",
+   "union": "Ullah Para",
+   "upazila": "Ullah Para",
+   "lat": 24.31118,
+   "lon": 89.55338,
+   "d_mid_m": 1646,
+   "d_strict_m": 1781
+  },
+  {
+   "union_id": "29066614B39043488051854",
+   "union": "Chhangachha",
+   "upazila": "Sirajganj Sadar",
+   "lat": 24.52795,
+   "lon": 89.67059,
+   "d_mid_m": 1904,
+   "d_strict_m": 2841
+  }
+ ]
+}

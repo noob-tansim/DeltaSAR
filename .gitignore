@@ -1,0 +1,32 @@
+# secrets and local state
+.env
+.env.*
+!.env.example
+*.db
+*.db-journal
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.mypy_cache/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/dev-dist/
+
+# full-resolution science data (too large for git; see docs/HISTORY.md for where it lives)
+backend/cache/
+backend/outputs/
+backend/outputs_next/
+backend/outputs_prev/
+*.h5
+
+# editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.vercel

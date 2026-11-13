@@ -1,0 +1,14 @@
+# Everything: the science pipeline (src/acquire, src/compute, src/pipeline), the API and the tests.
+# The deployed API needs only requirements-deploy.txt.
+-r requirements-deploy.txt
+scipy
+h5py
+earthengine-api
+earthaccess
+scikit-learn
+joblib
+pillow
+pytest
+httpx
+mypy
+python-dotenv

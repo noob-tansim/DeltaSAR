@@ -1,0 +1,69 @@
+{
+ "meta": {
+  "source": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/1.0.0/WMTSCapabilities.xml",
+  "retrieved_utc": "2026-11-12T13:29Z",
+  "url_template": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/{layer}/default/{YYYY-MM-DD}/{tile_matrix_set}/{z}/{y}/{x}.{ext}",
+  "note": "No key. Pass an explicit date. Tiles checked over the AOI at z=9, y=220, x=383."
+ },
+ "layers": [
+  {
+   "layer": "NISAR_L2_Geocoded_Polarimetric_Covariance",
+   "title": "NISAR backscatter, false colour (GCOV)",
+   "tile_matrix_set": "GoogleMapsCompatible_Level13",
+   "ext": "png",
+   "dates": "2026-04-14 to 2026-07-27, 2026-08-10 to 2026-11-10",
+   "checked": "2026-07-24, 2026-10-16 and 2026-11-09 return a picture of the Jamuna"
+  },
+  {
+   "layer": "OPERA_L3_Dynamic_Surface_Water_Extent-Sentinel-1",
+   "title": "OPERA water extent from Sentinel-1",
+   "tile_matrix_set": "GoogleMapsCompatible_Level12",
+   "ext": "png",
+   "dates": "to 2026-11-12",
+   "checked": "2026-11-10 returns a tile"
+  },
+  {
+   "layer": "OPERA_L3_Dynamic_Surface_Water_Extent-HLS",
+   "title": "OPERA water extent from Landsat and Sentinel-2",
+   "tile_matrix_set": "GoogleMapsCompatible_Level12",
+   "ext": "png",
+   "dates": "to 2026-11-05"
+  },
+  {
+   "layer": "OPERA_L2_Radiometric_Terrain_Corrected_SAR_Sentinel-1",
+   "title": "Sentinel-1 C-band backscatter (OPERA RTC)",
+   "tile_matrix_set": "GoogleMapsCompatible_Level12",
+   "ext": "png",
+   "dates": "to 2026-11-12"
+  },
+  {
+   "layer": "IMERG_Precipitation_Rate",
+   "title": "IMERG precipitation rate, daily",
+   "tile_matrix_set": "GoogleMapsCompatible_Level6",
+   "ext": "png",
+   "dates": "to 2026-11-11",
+   "checked": "2026-08-05 returns a tile"
+  },
+  {
+   "layer": "IMERG_Precipitation_Rate_30min",
+   "title": "IMERG precipitation rate, 30-minute",
+   "tile_matrix_set": "GoogleMapsCompatible_Level6",
+   "ext": "png",
+   "dates": "to 2026-11-12T07:30Z when read at 13:29Z, so about 6 h behind"
+  },
+  {
+   "layer": "MODIS_Combined_Flood_2-Day",
+   "title": "MODIS flood, 2-day window",
+   "tile_matrix_set": "GoogleMapsCompatible_Level9",
+   "ext": "png",
+   "dates": "to 2026-11-12"
+  },
+  {
+   "layer": "OrbitTracks_NISAR_Ascending",
+   "title": "NISAR orbit tracks",
+   "tile_matrix_set": "GoogleMapsCompatible_Level6",
+   "ext": "mvt",
+   "dates": "to 2026-11-12"
+  }
+ ]
+}

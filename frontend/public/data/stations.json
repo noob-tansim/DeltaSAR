@@ -1,0 +1,18 @@
+{
+ "meta": {
+  "source": "FFWC public tables, http://old.ffwc.gov.bd/ffwc_charts/waterlevelobs.php and index.php?stid=<id>",
+  "retrieved_utc": "2026-11-12T13:33Z",
+  "unit": "m MSL",
+  "note": "Danger levels as shown by FFWC on that day. lat/lon are approximate town positions, used only to pick the nearer station for a home; check them before any real use."
+ },
+ "stations": [
+  {"name": "Kazipur", "ffwc_name": "Kazipur", "stid": 87, "river": "Jamuna", "danger_level_m": 14.80, "rhwl_m": 16.59,
+   "lat": 24.64, "lon": 89.65, "position": "approximate", "use_for_rule": true,
+   "source_url": "http://old.ffwc.gov.bd/ffwc_charts/index.php?stid=87"},
+  {"name": "Sirajganj", "ffwc_name": "Serajganj", "stid": 48, "river": "Jamuna", "danger_level_m": 12.90, "rhwl_m": 14.70,
+   "lat": 24.46, "lon": 89.71, "position": "approximate", "use_for_rule": true,
+   "source_url": "http://old.ffwc.gov.bd/ffwc_charts/index.php?stid=48"},
+  {"name": "Sariakandi", "ffwc_name": "Sariakandi", "stid": 95, "river": "Jamuna", "danger_level_m": 16.25, "use_for_rule": false},
+  {"name": "Bahadurabad", "ffwc_name": "Bahadurabad", "stid": 66, "river": "Jamuna", "danger_level_m": 19.05, "use_for_rule": false}
+ ]
+}

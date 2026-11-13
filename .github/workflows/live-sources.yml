@@ -1,0 +1,23 @@
+name: Live data sources
+# Asks NASA CMR, ASF, GIBS, EONET, POWER, IMERG (SERVIR ClimateSERV) and FFWC for real data about the reach,
+# once a day, so a broken upstream shows up before a demo does.
+on:
+  schedule:
+    - cron: "30 0 * * *"      # 06:30 in Dhaka
+  workflow_dispatch:
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements-deploy.txt pytest httpx
+      - run: python -m pytest tests/test_live_sources.py -v
+        env:
+          LIVE_TESTS: "1"

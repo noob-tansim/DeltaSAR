@@ -1,0 +1,485 @@
+{
+ "aoi": "kazipur",
+ "generated_utc": "2026-11-12T14:38:02+00:00",
+ "min_patch_ha": 1.0,
+ "grid": {
+  "crs": "EPSG:32645",
+  "pixel_m": 40,
+  "note": "resampled from 20 m with the minimum of each 2x2 block"
+ },
+ "levels": {
+  "strict": "T - 1 dB",
+  "mid": "T",
+  "loose": "T + 1 dB"
+ },
+ "passes": [
+  {
+   "track": "069A",
+   "date": "20260618",
+   "acquired_utc": "2026-06-18T23:21:35Z",
+   "published_utc": "2026-07-09T01:18:13Z",
+   "publication_source": "NASA CMR (granule record insert time)",
+   "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+   "cmr_id": "G4240316601-ASF",
+   "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+   "unknown_pct": 0.4,
+   "is_baseline": true,
+   "threshold_db": -15.62,
+   "threshold_method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)"
+  },
+  {
+   "track": "019D",
+   "date": "20260627",
+   "acquired_utc": "2026-06-27T12:42:43Z",
+   "published_utc": "2026-07-17T22:14:17Z",
+   "publication_source": "NASA CMR (granule record insert time)",
+   "granule_id": "NISAR_L2_PR_GCOV_024_019_D_076_2005_DHDH_M_20260627T124243_20260627T124317_P05023_N_F_J_001",
+   "cmr_id": "G4250873649-ASF",
+   "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+   "unknown_pct": 0.5,
+   "is_baseline": true,
+   "threshold_db": -14.06,
+   "threshold_method": "midpoint of channel vs stable-land medians (no clear histogram valley, whole scene or within 2 km of the river)"
+  },
+  {
+   "track": "069A",
+   "date": "20260630",
+   "acquired_utc": "2026-06-30T23:21:34Z",
+   "published_utc": "2026-07-16T03:17:18Z",
+   "publication_source": "NASA CMR (granule record insert time)",
+   "granule_id": "NISAR_L2_PR_GCOV_024_069_A_014_4005_DHDH_A_20260630T232134_20260630T232209_P05023_N_F_J_001",
+   "cmr_id": "G4248910017-ASF",
+   "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+   "unknown_pct": 0.4,
+   "is_baseline": false,
+   "threshold_db": -15.62,
+   "threshold_method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+   "tested_at_db": [
+    -16.62,
+    -15.62,
+    -14.62
+   ],
+   "baseline": {
+    "date": "20260618",
+    "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+    "acquired_utc": "2026-06-18T23:21:35Z"
+   },
+   "new_water_km2": {
+    "strict": 106.75,
+    "mid": 125.05,
+    "loose": 147.97
+   },
+   "range_within_25pct": true,
+   "files": {
+    "strict": "dist_069A_20260630_strict.tif",
+    "mid": "dist_069A_20260630_mid.tif",
+    "loose": "dist_069A_20260630_loose.tif"
+   },
+   "overlay": {
+    "url": "radar_rule/new_water_069A_20260630.png",
+    "bounds": [
+     89.461504,
+     24.205168,
+     89.917721,
+     24.799402
+    ]
+   }
+  },
+  {
+   "track": "069A",
+   "date": "20260712",
+   "acquired_utc": "2026-07-12T23:21:34Z",
+   "published_utc": "2026-07-19T14:40:52Z",
+   "publication_source": "NASA CMR (granule record insert time)",
+   "granule_id": "NISAR_L2_PR_GCOV_025_069_A_014_4005_DHDH_A_20260712T232134_20260712T232208_P05023_N_F_J_001",
+   "cmr_id": "G4252846523-ASF",
+   "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+   "unknown_pct": 0.4,
+   "is_baseline": false,
+   "threshold_db": -15.62,
+   "threshold_method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+   "tested_at_db": [
+    -16.62,
+    -15.62,
+    -14.62
+   ],
+   "baseline": {
+    "date": "20260618",
+    "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+    "acquired_utc": "2026-06-18T23:21:35Z"
+   },
+   "new_water_km2": {
+    "strict": 37.57,
+    "mid": 62.34,
+    "loose": 115.48
+   },
+   "range_within_25pct": false,
+   "files": {
+    "strict": "dist_069A_20260712_strict.tif",
+    "mid": "dist_069A_20260712_mid.tif",
+    "loose": "dist_069A_20260712_loose.tif"
+   },
+   "overlay": {
+    "url": "radar_rule/new_water_069A_20260712.png",
+    "bounds": [
+     89.461504,
+     24.205168,
+     89.917721,
+     24.799402
+    ]
+   }
+  },
+  {
+   "track": "069A",
+   "date": "20260724",
+   "acquired_utc": "2026-07-24T23:21:33Z",
+   "published_utc": "2026-07-27T07:21:14Z",
+   "publication_source": "NASA CMR (granule record insert time)",
+   "granule_id": "NISAR_L2_PR_GCOV_026_069_A_014_4005_DHDH_A_20260724T232133_20260724T232208_P05023_N_F_J_001",
+   "cmr_id": "G4261131483-ASF",
+   "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+   "unknown_pct": 0.4,
+   "is_baseline": false,
+   "threshold_db": -15.62,
+   "threshold_method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+   "tested_at_db": [
+    -16.62,
+    -15.62,
+    -14.62
+   ],
+   "baseline": {
+    "date": "20260618",
+    "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+    "acquired_utc": "2026-06-18T23:21:35Z"
+   },
+   "new_water_km2": {
+    "strict": 275.37,
+    "mid": 415.01,
+    "loose": 530.49
+   },
+   "range_within_25pct": false,
+   "files": {
+    "strict": "dist_069A_20260724_strict.tif",
+    "mid": "dist_069A_20260724_mid.tif",
+    "loose": "dist_069A_20260724_loose.tif"
+   },
+   "overlay": {
+    "url": "radar_rule/new_water_069A_20260724.png",
+    "bounds": [
+     89.461504,
+     24.205168,
+     89.917721,
+     24.799402
+    ]
+   }
+  },
+  {
+   "track": "069A",
+   "date": "20260817",
+   "acquired_utc": "2026-08-17T23:21:32Z",
+   "published_utc": "2026-08-23T00:58:02Z",
+   "publication_source": "NASA CMR (granule record insert time)",
+   "granule_id": "NISAR_L2_PR_GCOV_028_069_A_014_4005_DHDH_A_20260817T232132_20260817T232206_P05023_N_F_J_001",
+   "cmr_id": "G4285744971-ASF",
+   "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+   "unknown_pct": 0.5,
+   "is_baseline": false,
+   "threshold_db": -15.62,
+   "threshold_method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+   "tested_at_db": [
+    -16.62,
+    -15.62,
+    -14.62
+   ],
+   "baseline": {
+    "date": "20260618",
+    "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+    "acquired_utc": "2026-06-18T23:21:35Z"
+   },
+   "new_water_km2": {
+    "strict": 32.74,
+    "mid": 66.3,
+    "loose": 153.48
+   },
+   "range_within_25pct": false,
+   "files": {
+    "strict": "dist_069A_20260817_strict.tif",
+    "mid": "dist_069A_20260817_mid.tif",
+    "loose": "dist_069A_20260817_loose.tif"
+   },
+   "overlay": {
+    "url": "radar_rule/new_water_069A_20260817.png",
+    "bounds": [
+     89.461504,
+     24.205168,
+     89.917721,
+     24.799402
+    ]
+   }
+  },
+  {
+   "track": "069A",
+   "date": "20260829",
+   "acquired_utc": "2026-08-29T23:21:32Z",
+   "published_utc": "2026-08-31T21:41:42Z",
+   "publication_source": "NASA CMR (granule record insert time)",
+   "granule_id": "NISAR_L2_PR_GCOV_029_069_A_014_4005_DHDH_A_20260829T232132_20260829T232206_P05023_N_F_J_001",
+   "cmr_id": "G4294032847-ASF",
+   "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+   "unknown_pct": 0.4,
+   "is_baseline": false,
+   "threshold_db": -15.62,
+   "threshold_method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+   "tested_at_db": [
+    -16.62,
+    -15.62,
+    -14.62
+   ],
+   "baseline": {
+    "date": "20260618",
+    "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+    "acquired_utc": "2026-06-18T23:21:35Z"
+   },
+   "new_water_km2": {
+    "strict": 89.8,
+    "mid": 152.27,
+    "loose": 249.89
+   },
+   "range_within_25pct": false,
+   "files": {
+    "strict": "dist_069A_20260829_strict.tif",
+    "mid": "dist_069A_20260829_mid.tif",
+    "loose": "dist_069A_20260829_loose.tif"
+   },
+   "overlay": {
+    "url": "radar_rule/new_water_069A_20260829.png",
+    "bounds": [
+     89.461504,
+     24.205168,
+     89.917721,
+     24.799402
+    ]
+   }
+  },
+  {
+   "track": "069A",
+   "date": "20260910",
+   "acquired_utc": "2026-09-10T23:21:31Z",
+   "published_utc": "2026-09-13T22:03:22Z",
+   "publication_source": "NASA CMR (granule record insert time)",
+   "granule_id": "NISAR_L2_PR_GCOV_030_069_A_014_4005_DHDH_A_20260910T232131_20260910T232206_P05023_N_F_J_001",
+   "cmr_id": "G4310083498-ASF",
+   "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+   "unknown_pct": 0.5,
+   "is_baseline": false,
+   "threshold_db": -15.62,
+   "threshold_method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+   "tested_at_db": [
+    -16.62,
+    -15.62,
+    -14.62
+   ],
+   "baseline": {
+    "date": "20260618",
+    "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+    "acquired_utc": "2026-06-18T23:21:35Z"
+   },
+   "new_water_km2": {
+    "strict": 149.68,
+    "mid": 213.89,
+    "loose": 294.8
+   },
+   "range_within_25pct": false,
+   "files": {
+    "strict": "dist_069A_20260910_strict.tif",
+    "mid": "dist_069A_20260910_mid.tif",
+    "loose": "dist_069A_20260910_loose.tif"
+   },
+   "overlay": {
+    "url": "radar_rule/new_water_069A_20260910.png",
+    "bounds": [
+     89.461504,
+     24.205168,
+     89.917721,
+     24.799402
+    ]
+   }
+  },
+  {
+   "track": "069A",
+   "date": "20260922",
+   "acquired_utc": "2026-09-22T23:21:32Z",
+   "published_utc": "2026-09-24T20:49:05Z",
+   "publication_source": "NASA CMR (granule record insert time)",
+   "granule_id": "NISAR_L2_PR_GCOV_031_069_A_014_4005_DHDH_A_20260922T232132_20260922T232206_P05023_N_F_J_001",
+   "cmr_id": "G4322620068-ASF",
+   "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+   "unknown_pct": 0.5,
+   "is_baseline": false,
+   "threshold_db": -15.62,
+   "threshold_method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+   "tested_at_db": [
+    -16.62,
+    -15.62,
+    -14.62
+   ],
+   "baseline": {
+    "date": "20260618",
+    "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+    "acquired_utc": "2026-06-18T23:21:35Z"
+   },
+   "new_water_km2": {
+    "strict": 88.8,
+    "mid": 120.64,
+    "loose": 161.32
+   },
+   "range_within_25pct": false,
+   "files": {
+    "strict": "dist_069A_20260922_strict.tif",
+    "mid": "dist_069A_20260922_mid.tif",
+    "loose": "dist_069A_20260922_loose.tif"
+   },
+   "overlay": {
+    "url": "radar_rule/new_water_069A_20260922.png",
+    "bounds": [
+     89.461504,
+     24.205168,
+     89.917721,
+     24.799402
+    ]
+   }
+  },
+  {
+   "track": "069A",
+   "date": "20261004",
+   "acquired_utc": "2026-10-04T23:21:32Z",
+   "published_utc": "2026-10-07T00:36:28Z",
+   "publication_source": "NASA CMR (granule record insert time)",
+   "granule_id": "NISAR_L2_PR_GCOV_032_069_A_014_4005_DHDH_A_20261004T232132_20261004T232206_P05023_N_F_J_001",
+   "cmr_id": "G4345771157-ASF",
+   "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+   "unknown_pct": 0.4,
+   "is_baseline": false,
+   "threshold_db": -15.62,
+   "threshold_method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+   "tested_at_db": [
+    -16.62,
+    -15.62,
+    -14.62
+   ],
+   "baseline": {
+    "date": "20260618",
+    "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+    "acquired_utc": "2026-06-18T23:21:35Z"
+   },
+   "new_water_km2": {
+    "strict": 35.67,
+    "mid": 42.01,
+    "loose": 57.37
+   },
+   "range_within_25pct": false,
+   "files": {
+    "strict": "dist_069A_20261004_strict.tif",
+    "mid": "dist_069A_20261004_mid.tif",
+    "loose": "dist_069A_20261004_loose.tif"
+   },
+   "overlay": {
+    "url": "radar_rule/new_water_069A_20261004.png",
+    "bounds": [
+     89.461504,
+     24.205168,
+     89.917721,
+     24.799402
+    ]
+   }
+  },
+  {
+   "track": "019D",
+   "date": "20261013",
+   "acquired_utc": "2026-10-13T12:42:40Z",
+   "published_utc": "2026-10-15T13:01:25Z",
+   "publication_source": "NASA CMR (granule record insert time)",
+   "granule_id": "NISAR_L2_PR_GCOV_033_019_D_076_2005_DHDH_M_20261013T124240_20261013T124315_P05023_N_F_J_001",
+   "cmr_id": "G4367592137-ASF",
+   "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+   "unknown_pct": 0.6,
+   "is_baseline": false,
+   "threshold_db": -14.06,
+   "threshold_method": "midpoint of channel vs stable-land medians (no clear histogram valley, whole scene or within 2 km of the river)",
+   "tested_at_db": [
+    -15.06,
+    -14.06,
+    -13.06
+   ],
+   "baseline": {
+    "date": "20260627",
+    "granule_id": "NISAR_L2_PR_GCOV_024_019_D_076_2005_DHDH_M_20260627T124243_20260627T124317_P05023_N_F_J_001",
+    "acquired_utc": "2026-06-27T12:42:43Z"
+   },
+   "new_water_km2": {
+    "strict": 16.75,
+    "mid": 22.07,
+    "loose": 29.36
+   },
+   "range_within_25pct": false,
+   "files": {
+    "strict": "dist_019D_20261013_strict.tif",
+    "mid": "dist_019D_20261013_mid.tif",
+    "loose": "dist_019D_20261013_loose.tif"
+   },
+   "overlay": {
+    "url": "radar_rule/new_water_019D_20261013.png",
+    "bounds": [
+     89.461504,
+     24.205168,
+     89.917721,
+     24.799402
+    ]
+   }
+  },
+  {
+   "track": "069A",
+   "date": "20261016",
+   "acquired_utc": "2026-10-16T23:21:32Z",
+   "published_utc": "2026-10-18T20:59:03Z",
+   "publication_source": "NASA CMR (granule record insert time)",
+   "granule_id": "NISAR_L2_PR_GCOV_033_069_A_014_4005_DHDH_A_20261016T232132_20261016T232206_P05023_N_F_J_001",
+   "cmr_id": "G4376132583-ASF",
+   "processing_level": "L2 GCOV PROVISIONAL (CRID P05023)",
+   "unknown_pct": 0.4,
+   "is_baseline": false,
+   "threshold_db": -15.62,
+   "threshold_method": "histogram valley between water mode -18.12 dB and land mode -10.38 dB (whole scene)",
+   "tested_at_db": [
+    -16.62,
+    -15.62,
+    -14.62
+   ],
+   "baseline": {
+    "date": "20260618",
+    "granule_id": "NISAR_L2_PR_GCOV_023_069_A_014_4005_DHDH_A_20260618T232135_20260618T232210_P05023_N_F_J_001",
+    "acquired_utc": "2026-06-18T23:21:35Z"
+   },
+   "new_water_km2": {
+    "strict": 23.02,
+    "mid": 24.11,
+    "loose": 32.2
+   },
+   "range_within_25pct": true,
+   "files": {
+    "strict": "dist_069A_20261016_strict.tif",
+    "mid": "dist_069A_20261016_mid.tif",
+    "loose": "dist_069A_20261016_loose.tif"
+   },
+   "overlay": {
+    "url": "radar_rule/new_water_069A_20261016.png",
+    "bounds": [
+     89.461504,
+     24.205168,
+     89.917721,
+     24.799402
+    ]
+   }
+  }
+ ]
+}

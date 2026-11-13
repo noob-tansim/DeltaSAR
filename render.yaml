@@ -1,0 +1,40 @@
+# Render Blueprint: the DeltaSAR API. New → Blueprint → pick this repository.
+# The web app is deployed separately on Vercel (frontend/), the database is Supabase Postgres.
+services:
+  - type: web
+    name: deltasar-api
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free            # free sleeps after 15 min idle; use "starter" (no sleep) for the judging window
+    region: singapore     # closest Render region to Bangladesh; put Supabase in Singapore too
+    healthCheckPath: /api/v1/health
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        sync: false       # Supabase → Project Settings → Database → Connection string → Session pooler
+      - key: CONSOLE_TOKEN
+        generateValue: true
+      - key: ALLOWED_ORIGINS
+        value: https://deltasar.vercel.app
+      - key: ALLOWED_ORIGIN_REGEX
+        value: https://deltasar(-[a-z0-9-]+)?\.vercel\.app
+      - key: PUBLIC_BASE_URL
+        value: https://deltasar.vercel.app
+      - key: APPROVAL_WINDOW_S
+        value: "600"
+      - key: RETRY_AFTER_S
+        value: "300"
+      - key: LIVE_INPUTS
+        value: "1"
+      - key: VAPID_PUBLIC_KEY
+        sync: false
+      - key: VAPID_PRIVATE_KEY
+        sync: false
+      - key: VAPID_SUBJECT
+        value: mailto:team@example.org
+      - key: GEMINI_API_KEY
+        sync: false       # optional: free key from Google AI Studio (aistudio.google.com); empty = assistant off, FAQ still works
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
