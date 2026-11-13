@@ -35,8 +35,17 @@ def key() -> str:
     return os.environ.get("GEMINI_API_KEY", "").strip()
 
 
+DEFAULT_MODELS = "gemini-3.5-flash-lite,gemini-flash-lite-latest,gemini-3.5-flash"
+
+
+def models() -> list[str]:
+    """Models to try in order: a busy or retired model (HTTP 404/429/5xx, timeout) falls through to the next."""
+    raw = os.environ.get("GEMINI_MODELS") or os.environ.get("GEMINI_MODEL") or DEFAULT_MODELS
+    return [m.strip() for m in raw.split(",") if m.strip()]
+
+
 def model() -> str:
-    return os.environ.get("GEMINI_MODEL", "gemini-2.5-flash").strip()
+    return models()[0]
 
 
 SYSTEM = """You are "Ask DeltaSAR", the assistant on the DeltaSAR / বন্যা সাথী website (NASA Space Apps 2026, "Dancing with the SARs").
@@ -121,7 +130,7 @@ def build_request(body: AskIn) -> dict[str, Any]:
 
 @router.get("/status")
 def status() -> dict[str, Any]:
-    return {"enabled": bool(key()), "model": model() if key() else None, "provider": "Google Gemini API"}
+    return {"enabled": bool(key()), "models": models() if key() else None, "provider": "Google Gemini API"}
 
 
 @router.post("")
@@ -131,19 +140,42 @@ def ask(body: AskIn, request: Request) -> dict[str, Any]:
                 "note": "The assistant is switched off on this server (no GEMINI_API_KEY). The built-in questions still work."}
     if not _rate_ok(_client_ip(request)):
         raise HTTPException(429, "Too many questions in a short time; please wait a few minutes.")
-    try:
-        r = requests.post(GEMINI_URL.format(model=model()), json=build_request(body), timeout=30,
-                          headers={"x-goog-api-key": key(), "Content-Type": "application/json"})
-    except requests.RequestException as exc:
-        raise HTTPException(502, f"The assistant could not be reached ({type(exc).__name__}).")
-    if r.status_code != 200:
-        raise HTTPException(502, f"The assistant answered with HTTP {r.status_code}.")
-    data = r.json()
-    parts = ((data.get("candidates") or [{}])[0].get("content") or {}).get("parts") or []
-    text = "".join(p.get("text", "") for p in parts).strip()
-    if not text:
-        raise HTTPException(502, "The assistant gave no answer; please rephrase.")
+    def call(req: dict[str, Any]) -> tuple[str, str]:
+        last = "no model answered"
+        for m in models():
+            try:
+                resp = requests.post(GEMINI_URL.format(model=m), json=req, timeout=25,
+                                     headers={"x-goog-api-key": key(), "Content-Type": "application/json"})
+            except requests.RequestException as exc:
+                last = f"{m}: {type(exc).__name__}"
+                continue
+            if resp.status_code == 200:
+                parts = ((resp.json().get("candidates") or [{}])[0].get("content") or {}).get("parts") or []
+                text = "".join(p.get("text", "") for p in parts).strip()
+                if text:
+                    return text, m
+                last = f"{m}: empty answer"
+                continue
+            last = f"{m}: HTTP {resp.status_code}"
+            if resp.status_code not in (404, 429, 500, 502, 503, 504):
+                break
+        raise HTTPException(502, f"The assistant is busy right now ({last}); please try again in a minute.")
+
+    req = build_request(body)
+    text, used = call(req)
     bad = untraced_numbers(text)
-    return {"enabled": True, "answer": text, "model": model(), "grounded_on": "ask_facts.md",
+    if bad:      # one correction round: name the numbers that are not in the facts and ask for a fixed answer
+        req["contents"] += [{"role": "model", "parts": [{"text": text}]},
+                            {"role": "user", "parts": [{"text": "Your answer contains numbers that are not in the FACTS: "
+                                                                  + ", ".join(bad) + ". Rewrite the same answer, in the same language, "
+                                                                  "using only numbers that appear in the FACTS."}]}]
+        try:
+            text2, used2 = call(req)
+            if len(untraced_numbers(text2)) < len(bad):
+                text, used = text2, used2
+        except HTTPException:
+            pass
+    bad = untraced_numbers(text)
+    return {"enabled": True, "answer": text, "model": used, "grounded_on": "ask_facts.md",
             "numbers_verified": not bad, "untraced_numbers": bad,
             "note": "AI answer from the project's published facts. It may be wrong; it is not a warning."}

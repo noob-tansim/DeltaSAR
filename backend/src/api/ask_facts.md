@@ -31,7 +31,7 @@
 - Bank, not flood: on 4 Oct the river carried about 16,180 m³/s, less than 27,605 m³/s on 18 Jun (GloFAS model flow), so the change is the bank moving, not higher water.
 - Peak flooding: the 24 Jul pass saw about 776 km² of water in the reach (596 km² beyond the permanent channel). Flooded cropland peaked at 39,425 ha on 24 Jul. 7,296 ha of cropland was under water on 6 or more of the 10 track-069A passes.
 - Physical drivers: water extent follows upstream river flow more than local rain (about 5.8 km² more water per extra 1,000 m³/s, R² 0.21, weak because rising and falling rivers differ). A model using local rain alone showed no skill on any pass.
-- Polarisation: HH separates water from land best: contrast 9.0–11.6 dB in HH against 6.8–8.2 dB in HV, where water sits near the noise floor (about −23 dB).
+- Polarisation: HH separates water from land best: water–land contrast is 9.0–11.6 dB in HH but only 6.8–8.2 dB in HV. The reason: in HV (not HH), water is so dark that it sits near the sensor's noise floor (about −23 dB), so HV cannot separate it as well.
 - Forecast skill (mean CSI over 9 passes, each predicted without seeing it): river-flow rule 0.17, machine-learning model 0.48, "same as the last radar pass" 0.50. Persistence wins on 6 of 9 passes. So the app shows the newest picture and its age, never a forecast as fact.
 - Wettest day of the season in the reach by NASA IMERG: 75.2 mm on 5 Aug 2026; the default rain alert level is 76 mm (3 inches), so the rain rule correctly stayed silent.
 
@@ -52,3 +52,4 @@
 
 ## Safety
 - This is not an official warning. Official flood forecasts: FFWC and BMD. Call 1090 (free) for the government's voice forecast. In an emergency call 999.
+- In Bangla, exactly: "এটি সরকারি সতর্কবার্তা নয়। সরকারি পূর্বাভাস: FFWC ও BMD; বিনা খরচে ১০৯০ নম্বরে ফোন করুন। জরুরি প্রয়োজনে ৯৯৯।" The numbers are 1090 (১০৯০) and 999 (৯৯৯), never anything else.

@@ -36,5 +36,5 @@ services:
         value: mailto:team@example.org
       - key: GEMINI_API_KEY
         sync: false       # optional: free key from Google AI Studio (aistudio.google.com); empty = assistant off, FAQ still works
-      - key: GEMINI_MODEL
-        value: gemini-2.5-flash
+      - key: GEMINI_MODELS
+        value: gemini-3.5-flash-lite,gemini-flash-lite-latest,gemini-3.5-flash

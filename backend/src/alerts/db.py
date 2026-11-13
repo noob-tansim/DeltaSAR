@@ -190,6 +190,8 @@ _Session: sessionmaker[Session] | None = None
 def init_engine(url: str | None = None) -> Engine:
     """Create the engine and the tables. Called once at start-up (and by tests with an in-memory URL)."""
     global _engine, _Session
+    if _engine is not None:                    # re-initialising (tests): close the old pool's connections first
+        _engine.dispose()
     url = normalize_url(url) if url else database_url()
     kwargs: dict[str, Any] = {}
     if url.startswith("sqlite"):
@@ -197,7 +199,7 @@ def init_engine(url: str | None = None) -> Engine:
         if ":memory:" in url:
             kwargs["poolclass"] = StaticPool
     else:                                      # hosted Postgres: drop dead connections, stay small on free tiers
-        kwargs.update(pool_pre_ping=True, pool_size=5, max_overflow=5, pool_recycle=300)
+        kwargs.update(pool_pre_ping=True, pool_size=3, max_overflow=2, pool_recycle=300)   # Supabase free pooler: ~15 connections in all
     _engine = create_engine(url, **kwargs)
     _Session = sessionmaker(_engine, expire_on_commit=False)
     Base.metadata.create_all(_engine)

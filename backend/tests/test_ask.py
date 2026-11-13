@@ -56,3 +56,28 @@ def test_rate_limit(monkeypatch):
     ok = [ask_routes._rate_ok("1.2.3.4", now=1000.0 + i) for i in range(ask_routes.PER_IP + 1)]
     assert all(ok[:-1]) and ok[-1] is False
     assert ask_routes._rate_ok("1.2.3.4", now=1000.0 + 700)              # window passed
+
+
+def test_falls_back_when_a_model_is_busy(monkeypatch):
+    monkeypatch.setenv("GEMINI_API_KEY", "test-key")
+    monkeypatch.setenv("GEMINI_MODELS", "busy-model,good-model")
+    calls = []
+
+    class Busy:
+        status_code = 503
+        def json(self):
+            return {}
+
+    class Good:
+        status_code = 200
+        def json(self):
+            return {"candidates": [{"content": {"parts": [{"text": "HH separates water best."}]}}]}
+
+    def fake_post(url, json, timeout, headers):
+        calls.append(url)
+        return Busy() if "busy-model" in url else Good()
+
+    monkeypatch.setattr(ask_routes.requests, "post", fake_post)
+    ask_routes._ip_hits.clear(); ask_routes._all_hits.clear()
+    r = client().post("/api/v1/ask", json={"question": "Which polarisation?", "lang": "en"}).json()
+    assert r["model"] == "good-model" and len(calls) == 2
