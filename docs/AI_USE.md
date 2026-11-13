@@ -6,7 +6,7 @@ NASA's rule for AI-generated content: a valid reason for using it, the prompts e
 
 ## 1. Summary (paste into the project page "Use of AI" field)
 
-> We used AI as a coding and drafting assistant, and in two clearly labelled features of the app. **Claude Code (Anthropic)** helped write and refactor our code (the NISAR radar processing kit, the alert system, the web app), its tests and deployment scripts, working from the plans, alert rules, data choices and screen designs our team wrote; we reviewed and tested every part (128 automated tests plus 7 live-data tests, a source audit that recomputes every headline number from its file, and checks of the live site). Inside the app, **Google Gemini** answers visitors' questions only from our published facts, with an automatic check that every number it states traces to our data, and **Gemini text-to-speech** reads approved Bangla alert text aloud on devices without a Bangla voice. No AI computes any number, decides, approves or sends an alert: thresholds, rules and approvals are fixed code and human decisions. No AI-generated images of people are used. Full log, prompts and checks: `docs/AI_USE.md` in our repository.
+> We used AI as a coding and drafting assistant, and in two features of the app, both named on its Methods page. **Claude Code (Anthropic)** helped write and refactor our code (the NISAR radar processing kit, the alert system, the web app), its tests and deployment scripts, working from the plans, alert rules, data choices and screen designs our team wrote; we reviewed and tested every part (130 automated tests plus 7 live-data tests, a source audit that recomputes every headline number from its file, and checks of the live site). Inside the app, **Google Gemini** answers visitors' questions only from our published facts, with an automatic check that every number it states traces to our data, and **Gemini text-to-speech** reads approved Bangla alert text aloud on devices without a Bangla voice. No AI computes any number, decides, approves or sends an alert: thresholds, rules and approvals are fixed code and human decisions. No AI-generated images of people are used. Full log, prompts and checks: `docs/AI_USE.md` in our repository.
 
 ## 2. The rule we kept
 
@@ -32,7 +32,7 @@ Coding assistant, in the order the work happened:
 
 1. 11 Nov: "build the SAR + DEM kit from our data audit and build guide" → science kit.
 2. 12 Nov: "make the complete plan", "start building according to the plan", "it should also contain phone view and web view" → first alert layer and app.
-3. 13 Nov (this repository): "make a complete new plan, relevant to the existing one but most useful and impactful, then execute it", "host it with Render, Supabase and Vercel", "use NASA's APIs", "laptop should show expanded professional views, phone one view; make it coherent", "enhance the UI and colours", "it should tell in Bangla also; integrate the Gemini free API for a live chatbot", "did you follow the build guide", "does it need location access", "recheck with a full professional build with the sources", "do the deployment".
+3. 13 Nov (this repository): "make a complete new plan, relevant to the existing one but most useful and impactful, then execute it", "host it with Render, Supabase and Vercel", "use NASA's APIs", "laptop should show expanded professional views, phone one view; make it coherent", "enhance the UI and colours", "it should tell in Bangla also; integrate the Gemini free API for a live chatbot", "did you follow the build guide", "does it need location access", "recheck with a full professional build with the sources", "do the deployment", "use Earthdata Login to process the newest NISAR pass", "the chatbot should answer in Bangla as well as English; remove the AI tag from answers", "it doesn't show the unions to select".
 
 Run-time system instruction for the assistant (abridged): *answer only from the FACTS; never invent or change a number, date or place, and name the source of each number; you are not a warning service: never forecast floods or tell people to evacuate, and give 999 / FFWC / BMD / 1090 for danger; reply in Bangla or English; at most 120 words.* Full text: `backend/src/api/ask_routes.py`.
 
@@ -49,10 +49,11 @@ Run-time system instruction for the assistant (abridged): *answer only from the 
 
 ## 6. How AI output was checked
 
-- 128 automated backend tests, run on SQLite, on PostgreSQL 18 and on the real Supabase database.
+- 130 automated backend tests, run on SQLite, on PostgreSQL 18 and on the real Supabase database.
 - 7 live-data tests against NASA CMR, ASF, GIBS, EONET, POWER, IMERG (SERVIR ClimateSERV) and FFWC: all pass; GitHub runs them daily.
 - `scripts/audit_numbers.py` recomputes 23 headline numbers from their source files on every push; it caught two wording slips, which we fixed.
 - The guided demo, run end to end in Chrome on the live site and again with all internet blocked (wifi-off rule).
+- The newest NISAR pass (9 Nov 2026, VALIDATED) was added only after a consistency check of its river and land values against the ten earlier passes; the code that made its water map reproduces the kit's 16 Oct values exactly.
 - The assistant's number check caught Gemini writing "১০৯৯" instead of "১০৯০" (the helpline) in a Bangla answer; we added the correction round and the exact Bangla safety line to the facts.
 
 ## 7. Sign-off **[team: fill in]**
