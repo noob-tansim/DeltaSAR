@@ -32,46 +32,70 @@ export class ApiError extends Error {
   }
 }
 
+const sleep = (ms: number) => new Promise((r) => window.setTimeout(r, ms));
+
+/**
+ * One API call. While the free server wakes up, Render's proxy refuses connections or answers 502/503/504 without
+ * reaching our code, so those are retried every few seconds until `timeoutMs` (default two minutes) has passed.
+ */
 export async function api<T>(path: string, init: RequestInit & { json?: unknown; token?: string; timeoutMs?: number } = {}): Promise<T> {
-  const { json, token, timeoutMs = 75_000, ...rest } = init;
+  const { json, token, timeoutMs = 120_000, ...rest } = init;
   const headers: Record<string, string> = { Accept: 'application/json' };
   if (json !== undefined) headers['Content-Type'] = 'application/json';
   if (token) headers.Authorization = `Bearer ${token}`;
-  const ctrl = new AbortController();
+  const deadline = Date.now() + timeoutMs;
   const slow = window.setTimeout(() => setState({ waking: true }), 2500);
-  const kill = window.setTimeout(() => ctrl.abort(), timeoutMs);
   try {
-    const res = await fetch(`${API_BASE}${path}`, {
-      ...rest,
-      headers: { ...headers, ...(rest.headers as Record<string, string> | undefined) },
-      body: json !== undefined ? JSON.stringify(json) : rest.body,
-      signal: ctrl.signal,
-    });
-    setState({ waking: false, down: false, lastOk: Date.now() });
-    if (!res.ok) {
-      let msg = `${res.status} ${res.statusText}`;
+    for (;;) {
+      const ctrl = new AbortController();
+      const kill = window.setTimeout(() => ctrl.abort(), Math.max(1000, deadline - Date.now()));
+      let res: Response | null = null;
       try {
-        const b = await res.json();
-        msg = typeof b.detail === 'string' ? b.detail : Array.isArray(b.detail) ? b.detail.map((d: { msg: string }) => d.msg).join('; ') : msg;
+        res = await fetch(`${API_BASE}${path}`, {
+          ...rest,
+          headers: { ...headers, ...(rest.headers as Record<string, string> | undefined) },
+          body: json !== undefined ? JSON.stringify(json) : rest.body,
+          signal: ctrl.signal,
+        });
       } catch {
-        /* not JSON */
+        res = null; // no connection yet (server asleep) or timed out
+      } finally {
+        window.clearTimeout(kill);
       }
-      throw new ApiError(res.status, msg);
+      const waking = res === null || res.status === 502 || res.status === 503 || res.status === 504;
+      if (waking) {
+        if (Date.now() + 3000 < deadline) {
+          setState({ waking: true });
+          await sleep(3000);
+          continue;
+        }
+        setState({ waking: false, down: true });
+        throw new ApiError(0, 'The server could not be reached. Please try again in a minute.');
+      }
+      setState({ waking: false, down: false, lastOk: Date.now() });
+      if (!res!.ok) {
+        let msg = `${res!.status} ${res!.statusText}`;
+        try {
+          const b = await res!.json();
+          msg = typeof b.detail === 'string' ? b.detail : Array.isArray(b.detail) ? b.detail.map((d: { msg: string }) => d.msg).join('; ') : msg;
+        } catch {
+          /* not JSON */
+        }
+        throw new ApiError(res!.status, msg);
+      }
+      return (await res!.json()) as T;
     }
-    return (await res.json()) as T;
-  } catch (e) {
-    if (e instanceof ApiError) throw e;
-    setState({ waking: false, down: true });
-    throw new ApiError(0, 'The server could not be reached. It may be waking up; please try again in a moment.');
   } finally {
     window.clearTimeout(slow);
-    window.clearTimeout(kill);
   }
 }
 
 /** Wake the server early (Render free tier) so the demo is ready when the visitor gets there. */
+let warmed = false;
 export function prewarm(): void {
-  api('/api/v1/health', { timeoutMs: 90_000 }).catch(() => undefined);
+  if (warmed) return;
+  warmed = true;
+  api('/api/v1/health', { timeoutMs: 120_000 }).catch(() => { warmed = false; });
 }
 
 // ------------------------------------------------------------------ shared types

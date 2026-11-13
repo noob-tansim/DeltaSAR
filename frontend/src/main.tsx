@@ -14,6 +14,7 @@ import Story from './pages/Story';
 import { WakeBanner } from './components/Chrome';
 import { LangProvider } from './lib/i18n';
 import { AskWidget } from './components/AskWidget';
+import { prewarm } from './lib/api';
 
 const Explore = lazy(() => import('./pages/Explore'));
 const Demo = lazy(() => import('./pages/Demo'));
@@ -36,6 +37,8 @@ function NotFound() {
     </div>
   );
 }
+
+prewarm();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

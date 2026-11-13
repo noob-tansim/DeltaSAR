@@ -114,11 +114,11 @@ export function WakeBanner() {
   const { L } = useL();
   if (!s.waking && !s.down) return null;
   return (
-    <div role="status" style={{ position: 'fixed', bottom: 16, left: '50%', transform: 'translateX(-50%)', zIndex: 80, background: 'var(--night-2)', color: 'var(--sky)', border: '1px solid var(--night-line)', borderRadius: 8, padding: '10px 18px', boxShadow: 'var(--shadow-2)', display: 'flex', gap: 10, alignItems: 'center', fontSize: '.9rem', maxWidth: 'calc(100% - 32px)' }}>
+    <div role="status" style={{ position: 'fixed', top: 'calc(var(--nav-h) + 10px)', left: '50%', transform: 'translateX(-50%)', zIndex: 80, background: 'var(--night-2)', color: 'var(--sky)', border: '1px solid var(--night-line)', borderRadius: 8, padding: '10px 18px', boxShadow: 'var(--shadow-2)', display: 'flex', gap: 10, alignItems: 'center', fontSize: '.9rem', maxWidth: 'calc(100% - 32px)' }}>
       {s.waking ? (
         <><span className="dot pulse" style={{ color: 'var(--water)' }} /> {L('Waking the server (free hosting sleeps when idle). This takes up to a minute, once.', 'সার্ভার চালু হচ্ছে (বিনামূল্যের হোস্টিং অলস থাকলে ঘুমিয়ে পড়ে)। একবার, এক মিনিট পর্যন্ত লাগতে পারে।')}</>
       ) : (
-        <><Icon name="info" size={16} /> {L('The server is not answering. Static pages still work; try again shortly.', 'সার্ভার সাড়া দিচ্ছে না। অন্য পাতাগুলো চলবে; একটু পরে আবার চেষ্টা করুন।')}</>
+        <><Icon name="info" size={16} /> {L('The server is not answering yet. The story and maps still work; please try again in a minute.', 'সার্ভার এখনো সাড়া দিচ্ছে না। গল্প ও মানচিত্র চলবে; এক মিনিট পরে আবার চেষ্টা করুন।')}</>
       )}
     </div>
   );

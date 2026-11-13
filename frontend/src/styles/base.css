@@ -91,7 +91,7 @@ p { margin: 0 0 1em; }
 .spacer { flex: 1; }
 
 /* buttons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: 8px; border: 1.5px solid transparent; font-weight: 600; font-size: 1rem; text-decoration: none; transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s; white-space: nowrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: 8px; border: 1.5px solid transparent; font-weight: 600; font-size: 1rem; text-decoration: none; transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s; max-width: 100%; text-align: center; line-height: 1.25; }
 .btn:active { transform: translateY(1px); }
 .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
 .btn-primary { background: var(--river); color: #fff; }
@@ -134,6 +134,8 @@ p { margin: 0 0 1em; }
 .table .r { text-align: right; font-variant-numeric: tabular-nums; }
 .on-night .table th { color: var(--sky-3); border-color: var(--night-line); }
 .on-night .table td { border-color: var(--night-line); }
+/* on phones a wide table scrolls sideways inside itself instead of widening the page */
+@media (max-width: 640px) { .table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; } }
 
 /* form */
 .input { width: 100%; min-height: 48px; padding: 0 14px; border-radius: var(--r-sm); border: 1.5px solid var(--line); background: var(--paper); }

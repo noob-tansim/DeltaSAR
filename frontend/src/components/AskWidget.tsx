@@ -42,7 +42,7 @@ export function AskWidget() {
   const [busy, setBusy] = useState(false);
   const [enabled, setEnabled] = useState<boolean | null>(null);
   const end = useRef<HTMLDivElement>(null);
-  const hidden = /^\/(app|console|join)/.test(loc.pathname);
+  const hidden = /^\/(app|console|join|demo)/.test(loc.pathname);
 
   useEffect(() => {
     if (open && enabled === null) api<{ enabled: boolean }>('/api/v1/ask/status', { timeoutMs: 60000 }).then((s) => setEnabled(s.enabled)).catch(() => setEnabled(false));
@@ -82,7 +82,7 @@ export function AskWidget() {
   return (
     <>
       {!open && (
-        <button className={`askw-fab ${loc.pathname.startsWith('/demo') ? 'left' : ''}`} onClick={() => setOpen(true)} aria-label={L('Ask DeltaSAR a question', 'ডেল্টাসারকে প্রশ্ন করুন')}>
+        <button className="askw-fab" onClick={() => setOpen(true)} aria-label={L('Ask DeltaSAR a question', 'ডেল্টাসারকে প্রশ্ন করুন')}>
           <Icon name="chat" size={18} /> <span>{L('Ask DeltaSAR', 'প্রশ্ন করুন')}</span>
         </button>
       )}
@@ -125,7 +125,6 @@ export function AskWidget() {
       <style>{`
         .askw-fab{position:fixed;right:18px;bottom:18px;z-index:70;display:inline-flex;align-items:center;gap:8px;padding:0 18px;height:46px;border-radius:8px;border:0;background:var(--river);color:#fff;font-weight:600;box-shadow:var(--shadow-2)}
         .askw-fab:hover{background:var(--river-2)}
-        .askw-fab.left{right:auto;left:50%;transform:translateX(-50%)}
         .askw{position:fixed;right:18px;bottom:18px;z-index:75;width:min(420px,calc(100vw - 24px));height:min(640px,calc(100vh - 100px));display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 40px rgba(10,24,33,.25);overflow:hidden;color:var(--ink)}
         .askw header{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:14px 16px;background:var(--night);color:#fff}
         .askw header .tiny{color:var(--sky-2)}
