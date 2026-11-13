@@ -1,69 +1,52 @@
-# Use of AI in DeltaSAR · বন্যা সাথী
+# Use of AI
 
-Team Astro Bengalis · NASA Space Apps Challenge 2026 · *Dancing with the SARs*
+DeltaSAR · বন্যা সাথী, by Team Astro Bengalis, NASA Space Apps Challenge 2026 (Dancing with the SARs).
 
-NASA's rule for AI-generated content: a valid reason for using it, the prompts explained, where the team's own work went, and every generating tool named. The project page's "Use of AI" field also asks for the data each AI worked on. This file covers all five.
+**Short version for the project page:** We used Claude Code as a coding assistant, Google Gemini for the website's question box and for reading Bangla alerts aloud, and two tools for the video's sound and subtitles. AI never computes our numbers and never decides or sends an alert: that is fixed code and a human volunteer. The problem, the science choices, the alert design, the Bangla text and the video script are our own work.
 
-## 1. Summary (paste into the project page "Use of AI" field)
+## Tools we used
 
-> We used AI as a coding and drafting assistant, and in two features of the app, both named on its Methods page. **Claude Code (Anthropic)** helped write and refactor our code (the NISAR radar processing kit, the alert system, the web app), its tests and deployment scripts, working from the plans, alert rules, data choices and screen designs our team wrote; we reviewed and tested every part (130 automated tests plus 7 live-data tests, a source audit that recomputes every headline number from its file, and checks of the live site). Inside the app, **Google Gemini** answers visitors' questions only from our published facts, with an automatic check that every number it states traces to our data, and **Gemini text-to-speech** reads approved Bangla alert text aloud on devices without a Bangla voice. No AI computes any number, decides, approves or sends an alert: thresholds, rules and approvals are fixed code and human decisions. No AI-generated images of people are used. Our 240-second video was edited with Claude Code (Remotion) from our script, our own voice-over and team recordings, and screens of the live site; Whisper, run on our laptop, timed the subtitles; the Bangla voice heard in it is the app's own Gemini text-to-speech. Full log, prompts and checks: `docs/AI_USE.md` in our repository.
+- **Claude Code (Anthropic):** helped write and refactor our code (radar processing, alert system, website), tests and deployment files, and helped edit our 240-second video.
+- **Google Gemini:** answers visitors' questions in the "Ask DeltaSAR" box on the website.
+- **Gemini text-to-speech:** reads an approved Bangla alert aloud when a phone has no Bangla voice.
+- **Whisper (run on our laptop):** timed the video subtitles to our own voice-over.
+- **Adobe Podcast Enhance Speech:** removed background noise from narration recorded at home.
 
-## 2. The rule we kept
+## Why
 
-**Fixed code computes; AI never computes.** Every value on the site comes from deterministic code in `backend/src/compute` and `backend/src/alerts` (water threshold from each scene's own histogram, change masks, bank-loss rule, three typed alert rules). A rule can only draft an alert; a person approves it. AI is not in the alert path.
+We are six people with about 26 hours, so AI helped us write code we had already planned. In the app, the question box lets judges and residents ask in English or Bangla, and the voice helps people who cannot read.
 
-## 3. AI tools, why, and what they produced
+## What the AI worked on
 
-| Tool (model) | When | Valid reason | What it produced, and the data it worked on | Our own work and checks |
-|---|---|---|---|---|
-| **Claude Code**, Anthropic (Claude models; Claude Opus 5.5 on 13 Nov) | 11–13 Nov 2026 | A six-person team with 26 hours: speed up writing code we had specified | Science kit code (NISAR HDF5 subsetting, water and bank-loss rules, exposure, forecast baseline and ML challenger); alert layer (rules, engine, life cycle, ledger, delivery); guided-demo sandboxes; web app (story, explorer, demo, phone app, console, methods); tests; deploy files; drafts of these docs | Problem, study area, data audit, thresholds policy, alert rules and ranges, screen designs, Bangla copy and all decisions are ours (section 5). We ran the tests, read the code, checked numbers against source files, and tested the app in browsers and on phones |
-| **Google Gemini 3.5 Flash-Lite** (Gemini API) | In the app, at run time | Let judges and residents ask questions in English or Bangla | "Ask DeltaSAR" answers on the public pages | Answers only from `backend/src/api/ask_facts.md`, which we wrote from our files; a server check flags any number not in those facts and asks once for a correction; replies in the language of the question (Bangla or English); named on the Methods page ("How AI was used"); never in the resident app's alert screens or the volunteer console |
-| **Google Gemini 3.8 Flash TTS** (voice "Kore") | In the app, at run time | Many phones and laptops have no Bangla voice; people who cannot read must hear the alert | Spoken Bangla audio of approved alert sentences | It only reads text our code produced and a volunteer approved; it writes nothing. Recorded clips by a team member replace it when present (`frontend/public/audio/`) |
-| Canva AI | Before the event (planning deck) | First draft of the plan slides | Slide layout ideas | We rejected AI photos of people, colour misuse and empty boxes, and rebuilt the deck ourselves (Plan A deck, slide 28) |
-| Claude skills: UI/UX Pro Max, frontend-design, dataviz | Before and during the event | Checklists for touch targets, contrast and chart colours | Design checks | We kept 44–48 px targets, a tap alternative to swipe, status never by colour alone; rejected generic looks (Plan A deck, slide 28) |
-| Adobe type-palette suggestions | Before the event | Font pairing ideas | Suggestions | None supported Bangla; we kept Baloo Da 2 and Hind Siliguri |
-| **Claude Code** with the Remotion video skill | 13 Nov 2026 | Assemble the 240-second video in the time left | The edit: cuts, titles, subtitles, sound mix and the scenes built from screens of our live site. Worked on our script, the team's voice-over and introduction recordings, credited news footage and NASA's NISAR trailer | The script, the narration (recorded by the team), the team introductions, the choice of story (Jesmin Begum) and the structure follow the Space Apps "240 seconds" guide; we reviewed the cut. No AI voice or AI face stands in for a team member |
-| **Whisper** (OpenAI model, run locally with faster-whisper) | Oct–Nov 2026 | Time subtitles and cut points to the spoken words | Word timings. Worked on our own voice-over and team recordings | Subtitle text is our script, not the transcript |
-| **Adobe Podcast Enhance Speech** | Oct 2026 | Clean background noise from a home recording | The cleaned narration clips (`-enhanced-v2` files), one of which closes the video | The words and the voice are the narrator's own |
+- Claude Code: our plans, data notes and code. The NISAR radar files are processed by our code, not by AI.
+- Gemini question box: only a facts file we wrote (`backend/src/api/ask_facts.md`) and the visitor's question. A check flags any number that is not in our facts.
+- Gemini voice: only alert text produced by our rules and approved by a volunteer.
+- Whisper and Adobe: our own voice recordings.
 
-Not used: AI image generators for people or places; AI-generated data; AI voices presented as a real person.
+## What the AI did not do
 
-## 4. Prompts (fair summary)
+- It does not compute any number. Water maps, riverbank loss, exposure and the alert rules are fixed code in `backend/src/compute` and `backend/src/alerts`, which we tested.
+- It does not decide or send alerts. A rule drafts an alert and a volunteer approves it.
+- No AI images of people, no AI-made data, and no AI voice standing in for a team member.
 
-Coding assistant, in the order the work happened:
+## Prompts
 
-1. 11 Nov: "build the SAR + DEM kit from our data audit and build guide" → science kit.
-2. 12 Nov: "make the complete plan", "start building according to the plan", "it should also contain phone view and web view" → first alert layer and app.
-3. 13 Nov (this repository and the video): "make a complete new plan, relevant to the existing one but most useful and impactful, then execute it", "host it with Render, Supabase and Vercel", "use NASA's APIs", "laptop should show expanded professional views, phone one view; make it coherent", "enhance the UI and colours", "it should tell in Bangla also; integrate the Gemini free API for a live chatbot", "did you follow the build guide", "does it need location access", "recheck with a full professional build with the sources", "do the deployment", "use Earthdata Login to process the newest NISAR pass", "the chatbot should answer in Bangla as well as English; remove the AI tag from answers", "it doesn't show the unions to select", "make the 240-second video from the new script and voice-over, using the live site's screens; it should not look AI-generated".
+Coding, in the order we worked:
 
-Run-time system instruction for the assistant (abridged): *answer only from the FACTS; never invent or change a number, date or place, and name the source of each number; you are not a warning service: never forecast floods or tell people to evacuate, and give 999 / FFWC / BMD / 1090 for danger; reply in Bangla or English; at most 120 words.* Full text: `backend/src/api/ask_routes.py`.
+- "Build the SAR + DEM kit from our data audit and the build guide."
+- "Make the complete plan and start building. It should have a phone view and a web view."
+- "Host it with Render, Supabase and Vercel. Use NASA's APIs."
+- "Use Earthdata Login to process the newest NISAR pass."
+- "The chatbot should answer in Bangla as well as English."
+- "Make the 240-second video from our script and voice-over, using the live site's screens."
 
-## 5. Where our own creative work went
+Question box instruction (short): answer only from the facts; never invent or change a number; this is not a warning service, so for danger give 999, FFWC, BMD and 1090; reply in the language of the question. Full text: `backend/src/api/ask_routes.py`.
 
-- **The problem and the place:** the Jamuna's Sirajganj–Kazipur reach, families on the chars, people who share basic phones and may not read.
-- **Research and data audit:** NISAR granule inventory, tracks 069A and 019D, the radar gap, FFWC danger levels, IMERG access, the build-guide and judging analysis (folders `NASA ISRO SAR and INFOs 1–5`).
-- **Science choices:** threshold from each scene's own histogram and ±1 dB ranges; bank loss only when a later pass confirms it; never mixing tracks; the persistence test that showed our ML model does not beat the last picture, after which we removed every forecast claim.
-- **Alert design:** three typed rules with ranges, volunteer approval, hold-to-reply, retries, call-backs, the append-only ledger, calm wording, "not an official warning" on every alert.
-- **Accessibility and UX:** the twelve screen designs (`design/mockups_v2`), shape + word + colour status, Listen on every screen, large text, vibration and light.
-- **Bangla:** the copy sheet and the native-reader review (`docs/BANGLA_REVIEW.md`).
-- **Rejecting AI suggestions:** body-depth icons and "shelter: 15 minutes" were removed because the data cannot support them.
-- **The pitch and videos:** the script, the narration, the six introductions and the choice of what to show are ours; Claude Code assembled the edit (section 3).
+## Our own work
 
-## 6. How AI output was checked
-
-- 130 automated backend tests, run on SQLite, on PostgreSQL 18 and on the real Supabase database.
-- 7 live-data tests against NASA CMR, ASF, GIBS, EONET, POWER, IMERG (SERVIR ClimateSERV) and FFWC: all pass; GitHub runs them daily.
-- `scripts/audit_numbers.py` recomputes 23 headline numbers from their source files on every push; it caught two wording slips, which we fixed.
-- The guided demo, run end to end in Chrome on the live site and again with all internet blocked (wifi-off rule).
-- The newest NISAR pass (9 Nov 2026, VALIDATED) was added only after a consistency check of its river and land values against the ten earlier passes; the code that made its water map reproduces the kit's 16 Oct values exactly.
-- The assistant's number check caught Gemini writing "১০৯৯" instead of "১০৯০" (the helpline) in a Bangla answer; we added the correction round and the exact Bangla safety line to the facts.
-
-## 7. Sign-off **[team: fill in]**
-
-| Part | Reviewed by |
-|---|---|
-| Science numbers and method | |
-| Alert rules and wording | |
-| Web app on two Android phones | |
-| Bangla text (native reader) | |
-| This file | |
+- The problem and the place: the Jamuna at Sirajganj–Kazipur and the families on its river islands.
+- The research: which NISAR passes cover the reach, the radar gap, FFWC danger levels and rain data.
+- The science choices: a water threshold from each scene's own data with a ±1 dB range, riverbank loss only when a later pass confirms it, and dropping our forecast when it did not beat the latest picture.
+- The alert design: three rules, volunteer approval, press-and-hold answers, and "not an official warning" on every alert.
+- The screen designs, the Bangla text, the video script, the narration and the team introductions.
+- The checking: we ran the tests, compared the numbers with their source files, and tried the site on laptops and phones.
