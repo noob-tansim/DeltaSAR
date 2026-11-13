@@ -44,7 +44,9 @@ export default function Methods() {
   useEffect(() => {
     if (loc.hash) setTimeout(() => document.getElementById(loc.hash.slice(1))?.scrollIntoView({ behavior: 'smooth' }), 200);
   }, [loc.hash]);
-  const lat = season?.cmr.granules.filter((g) => g.track === '069A' && g.full_frame && g.acquired_utc > '2026-07-20').map((g) => g.latency_hours) ?? [];
+  const g069 = season?.cmr.granules.filter((g) => g.track === '069A' && g.full_frame && g.acquired_utc > '2026-07-20') ?? [];
+  const afterGap = g069.find((g) => g.acquired_utc.startsWith('2026-08-17'));
+  const lat = g069.filter((g) => g !== afterGap).map((g) => g.latency_hours);
   return (
     <>
       <Nav />
@@ -85,7 +87,7 @@ export default function Methods() {
                 </table>
                 <p className="small muted">Areas are reported at the threshold and ±1 dB. A range wider than ±25 % of its middle makes an alert “less sure”. Track 019D has no clear histogram valley, so it is a cross-check only.</p>
                 <h3 style={{ marginTop: 28 }}>How fast is the radar? (measured, not promised)</h3>
-                <p className="small">Since late July, NASA published track 069A full frames <b>{lat.length ? `${Math.round(Math.min(...lat))}–${Math.round(Math.max(...lat))} hours` : '45–71 hours'}</b> after the satellite passed (CMR record insert time, {season.cmr.granules.length} granules checked). Each track repeats every 12 days. The radar was off from 27 July to 10 August 2026; that gap is shown, never filled.</p>
+                <p className="small">Since late July, NASA published track 069A full frames <b>{lat.length ? `${Math.floor(Math.min(...lat))}–${Math.round(Math.max(...lat))} hours` : '45–71 hours'}</b> after the satellite passed{afterGap ? `, except ${Math.round(afterGap.latency_hours)} hours for 17 Aug, the first pass after the radar gap` : ''} (CMR record insert time, {season.cmr.granules.length} granules checked). Each track repeats every 12 days. The radar was off from 27 July to 10 August 2026; that gap is shown, never filled.</p>
               </>
             )}
           </div>

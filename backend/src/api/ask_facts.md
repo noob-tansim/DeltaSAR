@@ -16,7 +16,7 @@
 - Two tracks cover the whole reach: 069A (ascending, about 05:21 Dhaka time) and 019D (descending). Each track repeats every 12 days. Different tracks are never mixed in one comparison.
 - 12 passes were processed: track 069A on 18 Jun, 30 Jun, 12 Jul, 24 Jul, 17 Aug, 29 Aug, 10 Sep, 22 Sep, 4 Oct, 16 Oct 2026 and track 019D on 27 Jun and 13 Oct 2026 (UTC dates). Newer passes exist at NASA: 25 Oct, 6 Nov (019D) and 9 Nov 2026 (069A, VALIDATED); they are next to be processed.
 - The radar was off from 27 July to 10 August 2026. That gap is shown as a gap and never filled by a model.
-- NASA published track 069A files 45 to 71 hours after the satellite passed (measured from NASA CMR records since late July).
+- NASA published track 069A files 45 to 71 hours after the satellite passed (measured from NASA CMR records since late July), except 122 hours for 17 Aug, the first pass after the radar gap.
 
 ## Method
 - Open water is dark in radar because smooth water reflects the signal away. Water = HH backscatter below a threshold found from each track's own baseline scene histogram: −15.62 dB for track 069A (valley between water mode −18.12 dB and land mode −10.38 dB); −14.06 dB for track 019D (midpoint method, cross-check only). A 3×3 median filter is applied first. Every area is also computed at the threshold −1 dB and +1 dB, and reported as a range.

@@ -43,12 +43,21 @@ export async function operaCount(sinceIso: string): Promise<number> {
 }
 
 export type FloodEvent = { id: string; title: string; date: string; link: string; lon: number; lat: number };
-export async function eonetFloods(): Promise<FloodEvent[]> {
-  const r = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?category=floods&status=all&start=2026-05-01&end=2026-12-31');
-  const j = await r.json();
-  return (j.events ?? [])
-    .filter((e: any) => /Bangladesh/i.test(e.title))
-    .map((e: any) => ({ id: e.id, title: e.title, date: e.geometry?.[0]?.date, link: e.link, lon: e.geometry?.[0]?.coordinates?.[0], lat: e.geometry?.[0]?.coordinates?.[1] }));
+let eonetCache: Promise<FloodEvent[]> | null = null;
+/** NASA EONET flood events in Bangladesh this season. One shared request per page (EONET can be slow), 25 s cap. */
+export function eonetFloods(): Promise<FloodEvent[]> {
+  if (!eonetCache) {
+    const ctrl = new AbortController();
+    const kill = setTimeout(() => ctrl.abort(), 25000);
+    eonetCache = fetch('https://eonet.gsfc.nasa.gov/api/v3/events?category=floods&status=all&days=150&limit=60&bbox=85,28,95,20', { signal: ctrl.signal })
+      .then((r) => r.json())
+      .then((j) => (j.events ?? [])
+        .filter((e: any) => /Bangladesh/i.test(e.title))
+        .map((e: any) => ({ id: e.id, title: e.title, date: e.geometry?.[0]?.date, link: e.link, lon: e.geometry?.[0]?.coordinates?.[0], lat: e.geometry?.[0]?.coordinates?.[1] })))
+      .catch((e) => { eonetCache = null; throw e; })
+      .finally(() => clearTimeout(kill));
+  }
+  return eonetCache;
 }
 
 export async function powerRain(lat: number, lon: number, days = 14): Promise<{ date: string; mm: number | null }[]> {

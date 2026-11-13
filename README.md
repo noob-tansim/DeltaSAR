@@ -1,5 +1,7 @@
 # DeltaSAR · বন্যা সাথী (Bonna Sathi)
 
+**Live:** https://deltasar.vercel.app · API https://deltasar-api.onrender.com/docs
+
 **NASA Space Apps Challenge 2026 · Dancing with the SARs · Team Astro Bengalis (Bangladesh)**
 
 NASA-ISRO **NISAR** radar sees the Jamuna through monsoon cloud. **DeltaSAR** turns each pass into a map of where water and riverbank changed, with a receipt for every number. **বন্যা সাথী** carries that evidence to families on the river islands: a volunteer checks every alert, the phone reads it aloud in Bangla, and the family answers *safe* or *help*.
@@ -51,6 +53,8 @@ cd backend
 pip install -r requirements.txt
 python -m pytest tests -q                       # 125 tests; TEST_DATABASE_URL=postgresql://… runs them on Postgres
 LIVE_TESTS=1 python -m pytest tests/test_live_sources.py   # 7 tests against live NASA CMR, ASF, GIBS, EONET, POWER, IMERG, FFWC
+python scripts/audit_numbers.py                 # every headline number on the site, recomputed from its source file
+python scripts/smoke_deployed.py --api https://deltasar-api.onrender.com --web https://deltasar.vercel.app
 DELTASAR_OUTPUTS=deploy_data uvicorn src.api.app:app --port 8010
 
 # Web (Node 20+)

@@ -126,7 +126,7 @@ function HonestSection({ val }: { val: Validation }) {
   const sk = val.skill;
   const hh = val.pol.map((p) => p.HH.contrast_db);
   const hv = val.pol.map((p) => p.HV.contrast_db);
-  const f = (v: number) => digits(v.toFixed(1), lang);
+  const f = (v: number) => digits((Math.round(v * 10 + 1e-9) / 10).toFixed(1), lang);   // half-up: 8.95 -> 9.0
   const rows: [string, number, string][] = sk ? [
     [L('Same as the last radar pass', 'আগের রাডার ছবির মতোই'), sk.mean.persistence, L('persistence', 'আগের ছবি')],
     [L('Machine-learning model (flow, rain, terrain)', 'মেশিন-লার্নিং মডেল (প্রবাহ, বৃষ্টি, ভূমি)'), sk.mean.ml, L('trained on NISAR water maps', 'NISAR মানচিত্রে প্রশিক্ষিত')],
@@ -305,7 +305,7 @@ function LimitsSection() {
           <div className="eyebrow"><Icon name="info" size={15} /> {L('What we do not claim', 'যা আমরা দাবি করি না')}</div>
           <h2 style={{ fontSize: 'clamp(1.5rem,2.6vw,2rem)' }}>{L('Said before anyone asks.', 'কেউ জিজ্ঞেস করার আগেই বলে রাখি।')}</h2>
           <ul className="ticks no" style={{ marginTop: 14 }}>
-            <li><span>{L(<><b>Not real-time.</b> Radar arrives about two days after each pass (45–71 h on track 069A since late July). Rain within a day or two; river daily.</>, <><b>তাৎক্ষণিক নয়।</b> প্রতিটি ছবি উপগ্রহ যাওয়ার প্রায় দুই দিন পর আসে (জুলাইয়ের শেষ থেকে ৪৫–৭১ ঘণ্টা)। বৃষ্টির তথ্য এক-দুই দিনে; নদীর তথ্য প্রতিদিন।</>)}</span></li>
+            <li><span>{L(<><b>Not real-time.</b> Radar arrives about two days after each pass (45–71 h on track 069A since late July; 122 h for the first pass after the radar gap). Rain within a day or two; river daily.</>, <><b>তাৎক্ষণিক নয়।</b> প্রতিটি ছবি উপগ্রহ যাওয়ার প্রায় দুই দিন পর আসে (জুলাইয়ের শেষ থেকে ৪৫–৭১ ঘণ্টা; রাডার বন্ধের পর প্রথম ছবিতে ১২২ ঘণ্টা)। বৃষ্টির তথ্য এক-দুই দিনে; নদীর তথ্য প্রতিদিন।</>)}</span></li>
             <li><span>{L(<><b>Not a forecast.</b> Our model does not beat the last picture; we show the picture and its age.</>, <><b>পূর্বাভাস নয়।</b> আমাদের মডেল আগের ছবির চেয়ে ভালো নয়; তাই ছবি আর তার বয়স দেখানো হয়।</>)}</span></li>
             <li><span>{L(<><b>Not an official warning.</b> Official forecasts: FFWC and BMD; call 1090. Every alert says so.</>, <><b>সরকারি সতর্কবার্তা নয়।</b> সরকারি পূর্বাভাস: FFWC ও BMD; ১০৯০ নম্বরে ফোন করুন। প্রতিটি সতর্কবার্তায় তা লেখা থাকে।</>)}</span></li>
             <li><span>{L(<><b>Not depth.</b> Terrain data is too coarse for “knee-deep”. We give walking minutes to the nearest new water.</>, <><b>পানির গভীরতা নয়।</b> ভূমির তথ্য এত সূক্ষ্ম নয়; তাই নতুন পানি কত মিনিট হাঁটা দূরে, তা বলা হয়।</>)}</span></li>

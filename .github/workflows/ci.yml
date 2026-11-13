@@ -25,6 +25,8 @@ jobs:
           cache: pip
           cache-dependency-path: backend/requirements-deploy.txt
       - run: pip install -r requirements-deploy.txt pytest httpx
+      - name: Every headline number matches its source file
+        run: python scripts/audit_numbers.py
       - name: Tests on SQLite
         run: python -m pytest tests -q
       - name: Same tests on Postgres (as on Supabase)
