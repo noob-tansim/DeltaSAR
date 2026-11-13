@@ -24,3 +24,7 @@ The public pages have an optional assistant that uses **Google Gemini** (free AP
 - After each answer, the server checks that every number in it appears in those facts (`untraced_numbers`); the widget shows a warning when one does not. This follows the build guide's rule that every number a model states must trace to a source.
 - It is not in the alert path: it cannot draft, approve or send anything, it never gives warnings, and it is not shown in the resident app or the volunteer console.
 - Six common questions are answered from a fixed bilingual FAQ (no AI). Without `GEMINI_API_KEY` only the FAQ works.
+
+## AI voice: Bangla speech on devices without a Bangla voice
+
+When a phone or laptop has no Bangla text-to-speech voice, the app asks `/api/v1/tts` to read the **same approved text** aloud with Google Gemini's speech model (voice "Kore"). The model only reads; it writes nothing. Each sentence is generated once and stored in the database. Recorded clips by a native speaker (`frontend/public/audio/`) take priority when they exist.

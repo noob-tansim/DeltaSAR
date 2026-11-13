@@ -1,8 +1,11 @@
 /**
  * Speaking. Order: a recorded clip (public/audio/<key>.mp3, recorded by a native speaker) → the device's Bangla
- * voice → the English text with an English voice (so a laptop without Bangla still speaks) → nothing, and say so.
+ * voice → Bangla audio from our server (Gemini text-to-speech reading the same approved text, cached) → the English
+ * text with an English voice → nothing, and say so.
  */
-export type SpeakResult = 'clip' | 'bn' | 'en-fallback' | 'en' | 'none';
+import { API_BASE } from './api';
+
+export type SpeakResult = 'clip' | 'bn' | 'bn-server' | 'en-fallback' | 'en' | 'none';
 
 let current: HTMLAudioElement | null = null;
 
@@ -52,9 +55,41 @@ function say(text: string, lang: 'bn' | 'en', onEnd?: () => void): boolean {
   return true;
 }
 
+/** The browser loads its voice list late (Windows Chrome especially): wait up to 600 ms for it. */
+function voicesReady(): Promise<void> {
+  if (!('speechSynthesis' in window) || voices().length) return Promise.resolve();
+  return new Promise((res) => {
+    const done = () => { window.speechSynthesis.removeEventListener?.('voiceschanged', done); res(); };
+    window.speechSynthesis.addEventListener?.('voiceschanged', done);
+    setTimeout(done, 600);
+  });
+}
+
+const serverAudio = new Map<string, string>();
+/** Bangla audio for the exact text, from /api/v1/tts (generated once, then cached on the server and here). */
+async function serverSpeech(text: string, onEnd?: () => void): Promise<boolean> {
+  try {
+    let url = serverAudio.get(text);
+    if (!url) {
+      const r = await fetch(`${API_BASE}/api/v1/tts`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: text.slice(0, 700) }) });
+      if (!r.ok) return false;
+      url = URL.createObjectURL(await r.blob());
+      serverAudio.set(text, url);
+    }
+    const a = new Audio(url);
+    current = a;
+    a.onended = () => onEnd?.();
+    await a.play();
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 /** Speak `bn` (or `en` when the person chose English). Returns how it was spoken. */
 export async function speak(opts: { bn: string; en: string; lang: 'bn' | 'en'; clip?: string; onEnd?: () => void }): Promise<SpeakResult> {
   stopSpeaking();
+  await voicesReady();
   if (opts.clip) {
     try {
       const a = new Audio(`/audio/${opts.clip}.mp3`);
@@ -67,7 +102,8 @@ export async function speak(opts: { bn: string; en: string; lang: 'bn' | 'en'; c
     }
   }
   if (opts.lang === 'en') return say(opts.en, 'en', opts.onEnd) ? 'en' : 'none';
-  if (say(opts.bn, 'bn', opts.onEnd)) return 'bn';
+  if (hasBanglaVoice() === true && say(opts.bn, 'bn', opts.onEnd)) return 'bn';
+  if (await serverSpeech(opts.bn, opts.onEnd)) return 'bn-server';
   return say(opts.en, 'en', opts.onEnd) ? 'en-fallback' : 'none';
 }
 

@@ -6,7 +6,7 @@ import uuid
 from contextlib import contextmanager
 from typing import Any, Iterator
 
-from sqlalchemy import JSON, Boolean, Float, ForeignKey, Integer, String, Text, UniqueConstraint, create_engine
+from sqlalchemy import JSON, Boolean, Float, ForeignKey, Integer, LargeBinary, String, Text, UniqueConstraint, create_engine
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column, relationship, sessionmaker
 from sqlalchemy.pool import StaticPool
@@ -175,6 +175,15 @@ class Ledger(Base):
     person_id: Mapped[str | None] = mapped_column(String(32))
     actor: Mapped[str] = mapped_column(String(60), default="system")
     payload: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+
+
+class TtsCache(Base):
+    """Bangla speech generated once per sentence (src/api/tts_routes.py). Text only reads approved sentences."""
+    __tablename__ = "tts_cache"
+    key: Mapped[str] = mapped_column(String(64), primary_key=True)
+    text: Mapped[str] = mapped_column(Text)
+    audio: Mapped[bytes] = mapped_column(LargeBinary)
+    created_utc: Mapped[dt.datetime] = mapped_column(UtcDateTime, default=utcnow)
 
 
 class Setting(Base):

@@ -21,7 +21,7 @@ from sqlalchemy import func, select, text
 from src.alerts import engine, inputs, lifecycle, sandbox, settings
 from src.alerts.db import RainDaily, RiverReading, init_engine, session_scope, utcnow
 from src.alerts.types import DHAKA, in_aoi
-from src.api import alerts_routes, ask_routes, sandbox_routes
+from src.api import alerts_routes, ask_routes, sandbox_routes, tts_routes
 
 VERSION = os.environ.get("RENDER_GIT_COMMIT", engine.code_version())[:7]
 LIVE_INPUTS = os.environ.get("LIVE_INPUTS", "1") == "1" and os.environ.get("OFFLINE") != "1"
@@ -41,6 +41,7 @@ app.include_router(alerts_routes.router)
 app.include_router(alerts_routes.console)
 app.include_router(sandbox_routes.router)
 app.include_router(ask_routes.router)
+app.include_router(tts_routes.router)
 
 _STATE: dict[str, Any] = {"started_utc": utcnow(), "last_round_utc": None, "last_inputs_refresh_utc": None,
                           "last_inputs_result": None}
