@@ -1,4 +1,4 @@
-# Project rules (for people and coding agents)
+# Project rules
 
 DeltaSAR · বন্যা সাথী — NISAR radar evidence → fixed rules → volunteer approval → spoken alert → counted reply.
 
