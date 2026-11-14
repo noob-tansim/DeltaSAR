@@ -2,6 +2,8 @@
 
 **Live:** https://deltasar.vercel.app · API https://deltasar-api.onrender.com/docs
 
+**Processed data (Google Drive):** https://drive.google.com/drive/folders/1KkCbSMfJ1LOwljZSYkhCsfham1P6ruKF?usp=sharing
+
 **NASA Space Apps Challenge 2026 · Dancing with the SARs · Team Astro Bengalis (Bangladesh)**
 
 NASA-ISRO **NISAR** radar sees the Jamuna through monsoon cloud. **DeltaSAR** turns each pass into a map of where water and riverbank changed, with a receipt for every number. **বন্যা সাথী** carries that evidence to families on the river islands: a volunteer checks every alert, the phone reads it aloud in Bangla, and the family answers *safe* or *help*.
@@ -72,3 +74,5 @@ Not real-time (radar about two days after each pass), not a forecast (our model 
 ## Licence and data
 
 Code: Apache-2.0 ([LICENSE](LICENSE)). Data keep their own licences: [NOTICE.md](NOTICE.md). AI use: [docs/AI_USE.md](docs/AI_USE.md).
+
+The processed data (the outputs of our NISAR processing, too large for this repository) are in a public Google Drive folder: https://drive.google.com/drive/folders/1KkCbSMfJ1LOwljZSYkhCsfham1P6ruKF?usp=sharing
